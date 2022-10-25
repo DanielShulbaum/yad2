@@ -1,0 +1,27 @@
+:host{
+  position: absolute;
+  top:80px;
+  right: 940px;
+  width: 170px;
+  height: 85px;
+  background: white;
+  border-radius: 5px;
+  box-shadow:darkgray, 2px;
+  border: 1px solid gray;
+}
+.notice_menu {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  gap: 15px;
+  align-items: center;
+}
+.notice_title{
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+.notice_content{
+  display: flex;
+}

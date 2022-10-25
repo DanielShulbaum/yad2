@@ -1,0 +1,35 @@
+:host{
+  position: absolute;
+  top:80px;
+  right: 1170px;
+  width: 150px;
+  height: 170px;
+  background: white;
+  border-radius: 5px;
+  box-shadow:darkgray, 2px;
+  border: 1px solid gray;
+}
+.header_open_menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu_list{
+  display: flex;
+  align-items: center;
+}
+.menu_list span {
+  padding-left: 10px;
+}
+a{
+  text-decoration:none;
+  color: black;
+  width: 150px;
+  height: 20px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 12px;
+}
+a:hover{
+  background: gray;
+}
