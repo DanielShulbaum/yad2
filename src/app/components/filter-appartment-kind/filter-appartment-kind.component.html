@@ -1,22 +1,160 @@
-<div class="open_menu_line">
-  <input class="df" type="checkbox">
-  <span>כל סוגי הנכסים</span>
+<div (click)="onClickAll()" class="open_menu_line">
+  <i *ngIf="!allChecked" class="fa-regular fa-square icon"></i>
+  <i *ngIf="allChecked" class="fa-solid fa-check icon_checked"></i>
+  <!-- <i class="fa-solid fa-minus icon_checked"></i> -->
+  <span >כל סוגי הנכסים</span>
 </div>
-<div class="open_menu_line">
-  <input class="df" type="checkbox">
+<div class="open_menu_line" (click)="onClickApp()">
+  <i class="fa-regular fa-square icon"></i>
+  <!-- <i class="fa-solid fa-check icon_checked"></i> -->
+  <!-- <i class="fa-solid fa-minus icon_checked"></i> -->
   <span>דירות</span>
-  <i class="fa-solid fa-chevron-down "></i>
+  <i class="fa-solid fa-chevron-down arrow_left"></i>
 </div>
-<div class="open_menu_line">
-  <input class="df" type="checkbox">
+<div class="appartments_open_menu">
+  <div class="apartment_kind" (click)="onClickAppEl(0)">
+    <i *ngIf="!appartments[0]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="appartments[0]" class="fa-solid fa-check icon_checked"></i>
+  <span>דירה</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickAppEl(1)">
+    <i *ngIf="!appartments[1]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="appartments[1]" class="fa-solid fa-check icon_checked"></i>
+  <span>דירת גן</span>
+  </div>
+
+  <div class="apartment_kind"(click)="onClickAppEl(2)">
+    <i *ngIf="!appartments[2]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="appartments[2]" class="fa-solid fa-check icon_checked"></i>
+  <span>גג/פנטהאוז</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickAppEl(3)">
+    <i *ngIf="!appartments[3]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="appartments[3]" class="fa-solid fa-check icon_checked"></i>
+  <span>דופלקס</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickAppEl(4)">
+    <i *ngIf="!appartments[4]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="appartments[4]" class="fa-solid fa-check icon_checked"></i>
+  <span>דירת נופש</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickAppEl(5)">
+    <i *ngIf="!appartments[5]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="appartments[5]" class="fa-solid fa-check icon_checked"></i>
+  <span>מרתף/פרטר</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickAppEl(6)">
+    <i *ngIf="!appartments[6]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="appartments[6]" class="fa-solid fa-check icon_checked"></i>
+  <span>טריפלקס</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickAppEl(7)">
+    <i *ngIf="!appartments[7]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="appartments[7]" class="fa-solid fa-check icon_checked"></i>
+  <span>יחידת דיור</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickAppEl(8)">
+    <i *ngIf="!appartments[8]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="appartments[8]" class="fa-solid fa-check icon_checked"></i>
+  <span>סטודיו/לופט</span>
+  </div>
+</div>
+
+<div class="open_menu_line" (click)="onClickHouses()">
+  <i class="fa-regular fa-square icon"></i>
+  <!-- <i class="fa-solid fa-check icon_checked"></i> -->
+  <!-- <i class="fa-solid fa-minus icon_checked"></i> -->
   <span>בתים</span>
-  <i class="fa-solid fa-chevron-down "></i>
+  <i class="fa-solid fa-chevron-down arrow_left"></i>
 </div>
-<div class="open_menu_line">
-  <input class="df" type="checkbox">
+
+<div class="appartments_open_menu">
+  <div class="apartment_kind"  (click)="onClickHouseEl(0)">
+    <i *ngIf="!houses[0]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="houses[1]" class="fa-solid fa-check icon_checked"></i>
+  <span>בית פרטי/קוטג'</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickHouseEl(1)">
+    <i *ngIf="!houses[1]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="houses[1]" class="fa-solid fa-check icon_checked"></i>
+  <span>דו משפחתי</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickHouseEl(2)">
+    <i *ngIf="!houses[2]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="houses[2]" class="fa-solid fa-check icon_checked"></i>
+  <span>משק חקלאי/נחלה'</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickHouseEl(3)">
+    <i *ngIf="!houses[3]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="houses[3]" class="fa-solid fa-check icon_checked"></i>
+  <span>משק עזר'</span>
+  </div>
+</div>
+
+<div class="open_menu_line" (click)="onClickOther()">
+  <i class="fa-regular fa-square icon"></i>
+  <!-- <i class="fa-solid fa-check icon_checked"></i> -->
+  <!-- <i class="fa-solid fa-minus icon_checked"></i> -->
   <span>סוגים נוספים</span>
-  <i class="fa-solid fa-chevron-down"></i>
+  <i class="fa-solid fa-chevron-down arrow_left"></i>
 </div>
+
+<div class="appartments_open_menu" >
+  <div class="apartment_kind" (click)="onClickOtherEl(0)">
+    <i *ngIf="!other[0]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="other[0]" class="fa-solid fa-check icon_checked"></i>
+
+  <span>מגרשים</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickOtherEl(1)">
+    <i *ngIf="!other[1]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="other[1]" class="fa-solid fa-check icon_checked"></i>
+  <span>דיור מוגן</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickOtherEl(2)">
+    <i *ngIf="!other[2]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="other[2]" class="fa-solid fa-check icon_checked"></i>
+  <span>בניין מגורים</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickOtherEl(3)">
+    <i *ngIf="!other[3]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="other[3]" class="fa-solid fa-check icon_checked"></i>
+  <span>מחסן</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickOtherEl(4)">
+    <i *ngIf="!other[4]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="other[4]" class="fa-solid fa-check icon_checked"></i>
+  <span>חניה</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickOtherEl(5)">
+    <i *ngIf="!other[5]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="other[5]" class="fa-solid fa-check icon_checked"></i>
+  <span>קב' רכישה/ זכות לנכס</span>
+  </div>
+
+  <div class="apartment_kind" (click)="onClickOtherEl(6)">
+    <i *ngIf="!other[6]" class="fa-regular fa-square icon"></i>
+    <i *ngIf="other[6]" class="fa-solid fa-check icon_checked"></i>
+  <span>כללי</span>
+  </div>
+
+</div>
+
 <div class="open_menu_button">
   <span >בחירה</span>
 </div>
