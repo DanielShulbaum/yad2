@@ -5,8 +5,8 @@
   <span >כל סוגי הנכסים</span>
 </div>
 <div class="open_menu_line" (click)="onClickApp()">
-  <i class="fa-regular fa-square icon"></i>
-  <!-- <i class="fa-solid fa-check icon_checked"></i> -->
+  <i *ngIf="!allAppartmentsChecked" class="fa-regular fa-square icon"></i>
+  <i *ngIf="allAppartmentsChecked" class="fa-solid fa-check icon_checked"></i>
   <!-- <i class="fa-solid fa-minus icon_checked"></i> -->
   <span>דירות</span>
   <i class="fa-solid fa-chevron-down arrow_left"></i>
@@ -78,7 +78,7 @@
 <div class="appartments_open_menu">
   <div class="apartment_kind"  (click)="onClickHouseEl(0)">
     <i *ngIf="!houses[0]" class="fa-regular fa-square icon"></i>
-    <i *ngIf="houses[1]" class="fa-solid fa-check icon_checked"></i>
+    <i *ngIf="houses[0]" class="fa-solid fa-check icon_checked"></i>
   <span>בית פרטי/קוטג'</span>
   </div>
 

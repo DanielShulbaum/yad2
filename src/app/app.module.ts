@@ -19,6 +19,8 @@ import { LikedMenuComponent } from './components/liked-menu/liked-menu.component
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { SearchToolComponent } from './components/search-tool/search-tool.component';
 import { FilterAppartmentKindComponent } from './components/filter-appartment-kind/filter-appartment-kind.component';
+import { FilterRoomsComponent } from './components/filter-rooms/filter-rooms.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,11 +40,13 @@ import { FilterAppartmentKindComponent } from './components/filter-appartment-ki
     LikedMenuComponent,
     UserMenuComponent,
     SearchToolComponent,
-    FilterAppartmentKindComponent
+    FilterAppartmentKindComponent,
+    FilterRoomsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

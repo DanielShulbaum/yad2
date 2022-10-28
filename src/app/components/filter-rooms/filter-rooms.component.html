@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="rooms_line" (click)="onClickStartFloorChoice()">
+
+    <div [ngClass]="startingText ==='מ-' ? 'placehold': 'regular'" >
+            {{startingText}}</div>
+    <i class="fa-solid  black_color margin_right_auto"
+              [ngClass]="!startingFloorListShow ? 'fa-chevron-down': 'fa-chevron-up'" ></i>
+  </div>
+  <div class="rooms_line" (click)="onClickFinalFloorChoice()">
+    <div [ngClass]="finalText ==='עד-' ? 'placehold': 'regular'" >
+            {{finalText}}</div>
+    <i class="fa-solid black_color margin_right_auto"
+              [ngClass]="!finalFloorListShow ? 'fa-chevron-down': 'fa-chevron-up'" ></i>
+  </div>
+  <div class="right_list" *ngIf="startingFloorListShow">
+    <div (click)="onClickAll(1)" class="list_item">הכל</div>
+    <div class="list_item" *ngFor="let floor of floors" (click)="onClickFloor(1 , floor)">{{floor}}</div>
+  </div>
+  <div class="left_list" *ngIf="finalFloorListShow">
+    <div (click)="onClickAll(2)" class="list_item">הכל</div>
+    <div class="list_item" *ngFor="let floor of floors" (click)="onClickFloor(2 , floor)">{{floor}}</div>
+
+  </div>
+
+</div>
+
