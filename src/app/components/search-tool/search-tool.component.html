@@ -32,13 +32,13 @@
       </div>
       <app-filter-appartment-kind *ngIf="propertiesShow"></app-filter-appartment-kind>
 
-      <div class="search_rooms_w" (click)="onClickFloors()">
+      <div class="search_rooms_w" (click)="onClickRooms()">
         <div class="search_rooms gray_color">חדרים
         <i class="fa-solid  black_color margin_right_auto"
-                  [ngClass]="!floorsFilterShow ? 'fa-chevron-down': 'fa-chevron-up'" ></i>
+                  [ngClass]="!roomsFilterShow ? 'fa-chevron-down': 'fa-chevron-up'" ></i>
         </div>
       </div>
-      <app-filter-rooms *ngIf="floorsFilterShow"></app-filter-rooms>
+      <app-filter-rooms *ngIf="roomsFilterShow"></app-filter-rooms>
 
       <div class="search_price_w">
         <div class="search_rooms gray_color">מ- </div>
@@ -125,18 +125,24 @@
       <div class="adv_search_middle_item">
         <div>קומה</div>
         <div>
-            <div class="adv_search_input_container">
-              <div class="adv_search_input">
+            <div class="adv_search_input_container" >
+              <div class="adv_search_input" (click)="onClickStartFloor()">
                 <input type="text" placeholder="מ-">
-                <i class= "fa-solid fa-chevron-down"></i>
+                <i class= "fa-solid"
+                    [ngClass]="startingFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'"></i>
               </div>
-              <div class="adv_search_input">
+              <div class="adv_search_input" (click)="onClickFinalFloor()">
                 <input type="text" placeholder="עד-">
-                <i class= "fa-solid fa-chevron-down"></i>
+                <i class= "fa-solid "
+                [ngClass]="finalFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'"></i>
               </div>
             </div>
         </div>
       </div>
+
+      <app-filter-floor *ngIf="startingFloorListShow"></app-filter-floor>
+      <app-filter-floor2 *ngIf="finalFloorListShow"></app-filter-floor2>
+
       <div class="adv_search_middle_item">
         <div>גודל הדירה (במ"ר)</div>
         <div>
@@ -156,28 +162,35 @@
             <div class="adv_search_container_long">
               <div class="adv_search_input">
                 <input type="date" name="appartmentEntrance" [(ngModel)]="appartementEntrance"   placeholder="החל מ- הזינו תאריך">
-
               </div>
-              <div class="adv_search_input">
+              <div class="adv_search_input no_border">
                 <input type="checkbox" placeholder="כניסה מיידית">כניסה מיידית
                 <!-- <span>כניסה מיידית</span> -->
               </div>
             </div>
         </div>
       </div>
-
-
-
     </div>
-
-
-
-
-
-
-
-
-
-  </div>
-
+    <div class="adv_search_bottom">
+      <div class="adv_search_middle_item">
+        <div>חיפוש חופשי</div>
+          <div class="adv_search_input_container">
+            <div class="adv_search_input">
+              <input type="text" placeholder="">
+            </div>
+              <input type="checkbox" disabled>
+              <span>הצגת מושבים וקיבוצים בלבד</span>
+              <span>
+                <i class="fa-regular fa-circle-question"></i>
+              </span>
+          </div>
+      </div>
+    </div>
+    <div class="adv_search_result">
+      <div></div>
+      <div class="adv_search_result_button">
+        <div>חיפוש</div>
+      </div>
+      <div class="adv_search_result_clear">נקה</div>
+    </div>
 </div>

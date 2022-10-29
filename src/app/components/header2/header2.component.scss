@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+i {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+// :host {
+//   margin-bottom: 5px;
+// }
+.header {
+  width: 100%;
+  height: 70px;
+  margin: 0px 20px 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Rubik", sans-serif;
+  color: hsl(0, 0%, 21%);
+  // line-height: 70px;
+  background-color: white;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+}
+
+.right_header {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.logo-wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.logo {
+  max-width: 100px;
+}
+
+.header_hamburger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 1.4rem;
+  @media (min-width: 1259px) {
+    display: none;
+  }
+}
+
+.header_tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 70px;
+  width: 730px;
+  a{  //added not working
+    display: inline-table;
+    text-align: center;
+  }
+
+  @media (max-width: 1260px) {
+    display: none;
+  }
+}
+
+.tabs {
+  height: 70px;
+
+  color: inherit;
+  font-size: 16px;
+
+  display: inline-block;
+  padding: 0 1rem;
+
+  @media (min-width: 1260px) {
+  }
+}
+.tabs:hover {
+  background: hsl(0, 0%, 95%);
+}
+
+.tabs--active {
+  background: hsl(0, 0%, 90%);
+}
+
+.header_icons {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin-left: 1em;
+  font-size: 20px;
+  gap: 15px;
+}
+
+.header_left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-left: 1em;
+}
+
+.header_left_items {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 190px;
+  height: 40px;
+  margin-left: 1em;
+  border-radius: 20px;
+
+  background: green;
+  color: white;
+  gap: 10px;
+}
+
+.header_middle_tabs {
+  height: 70px;
+  padding: 0 0.5em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.header_middle_tabs:hover {
+  background: hsl(0, 0%, 95%);
+}
+
+.header_middle_tabs_content {
+  display: none;
+
+  @media (min-width: 1640px) {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    // white-space: nowrap;
+  }
+}
+
+.appear_after880 {
+  @media (max-width: 880px) {
+    display: none;
+  }
+}
+.appear_until1260 {
+  @media (min-width: 1260px) {
+    display: none;
+  }
+}

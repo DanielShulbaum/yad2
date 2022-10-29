@@ -21,6 +21,11 @@ import { SearchToolComponent } from './components/search-tool/search-tool.compon
 import { FilterAppartmentKindComponent } from './components/filter-appartment-kind/filter-appartment-kind.component';
 import { FilterRoomsComponent } from './components/filter-rooms/filter-rooms.component';
 import { FormsModule } from '@angular/forms';
+import { FilterFloorComponent } from './components/filter-floor/filter-floor.component';
+import { FilterFloor2Component } from './components/filter-floor2/filter-floor2.component';
+import { Header2Component } from './components/header2/header2.component';
+import { AppartmentsListComponent } from './components/appartments-list/appartments-list.component';
+import { SearchTool2Component } from './components/search-tool2/search-tool2.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,11 @@ import { FormsModule } from '@angular/forms';
     SearchToolComponent,
     FilterAppartmentKindComponent,
     FilterRoomsComponent,
+    FilterFloorComponent,
+    FilterFloor2Component,
+    Header2Component,
+    AppartmentsListComponent,
+    SearchTool2Component,
   ],
   imports: [
     BrowserModule,

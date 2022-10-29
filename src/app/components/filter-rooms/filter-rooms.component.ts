@@ -6,26 +6,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-rooms.component.scss']
 })
 export class FilterRoomsComponent implements OnInit {
-  startingFloorListShow:boolean = false;
-  finalFloorListShow:boolean = false;
+  startingRoomListShow:boolean = false;
+  finalRoomListShow:boolean = false;
   startingText:string|number = 'מ-';
   finalText:string|number = 'עד-'
-  startingFloor:number|null=null;
-  finalFloor:number|null=null;
-  floors:number[] = [
+  startingRoom:number|null=null;
+  finalRoom:number|null=null;
+  rooms:number[] = [
     1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12
   ]
   constructor() { }
 
   ngOnInit(): void {
   }
-  onClickStartFloorChoice(){
-    this.startingFloorListShow = !this.startingFloorListShow;
-    this.finalFloorListShow = false;
+  onClickStartRoomChoice(){
+    this.startingRoomListShow = !this.startingRoomListShow;
+    this.finalRoomListShow = false;
   }
-  onClickFinalFloorChoice(){
-    this.finalFloorListShow = !this.finalFloorListShow;
-    this.startingFloorListShow = false;
+  onClickFinalRoomChoice(){
+    this.finalRoomListShow = !this.finalRoomListShow;
+    this.startingRoomListShow = false;
   }
   onClickAll(part:number){
     if(part === 1){
@@ -35,13 +35,13 @@ export class FilterRoomsComponent implements OnInit {
       this.finalText = 'הכל';
     }
   }
-  onClickFloor(part:number, floor:number){
+  onClickRoom(part:number, room:number){
     if(part ===1){
-      this.startingFloor = floor;
-      this.startingText = floor;
+      this.startingRoom = room;
+      this.startingText = room;
     }else{
-      this.finalFloor = floor;
-      this.finalText = floor;
+      this.finalRoom = room;
+      this.finalText = room;
     }
   }
 

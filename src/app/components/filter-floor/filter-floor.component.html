@@ -1,0 +1,5 @@
+<div class="right_list" >
+  <div (click)="onClickAll()" class="list_item">הכל</div>
+  <div (click)="onClickBasement()" class="list_item">מרתף/פרטר</div>
+  <div class="list_item" *ngFor="let floor of floors" (click)="onClickFloor(floor)">{{floor}}</div>
+</div>
