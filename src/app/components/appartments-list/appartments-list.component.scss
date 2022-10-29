@@ -1,0 +1,74 @@
+:host{
+  display: flex;
+  justify-content: center;
+
+  margin: 10px 0 5px;
+  max-width: 970px;
+}
+.container{
+  width: 100%;
+  background: green;
+  display: flex;
+  flex-direction: column;
+  font-family: "Rubik", sans-serif;
+  font-size: 0.9rem;
+}
+.appartements_filter{
+  display: flex;
+  justify-content: space-between;
+}
+.appartements_filter_right{
+
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.appartments_main_filter_container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 170px;
+  height: 2rem;
+  background: white;
+  border: 1px solid gray;
+  justify-content: space-around;
+}
+.app_main_filter_check{
+  width: 190px;
+  height: 150px;
+  background: white;
+  border: 1px solid black;
+  position: absolute;
+  top: 40px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+.app_check_line{
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+  input[type=radio]{
+    accent-color: rgb(222, 93, 24);
+    width: 17px;
+    height: 17px;
+  }
+}
+
+.appartements_filter_left{
+  display: flex;
+  gap: 5px;
+}
+.appartements_filter_container{
+ display: flex;
+ height: 2rem;
+ width: 140px;
+ background: white;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ border: 1px solid gray;
+}

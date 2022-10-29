@@ -26,6 +26,7 @@ import { FilterFloor2Component } from './components/filter-floor2/filter-floor2.
 import { Header2Component } from './components/header2/header2.component';
 import { AppartmentsListComponent } from './components/appartments-list/appartments-list.component';
 import { SearchTool2Component } from './components/search-tool2/search-tool2.component';
+import { ModaleComponent } from './components/modale/modale.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SearchTool2Component } from './components/search-tool2/search-tool2.com
     Header2Component,
     AppartmentsListComponent,
     SearchTool2Component,
+    ModaleComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,40 @@
-<p>appartments-list works!</p>
+<div class="container">
+  <div class="appartements_filter">
+    <div class="appartements_filter_right">
+      <div>מיין לפי</div>
+      <div class="appartments_main_filter_container" (click)="onClickMainSort()">
+        <div>{{sortBy}}</div>
+        <i class= "fa-solid fa-chevron-down"></i>
+            <div *ngIf="mainSortShow" class="app_main_filter_check">
+              <!-- possible can be replaced by *ngFor  -->
+              <div class="app_check_line" (click)="onClickSortDate()">
+                <input type="radio" name="sortBy" id="date" value=sortByDate checked>
+                <label for="sortByDate">{{sortValues[0]}}</label>
+              </div>
+              <div class="app_check_line" (click)="onClickSortPriceLow()" >
+                <input type="radio" name="sortBy" id="priceFromLow" value=sortByPriceLow  >
+                <label for="sortByPriceLow">{{sortValues[1]}}</label>
+              </div>
+              <div class="app_check_line" (click)="onClickSortPriceHigh()">
+                <input type="radio" name="sortBy" id="priceFromHigh" value=sortByPriceHigh >
+                <label for="sortByPriceHigh">{{sortValues[2]}}</label>
+              </div>
+            </div>
+      </div>
+
+    </div>
+
+    <div class="appartements_filter_left">
+      <div class= "appartements_filter_container">
+        <i class="fa-solid fa-filter"></i>
+        <div>סנן תוצאות</div>
+      </div>
+      <div class="appartements_filter_container">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>תצוגת מפה</div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
