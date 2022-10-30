@@ -24,14 +24,26 @@
 
     </div>
 
-    <div class="appartements_filter_left">
+    <div class="appartements_filter_left" (click)="onClickSecondarySort()">
       <div class= "appartements_filter_container">
         <i class="fa-solid fa-filter"></i>
-        <div>סנן תוצאות</div>
+        <span>סנן תוצאות</span>
       </div>
       <div class="appartements_filter_container">
         <i class="fa-solid fa-location-dot"></i>
-        <div>תצוגת מפה</div>
+        <span>תצוגת מפה</span>
+      </div>
+      <div *ngIf="secondarySortShow" class="secondary_filter" >
+        <div class="appartements_filter_line">
+          <input type="checkbox">עם מחיר
+        </div>
+        <div class="appartements_filter_line">
+          <input type="checkbox">עם תמונה
+        </div>
+        <div class="secondary_filter_last_line">
+          <span>ניקוי</span>
+          <span class="orange_color">סינון</span>
+        </div>
       </div>
 
     </div>

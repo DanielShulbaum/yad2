@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header2.component.scss']
 })
 export class Header2Component implements OnInit {
+  modaleShow:boolean=false;
+
   realEstateShow:boolean = false;
   carShow:boolean = false;
   secondHandShow:boolean = false;
@@ -22,6 +24,9 @@ export class Header2Component implements OnInit {
   ngOnInit(): void {
   }
 // consider to enter all these elements to array and work based on index
+onClickModale(){
+  this.modaleShow = !this.modaleShow;
+}
 onOverRealEstate() {
   this.realEstateShow = !this.realEstateShow;
 }

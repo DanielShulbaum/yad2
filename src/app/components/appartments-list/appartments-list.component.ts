@@ -10,6 +10,7 @@ export class AppartmentsListComponent implements OnInit {
   sortBy = this.sortValues[0];
 
   mainSortShow:boolean=false;
+  secondarySortShow:boolean=false;
   constructor() { }
 
   ngOnInit(): void {
@@ -30,5 +31,7 @@ export class AppartmentsListComponent implements OnInit {
     this.mainSortShow=false
     this.sortBy = this.sortValues[2];
   }
-
+  onClickSecondarySort(){
+    this.secondarySortShow = !this.secondarySortShow;
+  }
 }

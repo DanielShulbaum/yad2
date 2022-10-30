@@ -1,16 +1,7 @@
-
 <div class="main_view">
   <div class="search_container">
     <div class="search_headline">
-      <h3 class="search_headline_right">
-        איזה נכס ל
-        <span class="search_headline_link"> מכירה </span>
-        תרצו לחפש?
-      </h3>
-      <!-- <div class="search_headline_left">
-        <i class="fa-regular fa-bell"></i>
-        <div class="font_size">קבלו התראות במייל על החיפוש</div>
-      </div> -->
+      <h3>איזה נכס ל<span>מכירה</span> תרצו לחפש?</h3>
 
       <button class="notification_btn" type="button">
         <i class="fa-regular fa-bell"></i>
@@ -18,27 +9,22 @@
       </button>
     </div>
 
-    <!-- <div class="search_titles">
-      <div class="search_input_w">חפשו אזור, עיר, שכונה,או רחוב</div>
-      <div class="search_app_kind_w">סוג נכס</div>
-      <div class="search_rooms_w">חדרים</div>
-      <div class="search_rooms_w">מחיר</div>
-    </div> -->
-
     <div class="search_filters">
-      <div class="search_input">
+      <div class="filter-box">
+        <label for="address">חפשו אזור, עיר, שכונה,או רחוב</label>
         <input
-          class="search_input_w"
+          class="width-big"
+          id="address-input"
           type="text"
           placeholder="לדוגמא: נחלאות"
         />
       </div>
 
-      <div class="search_app_kind_w" (click)="onClickProperties()">
-        <div class="search_app_kind gray_color">
-          בחרו סוגי נכסים
-          <i
-            class="fa-solid black_color margin_right_auto"
+      <div class="filter-box width-middle" (click)="onClickProperties()">
+        <label for="">סוג נכס</label>
+        <div class="dropdown-filter">
+          <span>בחרו סוגי נכסים</span>
+          <i class="fa-solid black_color margin_right_auto"
             [ngClass]="!propertiesShow ? 'fa-chevron-down' : 'fa-chevron-up'"
           ></i>
         </div>
@@ -48,49 +34,53 @@
         *ngIf="propertiesShow"
       ></app-filter-appartment-kind>
 
-      <div class="search_rooms_w" (click)="onClickRooms()">
-        <div class="search_rooms gray_color">
-          חדרים
+      <div class="filter-box width-small" (click)="onClickRooms()">
+        <label for="">חדרים</label>
+        <div class="dropdown-filter">
+          <span>חדרים</span>
+
           <i
             class="fa-solid black_color margin_right_auto"
             [ngClass]="!roomsFilterShow ? 'fa-chevron-down' : 'fa-chevron-up'"
           ></i>
         </div>
       </div>
+
       <app-filter-rooms *ngIf="roomsFilterShow"></app-filter-rooms>
 
-      <div class="search_price_w">
-        <div class="search_rooms gray_color">מ-</div>
-        <div class="search_rooms gray_color">עד-</div>
+      <div class="filter-box">
+        <label for="">מחיר</label>
+        <input
+          class="width-small"
+          type="number"
+          name="from"
+          id="min-rooms"
+          placeholder="מ-"
+        />
+        <input
+          class="width-small"
+          type="number"
+          name="to"
+          id="max-rooms"
+          placeholder="עד-"
+        />
       </div>
 
       <!-- buttons  -->
       <div class="buttons">
         <button
-          class="adviced_search_btn"
+          class="adviced_search_btn width-middle"
           onclick="onClickAdvancedSearch()"
           type="button"
         >
           <i class="fa-solid fa-circle-plus"></i>
           <span>חיפוש מתקדם</span>
         </button>
-        <button class="search_btn" type="button">
+
+        <button class="search_btn width-small" type="button">
           <i class="fa-solid fa-magnifying-glass"></i>
           <span>חיפוש</span>
         </button>
-
-        <!-- <div
-          class="advanced_search_button_container"
-          (click)="onClickAdvancedSearch()"
-        >
-          <i class="fa-solid fa-circle-plus"></i>
-          <span>חיפוש מתקדם</span>
-        </div>
-
-        <div class="search_button_container">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <span>חיפוש </span>
-        </div> -->
       </div>
     </div>
 
@@ -229,20 +219,28 @@
             <div class="adv_search_input_container">
               <div class="adv_search_input" (click)="onClickStartFloor()">
                 <input type="text" placeholder="מ-" />
-                <i class= "fa-solid"
-                    [ngClass]="startingFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'"></i>
+                <i
+                  class="fa-solid"
+                  [ngClass]="
+                    startingFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'
+                  "
+                ></i>
               </div>
               <div class="adv_search_input" (click)="onClickFinalFloor()">
                 <input type="text" placeholder="עד-" />
-                <i class= "fa-solid "
-                [ngClass]="finalFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'"></i>
+                <i
+                  class="fa-solid"
+                  [ngClass]="
+                    finalFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'
+                  "
+                ></i>
               </div>
             </div>
           </div>
         </div>
 
         <app-filter-floor *ngIf="startingFloorListShow"></app-filter-floor>
-      <app-filter-floor2 *ngIf="finalFloorListShow"></app-filter-floor2>
+        <app-filter-floor2 *ngIf="finalFloorListShow"></app-filter-floor2>
 
         <div class="adv_search_middle_item">
           <div>גודל הדירה (במ"ר)</div>
@@ -271,28 +269,24 @@
               </div>
               <div class="adv_search_input">
                 <input type="checkbox" placeholder="כניסה מיידית" />כניסה מיידית
-                <!-- <span>כניסה מיידית</span> -->
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-      <!-- added from here by DS -->
       <div class="adv_search_bottom">
         <div class="adv_search_middle_item">
           <div>חיפוש חופשי</div>
-            <div class="adv_search_input_container">
-              <div class="adv_search_input">
-                <input type="text" placeholder="">
-              </div>
-                <input type="checkbox" disabled>
-                <span>הצגת מושבים וקיבוצים בלבד</span>
-                <span>
-                  <i class="fa-regular fa-circle-question"></i>
-                </span>
+          <div class="adv_search_input_container">
+            <div class="adv_search_input">
+              <input type="text" placeholder="" />
             </div>
+            <input type="checkbox" disabled />
+            <span>הצגת מושבים וקיבוצים בלבד</span>
+            <span>
+              <i class="fa-regular fa-circle-question"></i>
+            </span>
+          </div>
         </div>
       </div>
       <div class="adv_search_result">
@@ -305,3 +299,5 @@
     </div>
   </div>
 </div>
+
+

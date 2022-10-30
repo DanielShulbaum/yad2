@@ -1,1 +1,184 @@
-<p>modale works!</p>
+<div class="modale">
+  <aside>
+    <section class="personal_menu">
+      <div class="close_modale" (click)="onClickCloseModale()">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <!-- user -->
+      <a class="login" href="#">
+        <div class="user user--disconnected">
+          <i class="fa-regular fa-user"></i>
+          <span class="text">התחברות</span>
+        </div>
+      </a>
+
+      <!-- new ad button -->
+      <div class="btn new_ad">
+        <span>פרסום מודעה </span>
+      </div>
+
+      <div class="links">
+        <a href="#" class="link">
+          <i class="fa-regular fa-comment-dots"></i>
+          <span class="link__text">צ'אט</span>
+        </a>
+
+        <a href="#" class="link">
+          <i class="fa-regular fa-bell"></i>
+          <span class="link__text">התראות</span>
+        </a>
+
+        <a href="#" class="link">
+          <i class="fa-regular fa-heart"></i>
+          <span class="link__text">מודעות שאהבתי</span>
+        </a>
+
+        <a href="#" class="link">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span class="link__text">חיפושים אחרונים</span>
+        </a>
+
+        <a href="#" class="link">
+          <i class="fa-solid fa-arrow-right-arrow-left"></i>
+          <span class="link__text">השוואת רכבים</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="fast_search">
+      <h4 class="fast_search__title">חיפוש מהיר באתר</h4>
+
+      <ul class="fast_search__list">
+        <li class="search_link">
+          <a href="#" class="tabs">
+            <i class="fa-solid fa-house"></i>
+            <span>נדל"ן</span>
+          </a>
+        </li>
+        <li class="search_link">
+          <a href="#" class="tabs">
+            <i class="fa-solid fa-car"></i>
+            <span>רכב</span>
+          </a>
+        </li>
+        <li class="search_link">
+          <a href="#" class="tabs">
+            <i class="fa-solid fa-couch"></i>
+            <span> יד שנייה</span>
+          </a>
+        </li>
+        <li class="search_link">
+          <a href="" class="tabs">
+            <i class="fa-solid fa-people-group"></i>
+            <span>דרושים IL</span>
+          </a>
+        </li>
+        <li class="search_link">
+          <a href="#" class="tabs">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>עסקים למכירה</span>
+          </a>
+        </li>
+        <li class="search_link">
+          <a href="#" class="tabs">
+            <i class="fa-solid fa-paw"></i>
+            <span>חיות מחמד</span>
+          </a>
+        </li>
+        <li class="search_link">
+          <a href="#" class="tabs">
+            <i class="fa-solid fa-plane-departure"></i>
+            <span>נופש</span>
+          </a>
+        </li>
+        <li class="search_link">
+          <a href="#" class="tabs">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>לימודים</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="site_navigation">
+      <h4 class="site_navigation__title">ניווט לפי קטגוריות</h4>
+
+      <ul >
+        <li class="site_navigation_link" (click)="onClickRealEstate()">
+          <a class="tabs">
+            <span>נדל"ן</span>
+          </a>
+          <i class="fa-solid"
+          [ngClass]="realEstateShow ? 'fa-chevron-up' : 'fa-chevron-down' "></i>
+        </li>
+        <div *ngIf="realEstateShow">
+          <div class="site_navigation_link gray_background" *ngFor="let item of realEstate">{{item}}</div>
+        </div>
+        <li class="site_navigation_link" (click)="onClickCars()">
+          <a  class="tabs">
+            <span>רכב</span>
+          </a>
+          <i class="fa-solid"[ngClass]="carsShow ? 'fa-chevron-up' : 'fa-chevron-down' "></i>
+        </li>
+        <div *ngIf="carsShow">
+          <div class="site_navigation_link gray_background" *ngFor="let item of realEstate">{{item}}</div>
+        </div>
+        <li class="site_navigation_link" (click)="onClickSecondHand()">
+          <a  class="tabs">
+            <span> יד שנייה</span>
+          </a>
+          <i class="fa-solid"[ngClass]="secondHandShow ? 'fa-chevron-up' : 'fa-chevron-down' "></i>
+        </li>
+        <div *ngIf="secondHandShow">
+          <div class="site_navigation_link gray_background" *ngFor="let item of realEstate">{{item}}</div>
+        </div>
+        <li class="site_navigation_link" (click)="onClickDemanded()">
+          <a  class="tabs">
+            <span>דרושים IL</span>
+          </a>
+          <i class="fa-solid" [ngClass]="demandedShow ? 'fa-chevron-up' : 'fa-chevron-down' "></i>
+        </li>
+        <div *ngIf="demandedShow">
+          <div class="site_navigation_link gray_background" *ngFor="let item of realEstate">{{item}}</div>
+        </div>
+        <li class="site_navigation_link" (click)="onClickBussines()">
+          <a  class="tabs">
+            <span>עסקים למכירה</span>
+          </a>
+          <i class="fa-solid "[ngClass]="bussinesShow ? 'fa-chevron-up' : 'fa-chevron-down' "></i>
+
+        </li>
+        <div *ngIf="bussinesShow">
+          <div class="site_navigation_link gray_background" *ngFor="let item of realEstate">{{item}}</div>
+        </div>
+        <li class="site_navigation_link" (click)="onClickPets()">
+          <a  class="tabs">
+            <span>חיות מחמד</span>
+          </a>
+
+          <i class="fa-solid "[ngClass]="petsShow ? 'fa-chevron-up' : 'fa-chevron-down' "></i>
+        </li>
+        <div *ngIf="petsShow">
+          <div class="site_navigation_link gray_background" *ngFor="let item of realEstate">{{item}}</div>
+        </div>
+        <li class="site_navigation_link">
+          <a  class="tabs">
+            <span>תיירות ונופש</span>
+          </a>
+
+        </li>
+        <li class="site_navigation_link">
+          <a  class="tabs">
+            <span>לימודים</span>
+          </a>
+
+        </li>
+
+      <li class="site_navigation_link">
+        <a  class="tabs">
+          <span>מגזין יד2</span>
+        </a>
+      </li>
+      </ul>
+    </section>
+  </aside>
+</div>

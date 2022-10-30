@@ -1,3 +1,4 @@
+<app-modale *ngIf="modaleShow"></app-modale>
 <div class="header">
   <div class="right_header">
     <div class="logo-wrapper">
@@ -5,7 +6,7 @@
     </div>
 
     <!-- menu  -->
-    <div class="header_hamburger">
+    <div class="header_hamburger" (click)="onClickModale()">
       <div>
         <i class="fa-solid fa-bars"></i>
       </div>

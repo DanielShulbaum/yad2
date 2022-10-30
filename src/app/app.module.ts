@@ -27,6 +27,7 @@ import { Header2Component } from './components/header2/header2.component';
 import { AppartmentsListComponent } from './components/appartments-list/appartments-list.component';
 import { SearchTool2Component } from './components/search-tool2/search-tool2.component';
 import { ModaleComponent } from './components/modale/modale.component';
+import { AppartementPostComponent } from './components/appartement-post/appartement-post.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ModaleComponent } from './components/modale/modale.component';
     AppartmentsListComponent,
     SearchTool2Component,
     ModaleComponent,
+    AppartementPostComponent,
   ],
   imports: [
     BrowserModule,

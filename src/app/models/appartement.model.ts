@@ -5,7 +5,7 @@ export class Appartement {
 
   constructor (
     public id:number,
-    public imgPath:string,
+    public imgPath:string[],
     public price:number,
     public postDate:Date,
     public streetName:string,
@@ -29,12 +29,13 @@ export class Appartement {
     public kosherKitchen:boolean,
     public sunBoiler:boolean,
     public handicappedAccess:boolean,
-    public isRenovated:boolean,
+    public isRenovated:boolean,// = this.condition==='משופצת' ?true:false,
     public hasShelter:boolean,
     public hasStoragePlace:boolean,
     public hasTadiranAir:boolean,
-
-
+    public hasFurniture:boolean,
+    public isFlexEntranceDate:boolean,  //this.entranceDate!==null?false:true
+    public hasResidentialUnit:boolean
      ) {
 
   }
