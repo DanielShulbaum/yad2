@@ -1,1 +1,153 @@
-<p>appartement-post works!</p>
+<div class="main_container">
+  <div class="min_post">
+    <div class="min_post_img">
+      <img src="" alt="">
+      <div class="heart_container">
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+    <div class="min_post_content">
+      <div class="min_post_line1">
+        <div>price</div>
+        <div>post date</div>
+      </div>
+      <div class="min_post_line2">
+        <div>street num</div>
+        <div> app kind neighbour city</div>
+      </div>
+      <div class="min_post_line3">
+        <div class="min_post_line3_content">
+          <span>roomsNum</span>
+          <span>rooms</span>
+        </div>
+        <div class="min_post_line3_content">
+          <span>floorsNum</span>
+          <span>floors</span>
+        </div>
+        <div class="min_post_line3_content">
+          <span>squaredMeterNum</span>
+          <span>squaredMeter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="min_post">
+    <div class="max_post_img">
+      <img src="" alt="">
+      <div class="heart_container">
+        <i class="fa-regular fa-heart"></i>
+      </div>
+      <div class="img_count">
+        <i class="fa-regular fa-image"></i>
+        <span>5</span>
+      </div>
+    </div>
+
+    <div class="min_post_content post_content_change">
+      <div class="min_post_line1 line1_change">
+        <div>price</div>
+        <div>post date</div>
+      </div>
+      <div class="min_post_line2 line2_change">
+        <div>street num</div>
+        <div> app kind neighbour city</div>
+      </div>
+      <div class="min_post_line3">
+        <div class="min_post_line3_content">
+          <span>roomsNum</span>
+          <span>rooms</span>
+        </div>
+        <div class="min_post_line3_content">
+          <span>floorsNum</span>
+          <span>floors</span>
+        </div>
+        <div class="min_post_line3_content">
+          <span>squaredMeterNum</span>
+          <span>squaredMeter</span>
+        </div>
+      </div>
+    </div>
+    <div class="phone_container" (click)="onClickOwnerDetails()">
+      <div class="phone">
+        <i class="fa-solid fa-phone"></i>
+        <span>הצגת מספר טלפון</span>
+      </div>
+      <div *ngIf="detailsShow" class="owner_details">
+        <div>name</div>
+        <div>phone</div>
+        <div>שליחת דוא"ל למפרסם</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="post_description">
+    <aside class="post_description_right"></aside>
+    <div class="post_main_description_container">
+      <h4 class="post_main_line">תיאור הנכס</h4>
+      <div class ="post_main_line">description</div>
+      <div class ="post_main_line">
+        <div class="post_main_line_internal">מצב הנכס: STATUS</div>
+        <div class="post_main_line_internal">תאריך כניסה: ENTRANCE DATE</div>
+        <div class="post_main_line_internal">קומות בבנין:FLOORS IN BUILDING</div>
+        <div class="post_main_line_internal">מרפסות: BALCONIES</div>
+        <div class="post_main_line_internal">חניות: PARKING SLOTS</div>
+      </div>
+      <div class ="post_main_line">ADVERISEMENT</div>
+      <h4 class="post_main_line">מה יש בנכס?</h4>
+      <div class ="post_main_line">
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-snowflake"></i>
+          <span>מיזוג</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-table-cells"></i>
+          <span>סורגים</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-elevator"></i>
+          <span>מעלית</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-kitchen-set"></i>
+          <span>מטבח כשר</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-solar-panel"></i>
+          <span>דוד שמש</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-brands fa-accessible-icon"></i>
+          <span>גישה לנכים</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-paint-roller"></i>
+          <span>משופצת</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-person-shelter"></i>
+          <span>ממ"ד</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-warehouse"></i>
+          <span>מחסן</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-temperature-arrow-down"></i>
+          <span>מזגן תדיראן</span>
+        </div>
+        <div class="post_main_line_internalicon">
+          <i class="fa-solid fa-chair"></i>
+          <span>ריהוט</span>
+        </div>
+        <div class="post_main_line_internalicon">
+
+          <span>גמיש</span>
+        </div>
+      </div>
+      <div class ="post_main_line">מכירים את השכונה?</div>
+    </div>
+  </div>
+
+</div>

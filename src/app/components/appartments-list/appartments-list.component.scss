@@ -1,9 +1,9 @@
 :host{
   display: flex;
   justify-content: center;
-
   margin: 10px 0 5px;
   max-width: 970px;
+  width: 100%;
 }
 .container{
   width: 100%;
@@ -45,6 +45,7 @@
   flex-direction: column;
   gap: 5px;
   padding: 10px;
+  z-index: 10;
 }
 .app_check_line{
   display: flex;
@@ -86,6 +87,7 @@
   padding: 10px;
   gap: 10px;
   font-size: 1rem;
+  z-index: 10;
 }
 .appartements_filter_line{
   gap: 5px;

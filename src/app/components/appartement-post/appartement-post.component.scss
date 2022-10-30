@@ -1,0 +1,233 @@
+.main_container{
+  margin: 0.2rem;
+  width: 100%;
+  background: gray;
+  // height: 150px; //to delete later
+  display: flex;
+  flex-direction: column;
+}
+.min_post{
+  display: flex;
+  position: relative;
+}
+.min_post_img{
+  padding: 0.3rem;
+  background: pink;
+  position: relative;
+  @media (min-width: 880px) {
+    padding: 0.7rem;
+  }
+  img{
+    width: 125px;
+    height:100px ;
+    background: black;
+    border-radius: 10px;
+    @media (min-width: 880px) {
+      width: 110px;
+      height:66px ;
+    }
+  }
+}
+.heart_container{
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 1.1rem;
+  padding-top:1px ;
+  @media (min-width: 880px) {
+     top:16px ;
+     left: 90px;
+  }
+}
+.min_post_content{
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgb(216, 216, 226);
+  @media (min-width: 880px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+}
+.min_post_line1{
+  align-items: stretch;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding:0.7rem;
+  background:white;
+  @media (min-width: 880px) {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: auto;
+    height: 100%;
+    justify-content: center;
+    left: 2px;
+    padding-right: 90px;
+    border-right: 1px solid gray;;
+  }
+  // border-left: 1px gray;
+}
+.min_post_line2{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  @media (min-width: 880px) {
+    padding-right: 5px;
+    border-left:1px solid gray ;
+    height: 100%;
+    justify-content: center;
+  }
+}
+.min_post_line3{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.2rem;
+  font-size: 0.8rem;
+  align-items: center;
+  text-align: center;
+  @media (min-width: 880px) {
+    font-size: 1rem;
+  }
+}
+.min_post_line3_content{
+  display: flex;
+  flex-direction: column;
+}
+.max_post_img{
+  padding: 0.3rem;
+  background: pink;
+  position: relative;
+  @media (min-width: 880px) {
+    padding: 0.7rem;
+  }
+  img{
+    width: 125px;
+    height:100px ;
+    background: black;
+    border-radius: 10px;
+    @media (min-width: 880px) {
+      width: 195px;
+      height:117px ;
+    }
+  }
+  .heart_container{
+    @media (min-width: 880px) {
+      left: 175px;
+    }
+  }
+  .img_count{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: white;
+    border-radius: 20px;
+    padding: 0.2rem;
+    top: 11px;
+    left: 10px;
+    font-size: 1rem;
+    @media (min-width: 880px) {
+      top: 17px;
+      left: 19px;
+    }
+  }
+}
+.phone_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  width: 180px;
+  color: white;
+  top:85px;
+  left: 20px;
+}
+.line1_change{
+  @media (min-width: 880px) {
+    justify-content: flex-start ;
+    border-right: none
+  }
+}
+.post_content_change{
+  @media (min-width: 880px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.line2_change{
+  @media (min-width: 880px) {
+    border: none;
+  }
+}
+.owner_details{
+  // display: flex;
+  // flex-direction: column;
+  background: white;
+  color: black;
+  align-items: center;
+  justify-content: center;
+  div{
+    border: 1px solid gray;
+    padding: 10px;
+    width: 180px;
+    text-align: center;
+  }
+}
+.phone{
+  width: 180px;
+  height: 35px;
+  background: rgb(72, 213, 72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.post_description{
+  display: flex;
+}
+.post_description_right{
+  width: 190px;
+  height: 50px;
+  background: grey;
+  margin:1px;
+}
+.post_main_description_container{
+  width: calc(100% - 192px);
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+.post_main_line{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.post_main_line_internal{
+  width: 50%;
+  padding: 1rem;
+}
+.post_main_line_internalicon{
+  display: flex;
+  gap: 10px;
+  width: 25%;
+  padding: 0.5rem;
+  span{
+    font-size: 0.8rem;
+  }
+}
+

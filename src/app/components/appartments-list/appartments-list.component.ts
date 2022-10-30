@@ -18,6 +18,7 @@ export class AppartmentsListComponent implements OnInit {
 
   onClickMainSort(){
     this.mainSortShow = !this.mainSortShow;
+
   }
   onClickSortDate(){
     this.mainSortShow=false
