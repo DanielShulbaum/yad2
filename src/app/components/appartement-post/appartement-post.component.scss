@@ -230,4 +230,26 @@
     font-size: 0.8rem;
   }
 }
-
+.post_bottom_line{
+  padding-left: 5px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+.post_bottom_right{
+  border-top: 1px lightgray solid;
+  padding-top: 20px;
+}
+.post_bottom_table_line{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+}
+.gray_smallfont{
+  color: gray;
+  font-size: 0.9rem;
+}
+.post_bottom_left{
+  display: flex;
+  flex-direction: column;
+}

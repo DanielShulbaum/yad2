@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Appartement } from 'src/app/models/appartement.model';
+import { AppartementsService } from 'src/app/services/appartements.service';
+
 
 @Component({
   selector: 'app-main-content',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainContentComponent implements OnInit {
 
-  constructor() { }
+  subscriptionAppartementsList!: Subscription;
+  appartementListToShow:Appartement[]=[];
+  constructor(private appartementsService:AppartementsService) { }
 
   ngOnInit(): void {
+    this.subscriptionAppartementsList = this.appartementsService.getAppartementsList()
+      .subscribe(appartements => {
+        this.appartementListToShow = appartements;
+      })
   }
 
 }

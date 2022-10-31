@@ -5,7 +5,7 @@ export class Appartement {
 
   constructor (
     public id:number,
-    public imgPath:string[],
+    public imgPath:string,//[]
     public price:number,
     public postDate:Date,
     public streetName:string,
@@ -21,6 +21,7 @@ export class Appartement {
     public floorsInBuilding:number,
     public entranceDate:Date,
     public parkingLots:number,
+    public numberOfBalconies:number,
     public belongsToUser:User,
 
     public airConditioner:boolean,

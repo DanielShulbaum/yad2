@@ -30,6 +30,7 @@ import { ModaleComponent } from './components/modale/modale.component';
 import { AppartementPostComponent } from './components/appartement-post/appartement-post.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { AuthPageComponent } from './pages/auth-page/auth-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { AuthPageComponent } from './pages/auth-page/auth-page.component';
     AppartementPostComponent,
     MainContentComponent,
     AuthPageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Appartement } from 'src/app/models/appartement.model';
 
 @Component({
   selector: 'app-appartement-post',
@@ -6,12 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appartement-post.component.scss']
 })
 export class AppartementPostComponent implements OnInit {
+  @Input() appartement!: Appartement;
+
   detailsShow:boolean = false;
+  expandedPost:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
   onClickOwnerDetails(){
     this.detailsShow = !this.detailsShow
+  }
+  onClickExpanPost(){
+    this.expandedPost = !this.expandedPost
   }
 }

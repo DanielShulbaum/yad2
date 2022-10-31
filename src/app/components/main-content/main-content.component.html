@@ -4,7 +4,10 @@
 
     <main class="appartements_list">
       <app-appartments-list></app-appartments-list>
-      <app-appartement-post></app-appartement-post>
+      <app-appartement-post *ngFor="let appartement of appartementListToShow; let i = index"
+        [appartement] = "appartement"
+
+      ></app-appartement-post>
 
     </main>
     <aside class="advertise"></aside>
