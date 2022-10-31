@@ -8,6 +8,8 @@
   border-radius: 5px;
   box-shadow:darkgray, 2px;
   border: 1px solid gray;
+  line-height: 20px;    //added
+  z-index: 5;
 }
 .header_open_menu {
   display: flex;

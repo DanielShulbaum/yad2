@@ -9,9 +9,12 @@
   box-shadow:darkgray, 2px;
   border: 1px solid gray;
   line-height: 20px;    //added
+  z-index: 5;
 }
 .header_open_menu {
+  padding-top: 10px;
   display: flex;
+  z-index: 5;
 }
 .open_menu_list{
   width: 50%;
