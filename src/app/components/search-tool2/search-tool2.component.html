@@ -87,7 +87,10 @@
 
     <div *ngIf="advancedSearchShow" class="advanced_search_container">
       <div class="advanced_search_properties">
-        <h4 style="margin-right: 30px">מאפייני דירה</h4>
+        <!-- title  -->
+        <h4>מאפייני דירה</h4>
+
+        <!-- checkboxes  -->
         <div class="advanced_search_line">
           <span class="check_item" (click)="onClickParking()">
             <i
@@ -100,6 +103,7 @@
             ></i>
             <span>חניה</span>
           </span>
+
           <span class="check_item" (click)="onClickLift()">
             <i
               *ngIf="!lift"
@@ -213,29 +217,34 @@
         </div>
       </div>
 
-      <div class="adv_search_middle">
+      <div class="adv_search_middle advanced_search_properties">
         <div class="adv_search_middle_item">
-          <div>קומה</div>
-          <div>
-            <div class="adv_search_input_container">
-              <div class="adv_search_input" (click)="onClickStartFloor()">
-                <input type="text" placeholder="מ-" />
-                <i
-                  class="fa-solid"
-                  [ngClass]="
-                    startingFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'
-                  "
-                ></i>
-              </div>
-              <div class="adv_search_input" (click)="onClickFinalFloor()">
-                <input type="text" placeholder="עד-" />
-                <i
-                  class="fa-solid"
-                  [ngClass]="
-                    finalFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'
-                  "
-                ></i>
-              </div>
+          <span>קומה</span>
+
+          <div class="adv_search_input_container">
+            <div
+              class="adv_search_input dropdown-filter"
+              (click)="onClickStartFloor()"
+            >
+              <input class="width-small" type="text" placeholder="מ-" />
+              <i
+                class="fa-solid"
+                [ngClass]="
+                  startingFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'
+                "
+              ></i>
+            </div>
+            <div
+              class="adv_search_input dropdown-filter"
+              (click)="onClickFinalFloor()"
+            >
+              <input class="width-small" type="text" placeholder="עד-" />
+              <i
+                class="fa-solid"
+                [ngClass]="
+                  finalFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'
+                "
+              ></i>
             </div>
           </div>
         </div>
@@ -244,22 +253,23 @@
         <app-filter-floor2 *ngIf="finalFloorListShow"></app-filter-floor2>
 
         <div class="adv_search_middle_item">
-          <div>גודל הדירה (במ"ר)</div>
+          <span>גודל הדירה (במ"ר)</span>
           <div>
             <div class="adv_search_input_container">
-              <div class="adv_search_input">
-                <input type="text" placeholder="מ-" />
+              <div class="adv_search_input dropdown-filter">
+                <input class="width-small" type="text" placeholder="מ-" />
               </div>
-              <div class="adv_search_input">
-                <input type="text" placeholder="עד-" />
+
+              <div class="adv_search_input dropdown-filter">
+                <input class="width-small" type="text" placeholder="עד-" />
               </div>
             </div>
           </div>
         </div>
         <div class="adv_search_middle_item">
-          <div>תאריך כניסה</div>
+          <span>תאריך כניסה</span>
           <div>
-            <div class="adv_search_container_long">
+            <div class="adv_search_container long">
               <div class="adv_search_input">
                 <input
                   type="date"
@@ -269,8 +279,8 @@
                 />
               </div>
               <div class="adv_search_input">
-                <input type="checkbox" placeholder="כניסה מיידית" />כניסה מיידית
-                <!-- <span>כניסה מיידית</span> -->
+                <input type="checkbox" placeholder="כניסה מיידית" />
+                <span>כניסה מיידית</span>
               </div>
             </div>
           </div>
@@ -278,13 +288,14 @@
       </div>
 
       <!-- added from here by DS -->
-      <div class="adv_search_bottom">
+      <div class="adv_search_bottom advanced_search_properties">
         <div class="adv_search_middle_item">
-          <div>חיפוש חופשי</div>
+          <span>חיפוש חופשי</span>
           <div class="adv_search_input_container">
             <div class="adv_search_input">
               <input type="text" placeholder="" />
             </div>
+
             <input type="checkbox" disabled />
             <span>הצגת מושבים וקיבוצים בלבד</span>
             <span>
@@ -293,7 +304,7 @@
           </div>
         </div>
       </div>
-      <div class="adv_search_result">
+      <div class="adv_search_result advanced_search_properties">
         <div></div>
         <div class="adv_search_result_button">
           <div>חיפוש</div>

@@ -29,6 +29,7 @@ import { SearchTool2Component } from './components/search-tool2/search-tool2.com
 import { ModaleComponent } from './components/modale/modale.component';
 import { AppartementPostComponent } from './components/appartement-post/appartement-post.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
+import { AuthPageComponent } from './pages/auth-page/auth-page.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
     ModaleComponent,
     AppartementPostComponent,
     MainContentComponent,
+    AuthPageComponent,
   ],
   imports: [
     BrowserModule,
