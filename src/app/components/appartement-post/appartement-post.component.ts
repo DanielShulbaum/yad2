@@ -15,10 +15,14 @@ export class AppartementPostComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onClickOwnerDetails(){
+  onClickOwnerDetails(event:any){
+    event.stopPropagation();
     this.detailsShow = !this.detailsShow
   }
   onClickExpanPost(){
-    this.expandedPost = !this.expandedPost
+    this.expandedPost = !this.expandedPost;
+    this.detailsShow = false;
   }
 }
+
+

@@ -18,16 +18,16 @@
       </div>
       <div class="min_post_line3">
         <div class="min_post_line3_content">
-          <span>roomsNum</span>
-          <span>rooms</span>
+          <span>{{appartement.roomsNumber}}</span>
+          <span>חדרים</span>
         </div>
         <div class="min_post_line3_content">
-          <span>floorsNum</span>
-          <span>floors</span>
+          <span>{{appartement.floorNumber}}</span>
+          <span>קומה</span>
         </div>
         <div class="min_post_line3_content">
-          <span>squaredMeterNum</span>
-          <span>squaredMeter</span>
+          <span>{{appartement.area}}</span>
+          <span>מ"ר</span>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
 
   <div class="min_post" (click)="onClickExpanPost()" *ngIf="expandedPost">
     <div class="max_post_img">
-      <img src="" alt="">
+      <img [src]="appartement.imgPath" alt="">
       <div class="heart_container">
         <i class="fa-regular fa-heart"></i>
       </div>
@@ -47,36 +47,36 @@
 
     <div class="min_post_content post_content_change">
       <div class="min_post_line1 line1_change">
-        <div>price</div>
-        <div>post date</div>
+        <div>{{appartement.price}}</div>
+        <div>{{appartement.postDate | date: 'dd/mm/yyyy'}}</div>
       </div>
       <div class="min_post_line2 line2_change">
-        <div>street num</div>
-        <div> app kind neighbour city</div>
+        <div>{{appartement.streetName}}  {{appartement.houseNumber}}</div>
+        <div> {{appartement.appartementKind}}  {{appartement.neighbourhoodName}} {{appartement.cityName}}</div>
       </div>
       <div class="min_post_line3">
         <div class="min_post_line3_content">
-          <span>roomsNum</span>
-          <span>rooms</span>
+          <span>{{appartement.roomsNumber}}</span>
+          <span>חדרים</span>
         </div>
         <div class="min_post_line3_content">
-          <span>floorsNum</span>
-          <span>floors</span>
+          <span>{{appartement.floorNumber}}</span>
+          <span>קומה</span>
         </div>
         <div class="min_post_line3_content">
-          <span>squaredMeterNum</span>
-          <span>squaredMeter</span>
+          <span>{{appartement.area}}</span>
+          <span>מ"ר</span>
         </div>
       </div>
     </div>
-    <div class="phone_container" (click)="onClickOwnerDetails()">
+    <div class="phone_container" (click)="onClickOwnerDetails($event)">
       <div class="phone">
         <i class="fa-solid fa-phone"></i>
         <span>הצגת מספר טלפון</span>
       </div>
       <div *ngIf="detailsShow" class="owner_details">
-        <div>name</div>
-        <div>phone</div>
+        <div>{{appartement.belongsToUser.name}}</div>
+        <div>{{appartement.belongsToUser.phone}}</div>
         <div>שליחת דוא"ל למפרסם</div>
       </div>
     </div>
@@ -87,62 +87,74 @@
     <aside class="post_description_right"></aside>
     <div class="post_main_description_container">
       <h4 class="post_main_line">תיאור הנכס</h4>
-      <div class ="post_main_line">description</div>
+      <div class ="post_main_line">{{appartement.description}}</div>
       <div class ="post_main_line">
-        <div class="post_main_line_internal">מצב הנכס: STATUS</div>
-        <div class="post_main_line_internal">תאריך כניסה: ENTRANCE DATE</div>
-        <div class="post_main_line_internal">קומות בבנין:FLOORS IN BUILDING</div>
-        <div class="post_main_line_internal">מרפסות: BALCONIES</div>
-        <div class="post_main_line_internal">חניות: PARKING SLOTS</div>
+        <div class="post_main_line_internal">מצב הנכס: {{appartement.condition}}</div>
+        <div class="post_main_line_internal">תאריך כניסה: {{appartement.entranceDate | date: 'dd/mm/yyyy'}}</div>
+        <div class="post_main_line_internal">קומות בבנין:{{appartement.floorsInBuilding}}</div>
+        <div class="post_main_line_internal">מרפסות: {{appartement.numberOfBalconies}}</div>
+        <div class="post_main_line_internal">חניות: {{appartement.parkingLots}}</div>
       </div>
       <div class ="post_main_line">ADVERISEMENT</div>
       <h4 class="post_main_line">מה יש בנכס?</h4>
       <div class ="post_main_line">
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+              [ngStyle]="{'color':appartement.airConditioner ?'black':'grey' }">
           <i class="fa-solid fa-snowflake"></i>
           <span>מיזוג</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+              [ngStyle]="{'color':appartement.gratings ?'black':'grey' }">
           <i class="fa-solid fa-table-cells"></i>
           <span>סורגים</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+              [ngStyle]="{'color':appartement.lift ?'black':'grey' }">
           <i class="fa-solid fa-elevator"></i>
           <span>מעלית</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+              [ngStyle]="{'color':appartement.kosherKitchen ?'black':'grey' }">
           <i class="fa-solid fa-kitchen-set"></i>
           <span>מטבח כשר</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+              [ngStyle]="{'color':appartement.sunBoiler ?'black':'grey' }">
           <i class="fa-solid fa-solar-panel"></i>
           <span>דוד שמש</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+              [ngStyle]="{'color':appartement.handicappedAccess ?'black':'grey' }">
           <i class="fa-brands fa-accessible-icon"></i>
           <span>גישה לנכים</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+              [ngStyle]="{'color':appartement.isRenovated ?'black':'grey' }">
           <i class="fa-solid fa-paint-roller"></i>
           <span>משופצת</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+              [ngStyle]="{'color':appartement.hasShelter ?'black':'grey' }">
           <i class="fa-solid fa-person-shelter"></i>
           <span>ממ"ד</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+                    [ngStyle]="{'color':appartement.hasStoragePlace ?'black':'grey' }">
           <i class="fa-solid fa-warehouse"></i>
           <span>מחסן</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+                    [ngStyle]="{'color':appartement.hasTadiranAir ?'black':'grey' }">
           <i class="fa-solid fa-temperature-arrow-down"></i>
           <span>מזגן תדיראן</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+                    [ngStyle]="{'color':appartement.hasFurniture ?'black':'grey' }">
           <i class="fa-solid fa-chair"></i>
           <span>ריהוט</span>
         </div>
-        <div class="post_main_line_internalicon">
+        <div class="post_main_line_internalicon"
+                    [ngStyle]="{'color':appartement.isFlexEntranceDate ?'black':'grey' }">
           <span>גמיש</span>
         </div>
       </div>
