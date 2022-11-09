@@ -1,32 +1,30 @@
-.root {
+
+.auth_page_container {
   min-height: 100vh;
-  padding: 0 clamp(0.5rem, 5.04vw + -0.76rem, 5rem);
-
-  background-color: hsl(34, 100%, 95%);
-
-  @media screen and (max-width: 880px) {
-    background-color: white;
+  // padding: 0 clamp(0.5rem, 5.04vw + -0.76rem, 5rem);
+  background-color: white;
+  @media (min-width: 880px) {
+    background-color: hsl(34, 100%, 95%);
     padding: 0;
   }
 }
 
-.btn,
-button {
+.btn {
   border: none;
   font-size: inherit;
-  color: inherit;
-
   cursor: pointer;
 }
 
-.desktop-only {
-  @media screen and (max-width: 880px) {
+// .desktop-only {
+.over880{
+  @media (max-width: 880px) {
     display: none !important;
   }
 }
 
-.mobile-only {
-  @media screen and (min-width: 880px) {
+.upto880{
+// .mobile-only {
+  @media (min-width: 880px) {
     display: none !important;
   }
 }
@@ -47,14 +45,11 @@ header {
 .container {
   max-width: 1230px;
   margin: 0 auto;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: aquamarine;
-
-  @media screen and (max-width: 880px) {
+  @media  (max-width: 880px) {
     flex-direction: column;
   }
 }
@@ -64,25 +59,66 @@ header {
   position: fixed;
   left: 25px;
   top: 32px;
-
   font-size: 1.3rem;
-
   background-color: inherit;
-
-  z-index: 2;
+  z-index: 10;
+}
+.input_container{
+  h1{font-weight: 400;
+      padding-bottom: 30px;
+  }
+  input{
+    margin: 10px 0 10px 0;
+    height: 45px;
+    width: 100%;
+  }
 }
 
+.forgot_pas{
+  text-align: left;
+  color: rgb(190, 85, 9);
+  font-weight: 700;
+  padding-bottom: 15px;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+.form_submit{
+  button{
+    margin-top: 15px;
+    width: 100%;
+    background: rgb(255,113,0);
+    border-radius: 20px;
+    border: none;
+    height: 45px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+  button:hover{
+    background: rgb(216,96,0);
+  }
+  cursor: pointer;
+}
+.password_input{
+  position: relative;
+  margin-top: 30px;
+  i{
+    position: absolute;
+    font-size: 1.3rem;
+    top: 43px;
+    left: 10px;
+  }
+}
 .user-info {
   max-width: 450px;
   width: 100%;
   margin-right: 200px;
-
   h1 {
     font-size: 2.1rem;
     font-weight: 500;
-
     margin-bottom: 0.3em;
-
     span {
       display: block;
     }
@@ -93,13 +129,17 @@ header {
 .user-info__features {
   display: flex;
   justify-content: space-between;
-
   margin-top: 2.5em;
 }
 
 .feature-item {
   display: flex;
   flex-direction: column;
+
+  img{
+    width: 60px;
+    height: 60px;
+  }
 
   svg {
     display: block;
@@ -110,7 +150,7 @@ header {
   }
 }
 
-.mobile-header {
+.text_align_c {
   text-align: center;
 }
 
@@ -121,12 +161,23 @@ header {
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
   padding: 35px 35px 15px;
 
-  @media screen and (max-width: 880px) {
+  @media (max-width: 880px) {
     max-width: 100%;
     min-height: 100vh;
   }
 }
-
-footer {
-  height: 114px;
+.red_border{
+  border: 1px solid red ;
 }
+.last_line{
+  margin-top: 40px;
+  margin-bottom: 15px;
+  text-align: center;
+  text-decoration-line: underline;
+  @media (min-width: 880px) {
+    margin-right: 5vw;
+    width: 50%;
+  }
+}
+
+

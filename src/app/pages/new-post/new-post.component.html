@@ -1,0 +1,235 @@
+<header class="newpost_header">
+  <div class="header_right">
+    <img src="../../../assets/imgs/yad2Logo.png" alt="logo">
+    <div class="header_logo_text">פרסום מודעה חדשה</div>
+  </div>
+  <div class="header_left">
+    <div class="header_user">
+      <i class="fa-regular fa-user"></i>
+      <span>user name</span>
+    </div>
+    <div class="header_question">
+      <i class="fa-regular fa-circle-question"></i>
+    </div>
+    <div class="header_contact">צור קשר</div>
+    <div class="close_circle">
+      <span class="close_text">יציאה</span>
+      <i class="fa-solid fa-x"></i>
+    </div>
+  </div>
+</header>
+
+<body>
+  <div class="stages_container">
+<!-- consider create component to present closed stages with array and index -->
+    <!-- item 1 -->
+    <div class="post_stage lightgray">
+      <div class="post_stage_title">
+        <div class="post_stage_title_item  green">
+          <i class="fa-solid fa-v "></i>
+        </div>
+        <span>אני רוצה למכור נכס</span>
+      </div>
+    </div>
+
+    <div class="post_stage">
+      <div class="post_stage_title">
+        <div >
+          <i class="fa-solid fa-1"></i>
+        </div>
+        <span>באיזו קטגוריה נפרסם היום?</span>
+      </div>
+      <div class="post_stage_item">
+        <i class="fa-solid fa-house-user"></i>
+        <span>מכירה</span>
+      </div>
+      <div class="post_stage_item">
+        <i class="fa-solid fa-house"></i>
+        <span>השכרה</span>
+      </div>
+      <div class="post_stage_item">
+        <i class="fa-solid fa-key"></i>
+        <span>שותפים</span>
+      </div>
+      <div class="post_stage_item">
+        <i class="fa-solid fa-hotel"></i>
+        <span>מסחרי</span>
+      </div>
+    </div>
+
+
+      <!-- item 2   -->
+    <form  [formGroup]="assetAdressForm" (ngSubmit)="onSubmitAdressForm()">
+      <div class="post_stage lightgray">
+        <div class="post_stage_title">
+          <div class="post_stage_title_item">
+            <i class="fa-solid fa-2"></i>
+          </div>
+          <span>כתובת הנכס</span>
+        </div>
+      </div>
+
+      <div class="post_stage ">
+        <div class="post_stage_title">
+          <div class="post_stage_title_item">
+            <i class="fa-solid fa-2"></i>
+          </div>
+          <span>כתובת הנכס</span>
+        </div>
+        <div class="post_stage_sec_title">
+          סימנו עבורך את שדות החובה. שלא נפספס פרט חשוב
+        </div>
+        <div class="post_input_section">
+          <div class="post_stage_sec_title">סוג הנכס* </div >
+          <!-- [style.border]="!assetPublishingForm.get('assetType').valid && form.submitted ? '1px solid #ff0000':''" -->
+
+          <select class="form_input"  >
+            <!-- formControlName="assetType" -->
+            <option  disabled selected hidden >דירה או אולי פנטהאוז?</option>
+            <option ngValue="{{ i }}"  *ngFor="let type of assetTypes; let i = index">{{ type }}</option>
+          </select>
+        </div>
+
+        <div class="post_input_section">
+          <div class="post_stage_sec_title">מצב הנכס* </div >
+            <select  class="form_input"  >
+              <!-- formControlName="assetCondition" -->
+              <option selected disabled hidden >משופץ? חדש מקבלן?</option>
+              <option ngValue="{{ i }}" *ngFor="let condition of assetCondition; let i = index">{{ condition }}</option>
+            </select>
+        </div>
+
+        <div class="post_input_section">
+          <div class="post_stage_sec_title">יישוב*</div >
+            <input class="form_input" placeholder="איפה נמצא הנכס?" type="text"  id="assetCity">
+            <!-- formControlName="assetCity" -->
+        </div>
+
+        <div class="post_input_section">
+          <div class="post_stage_sec_title">רחוב</div >
+            <input class="form_input" placeholder="הכנסת שם הרחוב" type="text"  id="assetStreet">
+            <!-- formControlName="assetStreet" -->
+            <div class="post_stage_sec_title font_size07">המידע הזה מגיע מגוף ממשלתי. אם הרחוב שלך לא מופיע, ממולץ לבחור רחוב קרוב אליך</div>
+            <div class="post_stage_sec_title font_size07">לא מצאת את הרחוב?</div>
+        </div>
+
+        <div class="post_input_section">
+          <div class="post_stage_sec_title">מס' בית*</div >
+            <input class="form_input_house"  type="number"  id="assetHouse">
+            <!-- formControlName="assetHouse" -->
+        </div>
+
+
+        <div class="post_input_section">
+          <div class="asset_floors">
+            <div class="asset_details_floors">
+              <div>קומה*</div>
+              <input type="number"  id="assetFloorNum" placeholder="הכנסת מספר קומה">
+              <!-- formControlName="assetFloorNum" -->
+
+            </div  >
+            <div class="asset_details_floors">
+              <div >סה"כ קומות בבניין*</div>
+              <input type="number"  id="assetNumOfFloorsBuilding" placeholder='הכנסת סה"כ קומות'>
+              <!-- formControlName="assetNumOfFloorsBuilding" -->
+
+            </div>
+            <div>
+              <br>
+              <br>
+              <input type="checkbox"> על עמודים
+            </div>
+          </div>
+        </div>
+
+        <div class="post_input_section">
+          <div class="post_stage_sec_title">שכונה</div >
+            <input class="form_input"  type="text"  id="assetNeighbourhood">
+            <!-- formControlName="assetNeighbourhood" -->
+            <div class="post_stage_sec_title font_size07">המידע הזה מגיע מגוף ממשלתי ולא ניתן לשינוי</div>
+        </div>
+
+        <div class="post_input_section">
+          <div class="post_stage_sec_title">אזור מכירה</div >
+            <input class="form_input" placeholder="בחירת אזור מכירה"  type="text"  id="assetSaleArea">
+            <!-- formControlName="assetSaleArea" -->
+            <div class="post_stage_sec_title font_size07">המידע הזה מגיע מגוף ממשלתי ולא ניתן לשינוי</div>
+        </div>
+
+        <div class="post_input_section ">
+          <input type="checkbox"> אני רוצה לקבל עדכון חודשי במייל עם הערכת שווי מעודכנת עבור הנכס, עסקאות באזור והצעות מקצועיות מיועצי נדל"ן
+        </div>
+
+        <div class="post_input_section ">
+          <div class="button_container">
+            <button class="button_back">חזרה</button>
+            <button class="button_continue" type="submit">
+              <span class=" show_till620">המשך</span>
+              <span class="show_after620">להמשיך לשלב הבא</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+<!-- part3 -->
+    <div class="post_stage lightgray">
+      <div class="post_stage_title">
+        <div class="post_stage_title_item">
+          <i class="fa-solid fa-3"></i>
+        </div>
+        <span>על הנכס</span>
+      </div>
+    </div>
+
+    <app-asset-details ></app-asset-details>
+
+
+
+
+    <div class="post_stage lightgray">
+      <div class="post_stage_title">
+        <div class="post_stage_title_item">
+          <i class="fa-solid fa-4"></i>
+        </div>
+        <span>תשלומים, תאריכים ועוד</span>
+      </div>
+    </div>
+
+    <app-post-payments></app-post-payments>
+
+    <div class="post_stage lightgray">
+      <div class="post_stage_title">
+        <div class="post_stage_title_item">
+          <i class="fa-solid fa-5"></i>
+        </div>
+        <span>תמונות וסרטונים</span>
+      </div>
+    </div>
+
+    <app-form-add-pictures></app-form-add-pictures>
+
+    <div class="post_stage lightgray">
+      <div class="post_stage_title">
+        <div class="post_stage_title_item">
+          <i class="fa-solid fa-6"></i>
+        </div>
+        <span>פרטים ליצירת קשר</span>
+      </div>
+    </div>
+
+    <app-form-contact-details></app-form-contact-details>
+
+    <div class="post_stage lightgray">
+      <div class="post_stage_title">
+        <div class="post_stage_title_item">
+          <i class="fa-solid fa-7"></i>
+        </div>
+        <span>בחירת מסלול</span>
+      </div>
+    </div>
+
+    <app-form-final-stage></app-form-final-stage>
+  </div>
+</body>

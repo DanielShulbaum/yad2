@@ -9,7 +9,7 @@
     </div>
     <div class="min_post_content">
       <div class="min_post_line1">
-        <div>{{appartement.price}}</div>
+        <div>{{appartement.price | number :'2.'}}</div>
         <div>{{appartement.postDate | date: 'dd/mm/yyyy'}}</div>
       </div>
       <div class="min_post_line2">
@@ -47,7 +47,7 @@
 
     <div class="min_post_content post_content_change">
       <div class="min_post_line1 line1_change">
-        <div>{{appartement.price}}</div>
+        <div>{{appartement.price | number :'2.'}}</div>
         <div>{{appartement.postDate | date: 'dd/mm/yyyy'}}</div>
       </div>
       <div class="min_post_line2 line2_change">

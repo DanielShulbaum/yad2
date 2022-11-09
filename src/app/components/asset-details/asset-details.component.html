@@ -1,0 +1,124 @@
+
+<form  [formGroup]="assetDetails" (ngSubmit)="onSubmitDetailsForm()">
+  <div class="form_container">
+    <div class="post_stage_title">
+      <div class="post_stage_title_item">
+        <i class="fa-solid fa-3"></i>
+      </div>
+      <span>על הנכס</span>
+    </div>
+
+    <div class="line_title">מספר חדרים*</div>
+    <select  class="form_input" formControlName="assetRoomsNumber" >
+      <option selected disabled hidden >בחירת מספר חדרים</option>
+      <option ngValue="{{ i }}" *ngFor="let roomsNum of roomsOptions; let i = index">{{ roomsNum }}</option>
+    </select>
+
+    <div class="line_title">חניה</div>
+    <div class="input_container">
+      <!-- <div class="input_radio"  *ngFor="let option of options; let i = index" (click)="onParkingClick(i)">{{option}}</div> -->
+      <div  class="input_radio" (click)="onParkingClick(0)" >ללא</div>
+      <div class="input_radio" (click)="onParkingClick(1)">1</div>
+      <div class="input_radio" (click)="onParkingClick(2)">2</div>
+      <div class="input_radio" (click)="onParkingClick(3)">3</div>
+    </div>
+
+    <div class="line_title">מרפסת</div>
+    <div class="input_container">
+      <!-- <div class="input_radio"  *ngFor="let option of options; let i = index" (click)="onBalconyClick(i)">{{option}}</div> -->
+      <div  class="input_radio" (click)="onBalconyClick(0)" >ללא</div>
+      <div class="input_radio" (click)="onBalconyClick(1)">1</div>
+      <div class="input_radio" (click)="onBalconyClick(2)">2</div>
+      <div class="input_radio" (click)="onBalconyClick(3)">3</div>
+    </div>
+    <div class="post_stage_sec_title">
+      <span>מאפייני הנכס</span>
+    </div>
+    <div class="post_stage">
+        <div class="icons_item" (click)="onAirConditionClick()"
+          [ngStyle]="{'background':hasAirCondition ?'lightgrey':'' }">
+          <i class="fa-solid fa-snowflake"></i>
+          <span>מיזוג</span>
+        </div>
+        <div class="icons_item" (click)="onShelterClick()"
+          [ngStyle]="{'background':hasShelter ?'lightgrey':'' }" >
+          <i class="fa-solid fa-person-shelter"></i>
+          <span>ממ"ד</span>
+        </div>
+        <div class="icons_item" (click)="onStorageClick()"
+          [ngStyle]="{'background':hasStorage?'lightgrey':'' }">
+          <i class="fa-solid fa-warehouse"></i>
+          <span>מחסן</span>
+        </div>
+        <div class="icons_item" (click)="onFurnitureClick()"
+          [ngStyle]="{'background':hasFurniture?'lightgrey':'' }">
+          <i class="fa-solid fa-chair"></i>
+          <span>ריהוט</span>
+        </div>
+        <div class="icons_item" (click)="onIncapableAccessClick()"
+          [ngStyle]="{'background':hasIncapableAccess?'lightgrey':'' }">
+          <i class="fa-brands fa-accessible-icon"></i>
+          <span>גישה לנכים</span>
+        </div>
+        <div class="icons_item" (click)="onLiftClick()"
+          [ngStyle]="{'background':hasLift?'lightgrey':'' }">
+          <i class="fa-solid fa-elevator"></i>
+          <span>מעלית</span>
+        </div>
+        <div class="icons_item" (click)="onAirConditionTadiranClick()"
+          [ngStyle]="{'background':hasTadiran?'lightgrey':'' }">
+          <i class="fa-solid fa-temperature-arrow-down"></i>
+          <span>מזגן תדיראן</span>
+        </div>
+        <div class="icons_item" (click)="onRenovatedClick()"
+          [ngStyle]="{'background':isRenovated?'lightgrey':'' }">
+          <i class="fa-solid fa-paint-roller"></i>
+          <span>משופצת</span>
+        </div>
+        <div class="icons_item" (click)="onKosherKitchenClick()"
+          [ngStyle]="{'background':hasKosherKitchen?'lightgrey':'' }">
+          <i class="fa-solid fa-kitchen-set"></i>
+          <span>מטבח כשר</span>
+        </div>
+        <div class="icons_item" (click)="onSunBoilerClick()"
+          [ngStyle]="{'background':hasSunBoiler?'lightgrey':'' }">
+          <i class="fa-solid fa-solar-panel"></i>
+          <span>דוד שמש</span>
+        </div>
+        <div class="icons_item" (click)="onGratingClick()"
+          [ngStyle]="{'background':hasGrating?'lightgrey':'' }">
+          <i class="fa-solid fa-table-cells"></i>
+          <span>סורגים</span>
+        </div>
+    </div>
+    <div class="post_stage_sec_title">
+      <span>מה חשוב לך שידעו על הנכס?</span>
+    </div>
+    <div class="line_title">פרוט הנכס</div>
+    <div class="post_input_section">
+      <div class="text_title">
+        <input class="lightgray" disabled type="text" placeholder="ממליצים לך בחום להוסיף תיאור">
+        <div>"word/max"</div>
+      </div>
+    </div>
+    <br>
+    <div class="post_input_section">
+      <textarea  name="assetDescription" id="" cols="5" maxlength="400" rows="8"
+        placeholder="זה המקום לתאר את הפרטים הבולטים, למשל, האם נערך שיפוץ במבנה, מה שופץ, כיווני אוויר, האווירה ברחוב וכו'"></textarea>
+      </div>
+    <div class="textline">אין צורך להוסיף מספר טלפון כחלק מהתיאור, בהמשך התהליך יש אזור מסודר לזה</div>
+
+    <div class="post_input_section ">
+      <div class="button_container">
+        <button class="button_back">חזרה</button>
+        <button class="button_continue" type="submit">
+          <span class=" show_till620">המשך</span>
+          <span class="show_after620">להמשיך לשלב הבא</span>
+        </button>
+      </div>
+    </div>
+
+
+
+  </div>
+</form>

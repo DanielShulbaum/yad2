@@ -1,12 +1,12 @@
 :host{
   position: absolute;
-  top:80px;
-  right: 1170px;
+  top:70px;
+  left: 200px;
   width: 150px;
-  height: 170px;
+  height: 180px;
   background: white;
   border-radius: 5px;
-  box-shadow:darkgray, 2px;
+  box-shadow: 1px 4px 9px 5px rgba(0,0,0,0.29);
   border: 1px solid gray;
 }
 .header_open_menu {
@@ -17,6 +17,11 @@
 .menu_list{
   display: flex;
   align-items: center;
+  padding: 15px 0px;
+  font-size: 0.8rem;
+}
+.menu_list:hover{
+  background: gray;
 }
 .menu_list span {
   padding-left: 10px;
@@ -25,10 +30,9 @@ a{
   text-decoration:none;
   color: black;
   width: 150px;
-  height: 20px;
-  padding-top: 10px;
-  padding-right: 10px;
-  padding-bottom: 12px;
+  height: 100%;
+  padding-right: 15px;
+
 }
 a:hover{
   background: gray;

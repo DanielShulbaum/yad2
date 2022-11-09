@@ -1,13 +1,13 @@
 :host{
   position: absolute;
-  top:80px;
-  right: 1000px;
+  top:70px;
+  left:350px;
   width: 170px;
   height: 85px;
   background: white;
   border-radius: 5px;
-  box-shadow:darkgray, 2px;
   border: 1px solid gray;
+  box-shadow: 1px 4px 9px 5px rgba(0,0,0,0.29);
 }
 .notice_menu {
   display: flex;

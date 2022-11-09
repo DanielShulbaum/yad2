@@ -1,0 +1,92 @@
+
+<form  [formGroup]="assetContactDetails" (ngSubmit)="onSubmitContactDetailsForm()">
+  <div class="form_container">
+    <div class="post_stage_title">
+      <div class="post_stage_title_item">
+        <i class="fa-solid fa-6"></i>
+      </div>
+      <span>פרטים ליצירת קשר</span>
+    </div>
+
+
+    <div class="line_title">רגע לפני שמפרסמים את המודעה, נבדוק שפרטי הקשר נכונים</div>
+    <br>
+    <div class="line_title">שם איש קשר*</div>
+    <div class="post_input_section">
+      <input class="form_input" type="text" >
+    </div>
+    <div class="line_title">טלפון ראשי*</div>
+    <div class="post_input_section">
+      <input type="tel" class="form_input" id="phone" name="phone"  pattern="[0-9]{3}-[0-9]{7}" >
+    </div>
+    <div class="section_end"></div>
+
+
+
+
+    <div *ngIf="!showAddContactSection" class="line_title orange_color" (click)="onClickAddContact()" >
+      <i class="fa-solid fa-circle-plus"></i>
+      <span>הוספת איש קשר</span>
+    </div>
+
+
+    <div *ngIf="showAddContactSection">
+        <div class="line_title">איש קשר נוסף</div>
+      <div class="post_input_section">
+        <input class="form_input" type="text" >
+      </div>
+      <div class="line_title">טלפון נוסף</div>
+      <div class="post_input_section">
+        <input class="form_input" type="tel" >
+      </div>
+      <div class="line_title"(click)="onClickAddContact()">
+        <i class="fa-solid fa-trash-can"></i>
+        <span>ביטול</span>
+      </div>
+    </div>
+
+
+    <div class="textline">
+      <input type="checkbox">
+      <span>אני רוצה שיופיע מספר וירטואלי במודעה שלי</span>
+      <span class="orange_color">
+        <i class="fa-solid fa-circle-question"></i>
+      </span>
+    </div>
+    <div class="textline padding_right">
+      <div>המספר הוירטואלי יינתן בחינם בכפוף למדיניות השירות ולמעט במקרים המפורטים</div>
+      <div class="orange_color">כאן</div>
+    </div>
+
+    <div class="textline">
+      <input type="checkbox" disabled>
+      <span class="gray_color">אני רוצה לקבל שיחות מגולשי האתר גם בסופ"ש</span>
+      <span class="orange_color">
+        <i class="fa-solid fa-circle-question"></i>
+      </span>
+    </div>
+
+    <div class="line_title">דוא"ל</div>
+    <div class="post_input_section">
+      <input type="email" class="form_input"  >
+    </div>
+
+    <div class="post_input_section background_gray">
+      <input type="checkbox" >
+      <span class=> קראתי ואישרתי את  </span>
+      <span class="orange_color"> התקנון*</span>
+    </div>
+
+
+
+    <br>
+
+    <div class="post_input_section ">
+      <div class="button_container">
+        <button class="button_continue" type="submit">
+          <span >המשך לבחירת מסלול</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

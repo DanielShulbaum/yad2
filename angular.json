@@ -11,6 +11,7 @@
         },
         "@schematics/angular:application": {
           "strict": true
+
         }
       },
       "root": "",

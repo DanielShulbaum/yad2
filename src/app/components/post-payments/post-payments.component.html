@@ -1,0 +1,51 @@
+
+<form  [formGroup]="assetPayments" (ngSubmit)="onSubmitPaymentsForm()">
+  <div class="form_container">
+    <div class="post_stage_title">
+      <div class="post_stage_title_item">
+        <i class="fa-solid fa-4"></i>
+      </div>
+      <span>תשלומים, תאריכים ועוד</span>
+    </div>
+
+    <div class="line_title">מ"ר בנוי</div>
+    <div class="post_input_section">
+      <input class="form_input" type="text" placeholder='כמה מ"ר יש בנכס'>
+    </div>
+
+    <div class="line_title">גודל במ"ר סך הכל*</div>
+    <div class="post_input_section">
+      <input class="form_input" type="text" >
+    </div>
+
+    <div class="line_title">מחיר</div>
+    <div class="post_input_section">
+      <div class="form_input">
+        <input class="form_input" type="text" placeholder='סכום מינימאלי 100,000' >
+        <i class="fa-solid fa-shekel-sign shekel_sign"></i>
+      </div>
+    </div>
+
+    <div class="line_title">תאריך כניסה*</div>
+    <div class="post_input_section">
+      <div class="text_title">
+        <input class="payments_date_input" type="date" >
+        <div class="payments_checkbox">
+          <input type="checkbox"> מיידי
+          <input type="checkbox"> גמיש
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="post_input_section ">
+      <div class="button_container">
+        <button class="button_back">חזרה</button>
+        <button class="button_continue" type="submit">
+          <span class=" show_till620">המשך</span>
+          <span class="show_after620">להמשיך לשלב הבא</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

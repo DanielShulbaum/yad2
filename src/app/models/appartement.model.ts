@@ -1,6 +1,6 @@
 import { User } from "./user.model";
 
-export class Appartement {
+export class Appartement {//consider changing to interface
 
 
   constructor (
@@ -22,6 +22,7 @@ export class Appartement {
     public entranceDate:Date,
     public parkingLots:number,
     public numberOfBalconies:number,
+
     public belongsToUser:User,
 
     public airConditioner:boolean,

@@ -82,6 +82,7 @@
   // border-left: 1px gray;
 }
 .min_post_line2{
+  width: 195px;
   display: flex;
   flex-direction: column;
   padding-bottom: 1rem;
@@ -93,6 +94,7 @@
   }
 }
 .min_post_line3{
+  width: auto;
   display: flex;
   justify-content: space-evenly;
   padding: 0.2rem;
@@ -100,6 +102,7 @@
   align-items: center;
   text-align: center;
   @media (min-width: 880px) {
+    width: 185px;
     font-size: 1rem;
   }
 }

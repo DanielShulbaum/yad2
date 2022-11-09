@@ -1,13 +1,13 @@
 :host{
   position: absolute;
-  top:80px;
+  top:70px;
   right: 270px;
   width: 430px;
   height: 290px;
   background: white;
   border-radius: 5px;
   box-shadow:darkgray, 2px;
-  border: 1px solid gray;
+  box-shadow: 1px 4px 9px 5px rgba(0,0,0,0.29);
   line-height: 20px;    //added
   z-index: 5;
 }

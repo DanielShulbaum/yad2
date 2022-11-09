@@ -63,7 +63,8 @@ i {
   align-items: center;
   line-height: 70px;
   width: 730px;
-  a{  //added not working
+  a {
+    //added not working
     display: inline-table;
     text-align: center;
   }
@@ -119,6 +120,7 @@ i {
   width: 190px;
   height: 40px;
   margin-left: 1em;
+  padding: 0 1em;
   border-radius: 20px;
 
   background: green;

@@ -1,0 +1,153 @@
+<form  [formGroup]="finalStage" (ngSubmit)="onSubmitFinalStageForm()">
+  <div class="form_container">
+    <div class="post_stage_title">
+      <div class="post_stage_title_item">
+        <i class="fa-solid fa-7"></i>
+      </div>
+      <span>בחירת מסלול</span>
+    </div>
+
+    <div class="textline bold_font">
+      <div>זהו, אנחנו בסוף. לנו נשאר לשמור את המודעה שלך, לך נשאר לבחור את מסלול הפרסום.      </div>
+    </div>
+
+    <br>
+
+    <div class="textline ">
+      <span>אגב, רצינו לספר לך שיש באתר עוד </span>
+      <span class="emphasize_num">num</span>
+      <span>מודעות דומות </span>
+      <span>דומות לשלך</span>
+      <span>באזור</span>
+      <span>תל אביב יפו</span>
+    </div>
+
+    <div class="textline ">
+      <span>המלצה שלנו?</span>
+      <span class="yellow_back">לשדרג </span>
+      <span>
+        <img class="rocket_img" src="https://assets.yad2.co.il/personal/images/payment/rocketShip_VIP.png" alt="">
+      </span>
+      <span>את </span>
+      <span>המודעה,</span>
+      <span>להופיע</span>
+      <span>לפני</span>
+      <span>כולם</span>
+      <span>ולהתקדם</span>
+      <span>להסכם</span>
+      <span>תיק</span>
+      <span>תק</span>
+    </div>
+
+    <div class="section_end"></div>
+
+    <div class="textline bold_font">
+      <div>באיזה מסלול לפרסם את המודעה? זה הרגע לבלוט מעל כולם</div>
+    </div>
+
+    <div class="textline bold_font">
+      <div class="blue_color">
+        <span>חדש! משדרגים בקליק עם</span>
+        <span>
+          <img class="bit_img" src="https://assets.yad2.co.il/personal/images/general/bit.png" alt="">
+        </span>
+      </div>
+    </div>
+
+
+    <div class="programs_container">
+      <div class="program_item_selected">
+        <div class="item_header">
+          <img class="rocket_title_img" src="https://assets.yad2.co.il/personal/images/payment/rocket_VIP.svg" alt="">
+          <img class="recomended_img" src="https://assets.yad2.co.il/personal/images/payment/ribbon.svg" alt="">
+        </div>
+        <div class="program_title">למכור מהר!</div>
+        <div class="program_content">
+          <div class="program_line">
+            <i class="fa-solid fa-check check_color"></i>
+            <span class="program_text bolded_text">לא צריך להוריד מחיר ומופיעים הכי למעלה ברשימה</span>
+          </div>
+          <div class="program_line">
+            <i class="fa-solid fa-check check_color"></i>
+            <span class="program_text">אנחנו מדגישים לך את המודעה ומקפיצים אחת ליום</span>
+          </div>
+          <div class="program_line">
+            <i class="fa-solid fa-check check_color"></i>
+            <span class="program_text">מקבלים הרבה יותר טלפונים ומוכרים מהר</span>
+          </div>
+        </div>
+        <div class="program_price">
+          <div class="price_text">
+            <span>199</span>
+            <i class="fa-solid fa-shekel-sign"></i>
+          </div>
+          <div class="days_text">28 ימים</div>
+        </div>
+        <button type="submit" class="button_container">המסלול המומלץ </button>
+      </div>
+
+
+      <div class="program_item">
+
+        <div class="item_header item_emph_background">
+          <img class="rocket_title_img" src="https://assets.yad2.co.il/personal/images/payment/rocket_Bold.svg" alt="">
+        </div>
+        <div class="program_title">מודגשת</div>
+        <div class="program_content">
+          <div class="program_line">
+            <i class="fa-solid fa-check color_emp_item"></i>
+            <span class="program_text ">מודעה מודגשת בצבע ורוד</span>
+          </div>
+          <div class="program_line">
+            <i class="fa-solid fa-check color_emp_item"></i>
+            <span class="program_text">הקפצה אוטומטית לחסכון בזמן</span>
+          </div>
+          <div class="program_line">
+            <i class="fa-solid fa-check color_emp_item"></i>
+            <span class="program_text">הופעה לפני מודעות רגילות</span>
+          </div>
+        </div>
+        <div class="program_price margin_top_emph">
+          <div class="price_text">
+            <span>99</span>
+            <i class="fa-solid fa-shekel-sign"></i>
+          </div>
+          <div class="days_text">28 ימים</div>
+        </div>
+        <button type="submit" class="button_container_emph">בחירה במסלול</button>
+
+      </div>
+
+      <div class="program_item">
+        <div class="item_header item_reg_back">
+          <img class="rocket_title_img" src="https://assets.yad2.co.il/personal/images/payment/rocket_Free.svg" alt="">
+        </div>
+        <div class="program_title">בסיסי</div>
+        <div class="program_content">
+          <div class="program_line">
+            <i class="fa-solid fa-check color_reg_item"></i>
+            <span class="program_text ">מודעה רגילה</span>
+          </div>
+          <div class="program_line">
+            <i class="fa-solid fa-xmark color_lightgray"></i>
+            <span class=" color_lightgray">הקפצה אוטומטית לחסכון בזמן</span>
+          </div>
+
+        </div>
+        <div class="program_price margin_top_reg">
+          <div class="price_text">
+            <span>חינם</span>
+          </div>
+          <div class="days_text">120 ימים</div>
+        </div>
+        <button type="submit" class="button_container_emph black_color">בחירה במסלול</button>
+      </div>
+    </div>
+
+    <div class="post_input_section">
+      <input type="checkbox">אני מאשר קבלת דיוור פרסומי הקשור למודעה שפרסמתי באתר יד 2 (להסרה - יש להוריד את הסימון בתיבה)
+
+    </div>
+
+  </div>
+</form>

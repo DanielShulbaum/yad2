@@ -20,7 +20,7 @@ import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { SearchToolComponent } from './components/search-tool/search-tool.component';
 import { FilterAppartmentKindComponent } from './components/filter-appartment-kind/filter-appartment-kind.component';
 import { FilterRoomsComponent } from './components/filter-rooms/filter-rooms.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { FilterFloorComponent } from './components/filter-floor/filter-floor.component';
 import { FilterFloor2Component } from './components/filter-floor2/filter-floor2.component';
 import { Header2Component } from './components/header2/header2.component';
@@ -31,6 +31,14 @@ import { AppartementPostComponent } from './components/appartement-post/appartem
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { AuthPageComponent } from './pages/auth-page/auth-page.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
+import { PasswordPatternDirective } from './directives/password-pattern.directive';
+import { NewPostComponent } from './pages/new-post/new-post.component';
+import { AssetDetailsComponent } from './components/asset-details/asset-details.component';
+import { PostPaymentsComponent } from './components/post-payments/post-payments.component';
+import { FormAddPicturesComponent } from './components/form-add-pictures/form-add-pictures.component';
+import { FormContactDetailsComponent } from './components/form-contact-details/form-contact-details.component';
+import { FormFinalStageComponent } from './components/form-final-stage/form-final-stage.component';
 
 @NgModule({
   declarations: [
@@ -62,10 +70,19 @@ import { FooterComponent } from './components/footer/footer.component';
     MainContentComponent,
     AuthPageComponent,
     FooterComponent,
+    SignUpPageComponent,
+    PasswordPatternDirective,
+    NewPostComponent,
+    AssetDetailsComponent,
+    PostPaymentsComponent,
+    FormAddPicturesComponent,
+    FormContactDetailsComponent,
+    FormFinalStageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],

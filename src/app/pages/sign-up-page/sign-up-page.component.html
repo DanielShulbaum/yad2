@@ -1,0 +1,141 @@
+
+<div class="auth_page_container">
+  <header>
+    <a class="logo-link over880" href="#">
+      <img
+        class="over880"
+        src="../../../assets/imgs/yad2Logo.png"
+        alt="logo"
+    /></a>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <!-- login form  -->
+      <section class="form-container">
+        <!-- button ( back navigation ) -->
+
+        <button class="btn btn-back-nav upto880">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- mobile header  -->
+        <header class="text_align_c upto880">
+          <img src="https://assets.yad2.co.il/login/icon_signup.svg" alt="icon-login">
+
+        </header>
+
+        <div class="input_container">
+          <h1 class="text_align_c">היי, נעים להכיר</h1>
+          <form #authForm = "ngForm" (ngSubmit)="onSignup(authForm)">
+            <div>
+              <div>מייל</div>
+              <label for="Email"></label>
+              <input type="email"
+                      #email = "ngModel"
+                      id="email"
+                      ngModel
+                      name="email"
+                      placeholder="yourmail@email.co.il"
+                      [ngClass]="email.errors?.['required'] && authForm.submitted? 'red_border' : ''"
+                      required email>
+                        <span style="color:red ;" *ngIf="authForm.submitted && email.errors?.['required']">לא לשכוח את המייל</span>
+                        <span style="color:red ;" *ngIf="authForm.submitted && email.errors?.['email']">משהו לא תקין במייל, אולי התפספס @?</span>
+            </div>
+            <div class="password_input">
+              <div>סיסמה</div>
+              <label for=" password"></label>
+              <input [type]="hidePassword? 'password': 'text'"
+                      id="password"
+                      ngModel
+                      name="password"
+                      #password ="ngModel"
+                      placeholder="הקלדת סיסמה"
+                      [ngClass]="password.errors?.['required'] && authForm.submitted? 'red_border' : ''"
+                      appPasswordPattern
+                      required>
+                      <div (click)="onClickHidePassword()">
+                        <i [ngClass]="hidePassword ? 'fa-regular fa-eye': 'fa-regular fa-eye-slash' " ></i>
+                      </div>
+            </div>
+
+            <div class="password_input">
+              <div>אימות סיסמה</div>
+              <label for=" repeatPassword"></label>
+              <input [type]="hidePassword? 'password': 'text'"
+                      id="repeatPassword"
+                      ngModel
+                      name="repeatPassword"
+                      #repeatPassword ="ngModel"
+                      placeholder="הקלדת סיסמה"
+                      [ngClass]="password.errors?.['required'] && authForm.submitted? 'red_border' : ''"
+
+                      required>
+                      <div (click)="onClickHidePassword()">
+                        <i [ngClass]="hidePassword ? 'fa-regular fa-eye': 'fa-regular fa-eye-slash' " ></i>
+                      </div>
+                      <span  *ngIf="password.touched || authForm.submitted">
+                        <span style="color:red ;" *ngIf="password.errors?.['required']">לא לשכוח להזין סיסמה</span>
+                        <span style="color:red ;" *ngIf="password.errors?.['InvalidPassword']">נבקש שהסיסמה תכלול אותיות באנגלית וספרות</span>
+                        <span style="color:red ;" *ngIf="password.value != repeatPassword.value">הסיסמאות לא זהות</span>
+
+                      </span>
+            </div>
+
+
+            <div class="form_submit">
+              <button type="submit">המשך</button>
+            </div>
+            <div class="text_align_c">
+              <span>כבר יש לך חשבון?</span>
+              <a href="#" class="forgot_pas">  להתחברות </a>
+            </div>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <!-- user info  -->
+      <section class="user-info over880">
+        <h1 class="user-info__title">
+          <span>לקנות מהר, למכור מהר.</span>
+          <span>ויש לנו אחלה כלים לזה.</span>
+        </h1>
+        <section class="user-info__features">
+          <div class="feature-item">
+            <!-- bell  -->
+            <img src="https://assets.yad2.co.il/login/icon_alert.svg" alt="">
+
+            <span>התראות</span>
+          </div>
+
+          <div class="feature-item">
+            <!--   chat -->
+            <img src="https://assets.yad2.co.il/login/icon_chat.svg" alt="">
+
+            <span>פרסום מודעה</span>
+          </div>
+
+          <div class="feature-item">
+            <!-- rocket  -->
+            <img src="https://assets.yad2.co.il/login/icon_publish.svg" alt="">
+
+            <span>צ׳אט</span>
+          </div>
+
+          <div class="feature-item">
+            <!-- person svg  -->
+            <img src="https://assets.yad2.co.il/login/icon_profile.svg" alt="">
+
+            <span>אזור אישי</span>
+          </div>
+        </section>
+      </section>
+
+    </div>
+
+  </main>
+</div>
