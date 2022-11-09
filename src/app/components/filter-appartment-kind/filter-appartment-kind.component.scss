@@ -1,16 +1,17 @@
 :host{
   position: absolute;
-  top:41px;
+  top:67px;
   left: 506px;
   width: 250px;
   background: white;
   border-radius: 5px;
-  box-shadow:darkgray, 2px;
   border: 1px solid gray;
   display: flex;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
   font-size: 16px;
+  z-index: 10;
 }
 .open_menu_line{
   position: relative;
@@ -60,5 +61,12 @@
   padding:8px ;
   border-bottom: 1px solid lightgray;
   align-items: center;
+  cursor: pointer;
+}
+.gray_color{
+  color: grey;
+  padding-right: 5px;
+}
+.submit:hover{
   cursor: pointer;
 }

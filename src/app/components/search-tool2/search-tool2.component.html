@@ -2,7 +2,6 @@
   <div class="search_container">
     <div class="search_headline">
       <h3>איזה נכס ל<span>מכירה</span> תרצו לחפש?</h3>
-
       <button class="notification_btn" type="button">
         <i class="fa-regular fa-bell"></i>
         <span>קבלו התראות במייל על החיפוש</span>
@@ -12,59 +11,44 @@
     <div class="search_filters">
       <div class="filter-box">
         <label for="address">חפשו אזור, עיר, שכונה,או רחוב</label>
-        <input
-          class="width-big"
-          id="address-input"
-          type="text"
-          placeholder="לדוגמא: נחלאות"
-        />
+        <input class="width-big" id="address-input"type="text" placeholder="לדוגמא: נחלאות" />
       </div>
 
       <div class="filter-box width-middle" (click)="onClickProperties()">
         <label for="">סוג נכס</label>
         <div class="dropdown-filter">
-          <span>בחרו סוגי נכסים</span>
-          <i
-            class="fa-solid black_color margin_right_auto"
-            [ngClass]="!propertiesShow ? 'fa-chevron-down' : 'fa-chevron-up'"
-          ></i>
+          <span *ngIf="numberOfAssetsChecked ===0">בחרו סוגי נכסים</span>
+          <span *ngIf="numberOfAssetsChecked !==0">{{numberOfAssetsChecked}} סוגי נכסים</span>
+          <i class="fa-solid black_color margin_right_auto"
+            [ngClass]="!propertiesShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
         </div>
       </div>
+      <!-- <app-filter-appartment-kind *ngIf="propertiesShow" (transferNumberChecked)="numberOfAssetsChecked" ></app-filter-appartment-kind> -->
+      <app-filter-appartment-kind *ngIf="propertiesShow"
+        (transferNumberChecked)="passNum($event)" (transferAppartTypes)="passAppType($event)"
+        (transferHouseTypes)="passHouseType($event)" (transferOtherTypes)="passOtherType($event)"></app-filter-appartment-kind>
 
-      <app-filter-appartment-kind
-        *ngIf="propertiesShow"
-      ></app-filter-appartment-kind>
+
 
       <div class="filter-box width-small" (click)="onClickRooms()">
         <label for="">חדרים</label>
         <div class="dropdown-filter">
-          <span>חדרים</span>
-
-          <i
-            class="fa-solid black_color margin_right_auto"
-            [ngClass]="!roomsFilterShow ? 'fa-chevron-down' : 'fa-chevron-up'"
-          ></i>
+          <span *ngIf="chosenMinRooms===0 && chosenMaxRooms===12">חדרים</span>
+          <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms!==12" >{{chosenMaxRooms}}-{{chosenMinRooms}}</span>
+          <span *ngIf="chosenMinRooms===0 && chosenMaxRooms!==12">עד- {{chosenMaxRooms}}</span>
+          <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms===12">מ- {{chosenMinRooms}}</span>
+          <i class="fa-solid black_color margin_right_auto"
+            [ngClass]="!roomsFilterShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
         </div>
       </div>
 
-      <app-filter-rooms *ngIf="roomsFilterShow"></app-filter-rooms>
+      <app-filter-rooms *ngIf="roomsFilterShow"
+        (transferMinRooms)="passMinRoom($event)" (transferMaxRooms)="passMaxRoom($event)"></app-filter-rooms>
 
       <div class="filter-box">
         <label for="">מחיר</label>
-        <input
-          class="width-small"
-          type="number"
-          name="from"
-          id="min-rooms"
-          placeholder="מ-"
-        />
-        <input
-          class="width-small"
-          type="number"
-          name="to"
-          id="max-rooms"
-          placeholder="עד-"
-        />
+        <input class="width-small" type="number" name="from" id="min-rooms" placeholder="מ-"/>
+        <input class="width-small" type="number" name="to" id="max-rooms" placeholder="עד-"/>
       </div>
 
       <!-- buttons  -->

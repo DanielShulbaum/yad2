@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component,  OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-tool2',
@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-tool2.component.scss']
 })
 export class SearchTool2Component implements OnInit {
+  numberOfAssetsChecked:number=0;
+  chosenAppTypes:boolean[]=[];
+  chosenHousesTypes:boolean[]=[];
+  chosenOtherTypes:boolean[]=[];
+  chosenMinRooms:number=0;
+  chosenMaxRooms:number=12;
+
    //variables of showing menus
    propertiesShow:boolean = false;
    roomsFilterShow:boolean = false;
@@ -32,6 +39,32 @@ export class SearchTool2Component implements OnInit {
 
   ngOnInit(): void {
   }
+  passMinRoom(event:number){
+    this.chosenMinRooms=event;
+
+  }
+  passMaxRoom(event:number){
+    this.chosenMaxRooms=event;
+  }
+
+  passHouseType(event:boolean[]){
+    this.chosenHousesTypes = event;
+    console.table(this.chosenHousesTypes);
+  }
+  passOtherType(event:boolean[]){
+    this.chosenOtherTypes = event;
+    console.table(this.chosenOtherTypes);
+    this.propertiesShow = !this.propertiesShow;
+  }
+  passAppType(event:boolean[]){
+    this.chosenAppTypes = event;
+    console.table(this.chosenAppTypes);
+  }
+
+  passNum(event:number){
+    this.numberOfAssetsChecked = event;
+  }
+
   onClickProperties(){
     this.propertiesShow = !this.propertiesShow;
   }

@@ -1,17 +1,22 @@
 <div (click)="onClickAll()" class="open_menu_line">
-  <i *ngIf="!allChecked" class="fa-regular fa-square icon"></i>
+  <i *ngIf="noneChecked" class="fa-regular fa-square icon"></i>
   <i *ngIf="allChecked" class="fa-solid fa-check icon_checked"></i>
-  <!-- <i class="fa-solid fa-minus icon_checked"></i> -->
+  <i *ngIf="partChecked" class="fa-solid fa-minus icon_checked"></i>
   <span >כל סוגי הנכסים</span>
 </div>
-<div class="open_menu_line" (click)="onClickApp()">
-  <i *ngIf="!allAppartmentsChecked" class="fa-regular fa-square icon"></i>
-  <i *ngIf="allAppartmentsChecked" class="fa-solid fa-check icon_checked"></i>
-  <!-- <i class="fa-solid fa-minus icon_checked"></i> -->
-  <span>דירות</span>
-  <i class="fa-solid fa-chevron-down arrow_left"></i>
+<div class="open_menu_line" >
+  <div (click)="onClickApp()">
+    <i *ngIf="numberAppartmentsChecked===0 && !partOfAppartements && !allAppartmentsChecked" class="fa-regular fa-square icon"></i>
+    <i *ngIf="allAppartmentsChecked" class="fa-solid fa-check icon_checked"></i>
+    <i *ngIf="partOfAppartements" class="fa-solid fa-minus icon_checked"></i>
+    <span >דירות </span>
+    <span class="gray_color" *ngIf="counterAppartements!==0">נבחרו {{counterAppartements}} סוגים</span>
+  </div>
+
+  <i class="fa-solid arrow_left" (click)="onClickAppartementsShow()"
+      [ngClass]="!appartementsShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
 </div>
-<div class="appartments_open_menu">
+<div *ngIf="appartementsShow" class="appartments_open_menu">
   <div class="apartment_kind" (click)="onClickAppEl(0)">
     <i *ngIf="!appartments[0]" class="fa-regular fa-square icon"></i>
     <i *ngIf="appartments[0]" class="fa-solid fa-check icon_checked"></i>
@@ -67,15 +72,19 @@
   </div>
 </div>
 
-<div class="open_menu_line" (click)="onClickHouses()">
-  <i class="fa-regular fa-square icon"></i>
-  <!-- <i class="fa-solid fa-check icon_checked"></i> -->
-  <!-- <i class="fa-solid fa-minus icon_checked"></i> -->
-  <span>בתים</span>
-  <i class="fa-solid fa-chevron-down arrow_left"></i>
+<div class="open_menu_line" >
+  <div (click)="onClickHouses()">
+    <i *ngIf="numberOfHousesChecked===0 && !partOfHouses && !allHousesChecked" class="fa-regular fa-square icon"></i>
+    <i *ngIf="allHousesChecked" class="fa-solid fa-check icon_checked"></i>
+    <i *ngIf="partOfHouses" class="fa-solid fa-minus icon_checked"></i>
+    <span >בתים</span>
+    <span class="gray_color" *ngIf="counterHouses!==0">נבחרו {{counterHouses}} סוגים</span>
+  </div>
+  <i class="fa-solid  arrow_left" (click)="onClickHousesShow()"
+      [ngClass]="!housesShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
 </div>
 
-<div class="appartments_open_menu">
+<div *ngIf="housesShow" class="appartments_open_menu">
   <div class="apartment_kind"  (click)="onClickHouseEl(0)">
     <i *ngIf="!houses[0]" class="fa-regular fa-square icon"></i>
     <i *ngIf="houses[0]" class="fa-solid fa-check icon_checked"></i>
@@ -101,15 +110,19 @@
   </div>
 </div>
 
-<div class="open_menu_line" (click)="onClickOther()">
-  <i class="fa-regular fa-square icon"></i>
-  <!-- <i class="fa-solid fa-check icon_checked"></i> -->
-  <!-- <i class="fa-solid fa-minus icon_checked"></i> -->
-  <span>סוגים נוספים</span>
-  <i class="fa-solid fa-chevron-down arrow_left"></i>
+<div class="open_menu_line" >
+  <div (click)="onClickOther()">
+    <i *ngIf="numberOfOtherChecked===0 && !partOfOtherChecked && !allOtherChecked" class="fa-regular fa-square icon"></i>
+    <i *ngIf="allOtherChecked" class="fa-solid fa-check icon_checked"></i>
+    <i *ngIf="partOfOtherChecked" class="fa-solid fa-minus icon_checked"></i>
+    <span >סוגים נוספים</span>
+  </div>
+  <span class="gray_color" *ngIf="counterOther!==0">נבחרו {{counterOther}} סוגים</span>
+  <i class="fa-solid arrow_left" (click)="onClickOtherShow()"
+      [ngClass]="!otherShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
 </div>
 
-<div class="appartments_open_menu" >
+<div *ngIf="otherShow" class="appartments_open_menu" >
   <div class="apartment_kind" (click)="onClickOtherEl(0)">
     <i *ngIf="!other[0]" class="fa-regular fa-square icon"></i>
     <i *ngIf="other[0]" class="fa-solid fa-check icon_checked"></i>
@@ -155,6 +168,6 @@
 
 </div>
 
-<div class="open_menu_button">
-  <span >בחירה</span>
+<div class="open_menu_button" (click)="onClickChoice()">
+  <span class="submit" >בחירה</span>
 </div>

@@ -1,6 +1,6 @@
 :host{
   position: absolute;
-  top:41px;
+  top:65px;
   left: 495px;
   width: 175px;
   background: white;
@@ -11,6 +11,7 @@
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
+  z-index: 10;
 }
 .container{
   display: flex;
