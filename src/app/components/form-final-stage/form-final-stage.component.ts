@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { NewPostService } from 'src/app/services/new-post.service';
 
 @Component({
   selector: 'app-form-final-stage',
@@ -8,7 +9,7 @@ import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 })
 export class FormFinalStageComponent implements OnInit {
   finalStage!:FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private newPostService:NewPostService) { }
 
   ngOnInit(): void {
     this.finalStage = this.fb.group({
@@ -17,6 +18,6 @@ export class FormFinalStageComponent implements OnInit {
   }
 
   onSubmitFinalStageForm(){
-
+    this.newPostService.OnAddNewPost()
   }
 }

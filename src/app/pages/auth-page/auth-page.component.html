@@ -1,7 +1,7 @@
 
 <div class="auth_page_container">
   <header>
-    <a class="logo-link over880" href="#">
+    <a class="logo-link over880" href="/home">
       <img
         class="over880"
         src="../../../assets/imgs/yad2Logo.png"
@@ -15,7 +15,7 @@
       <section class="form-container">
         <!-- button ( back navigation ) -->
 
-        <button class="btn btn-back-nav upto880">
+        <button class="btn btn-back-nav upto880" (click)="onClickBack()">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
 
@@ -27,49 +27,48 @@
         <div class="input_container">
           <h1 class="text_align_c">היי, טוב לראות אותך</h1>
           <form #authForm = "ngForm" (ngSubmit)="onSubmit(authForm)">
-            <div>
-              <div>מייל</div>
-              <label for="Email"></label>
-              <input type="email"
-                      #email = "ngModel"
-                      id="email"
-                      ngModel
-                      name="email"
-                      placeholder="yourmail@email.co.il"
-                      [ngClass]="email.errors?.['required'] && authForm.submitted? 'red_border' : ''"
-                      required email>
-                        <span style="color:red ;" *ngIf="authForm.submitted && email.errors?.['required']">לא לשכוח את המייל</span>
-                        <span style="color:red ;" *ngIf="authForm.submitted && email.errors?.['email']">משהו לא תקין במייל, אולי התפספס @?</span>
+              <div>
+                <div>מייל</div>
+                <label for="Email"></label>
+                <input type="email"
+                        #email = "ngModel"
+                        id="email"
+                        ngModel
+                        name="email"
+                        placeholder="yourmail@email.co.il"
+                        [ngClass]="email.errors?.['required'] && authForm.submitted? 'red_border' : ''"
+                        required email>
+                          <span style="color:red ;" *ngIf="authForm.submitted && email.errors?.['required']">לא לשכוח את המייל</span>
+                          <span style="color:red ;" *ngIf="authForm.submitted && email.errors?.['email']">משהו לא תקין במייל, אולי התפספס @?</span>
+              </div>
+              <div class="password_input">
+                <div>סיסמה</div>
+                <label for=" password"></label>
+                <input [type]="hidePassword? 'password': 'text'"
+                        id="password"
+                        ngModel
+                        name="password"
+                        #password ="ngModel"
+                        placeholder="הקלדת סיסמה"
+                        [ngClass]="password.errors?.['required'] && authForm.submitted? 'red_border' : ''"
+                        appPasswordPattern
+                        required>
+                        <div (click)="onClickHidePassword()">
+                          <i [ngClass]="hidePassword ? 'fa-regular fa-eye': 'fa-regular fa-eye-slash' " ></i>
+                        </div>
+                        <span style="color:red ;" *ngIf="(password.touched || authForm.submitted) && password.errors?.['required']">לא לשכוח להזין סיסמה</span>
+                        <span style="color:red ;" *ngIf="(password.touched || authForm.submitted) && password.errors?.['InvalidPassword']">נבקש שהסיסמה תכלול אותיות באנגלית וספרות</span>
+                        <span style="color:red ;" *ngIf="showErrorMessage">משהו לא תקין בסיסמא או אימייל</span>
+              </div>
 
-            </div>
-            <div class="password_input">
-              <div>סיסמה</div>
-              <label for=" password"></label>
-              <input [type]="hidePassword? 'password': 'text'"
-                      id="password"
-                      ngModel
-                      name="password"
-                      #password ="ngModel"
-                      placeholder="הקלדת סיסמה"
-                      [ngClass]="password.errors?.['required'] && authForm.submitted? 'red_border' : ''"
-                      appPasswordPattern
-                      required>
-                      <div (click)="onClickHidePassword()">
-                        <i [ngClass]="hidePassword ? 'fa-regular fa-eye': 'fa-regular fa-eye-slash' " ></i>
-                      </div>
-                      <span style="color:red ;" *ngIf="(password.touched || authForm.submitted) && password.errors?.['required']">לא לשכוח להזין סיסמה</span>
-                      <span style="color:red ;" *ngIf="(password.touched || authForm.submitted) && password.errors?.['InvalidPassword']">נבקש שהסיסמה תכלול אותיות באנגלית וספרות</span>
-            </div>
-
-            <div class="forgot_pas">שכחתי סיסמה</div>
-            <div class="form_submit">
-              <button type="submit">התחברות</button>
-            </div>
-            <div class="text_align_c">
-              <span>אין לך חשבון?</span>
-              <a href="#" class="forgot_pas"> להרשמה </a>
-            </div>
-
+              <div class="forgot_pas">שכחתי סיסמה</div>
+              <div class="form_submit">
+                <button type="submit">התחברות</button>
+              </div>
+              <div class="text_align_c">
+                <span>אין לך חשבון?</span>
+                <a  class="forgot_pas" (click)="onClickSignUp()"> להרשמה </a>
+              </div>
           </form>
 
         </div>

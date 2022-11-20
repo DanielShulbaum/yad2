@@ -48,7 +48,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aquamarine;
+
   @media  (max-width: 880px) {
     flex-direction: column;
   }
@@ -175,6 +175,23 @@ header {
     margin-right: 5vw;
     width: 50%;
   }
+}
+.check_line{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  input[type='checkbox']{
+    height: 18px;
+    width: 18px;
+    accent-color: orangered;
+  }
+  span{
+    padding-right: 5px;
+  }
+}
+.orange_color{
+  color:  rgb(255,113,0);
 }
 
 

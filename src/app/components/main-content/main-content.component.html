@@ -3,18 +3,14 @@
   <section class="main_content">
 
     <main class="appartements_list">
-      <app-appartments-list></app-appartments-list>
-      <app-appartement-post *ngFor="let appartement of appartementListToShow; let i = index"
-        [appartement] = "appartement"
-
+      <app-appartments-list (transferSortChoice)="passSortChoice($event)"
+          (transferFilterPrice)="passFilterPrice($event)" (transferFilterPictures)="passFilterPictures($event)"></app-appartments-list>
+      <app-appartement-post [appartement] = "appartement" *ngFor="let appartement of appartementListToShow|sortPipe:sortBy; let i = index
+      "
       ></app-appartement-post>
-
     </main>
     <aside class="advertise"></aside>
   </section>
 </div>
 
 
-
-
-<p>main-content works!</p>

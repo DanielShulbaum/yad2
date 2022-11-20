@@ -1,5 +1,5 @@
 .main_container{
-  margin: 0.2rem;
+  margin: 0.2rem ;
   width: 100%;
   background: gray;
   // height: 150px; //to delete later
@@ -52,7 +52,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: rgb(216, 216, 226);
+  background: rgb(235, 230, 147);
+  margin-left: 0.2rem;
   @media (min-width: 880px) {
     display: flex;
     flex-direction: row;
@@ -65,14 +66,14 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding:0.7rem;
-  background:white;
+  padding-right:0.7rem ;
+  padding-top: 0.7rem;
   @media (min-width: 880px) {
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    width: auto;
+    width: 28%;
     height: 100%;
     justify-content: center;
     left: 2px;
@@ -86,6 +87,7 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 1rem;
+  padding-right: 15px;
   @media (min-width: 880px) {
     padding-right: 5px;
     border-left:1px solid gray ;
@@ -101,9 +103,13 @@
   font-size: 0.8rem;
   align-items: center;
   text-align: center;
+  color: gray;
+  border-top:1px solid lightgray;
   @media (min-width: 880px) {
     width: 185px;
     font-size: 1rem;
+    border: none;
+    color: black;
   }
 }
 .min_post_line3_content{
@@ -162,12 +168,15 @@
   left: 20px;
 }
 .line1_change{
+  justify-content: flex-start!important ;
+  gap: 20px;
   @media (min-width: 880px) {
-    justify-content: flex-start ;
+    justify-content: flex-start!important ;
     border-right: none
   }
 }
 .post_content_change{
+
   @media (min-width: 880px) {
     flex-direction: column;
     align-items: flex-start;
@@ -215,15 +224,18 @@
   display: flex;
   flex-direction: column;
   background: white;
+  padding: 0.7rem;
+  font-size: 0.8rem;
 }
 .post_main_line{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  padding-top: 1rem;
 }
 .post_main_line_internal{
   width: 50%;
-  padding: 1rem;
+  padding-top: 0.7rem;
 }
 .post_main_line_internalicon{
   display: flex;
@@ -256,4 +268,65 @@
 .post_bottom_left{
   display: flex;
   flex-direction: column;
+}
+.price_line{
+  display: flex;
+  font-weight: 500;
+  gap: 10px;
+    i{
+      font-size: 00.8rem;
+    }
+}
+.date_text{
+  font-size: 0.7rem;
+  color: gray;
+  line-height: 2.5;
+}
+.bold_text{
+  font-weight: 500;
+}
+
+.post_description_bottom{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  background: white;
+}
+.post_bottom_right_part{
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-right: 20px;
+  gap: 30px;
+}
+.post_bottom_right_item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+.post_bottom_right_item:hover{
+  cursor: pointer;
+}
+.post_bottom_right_icon{
+  height: 30px;
+  width: 30px;
+  background: lightgray;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.post_bottom_left_part{
+  display: flex;
+  font-size: 0.8rem;
+  gap: 25px;
+  padding-left: 10px;
+}
+.no_displayafter880{
+  @media(min-width:880px){
+    display: none;
+  }
 }

@@ -39,6 +39,8 @@ import { PostPaymentsComponent } from './components/post-payments/post-payments.
 import { FormAddPicturesComponent } from './components/form-add-pictures/form-add-pictures.component';
 import { FormContactDetailsComponent } from './components/form-contact-details/form-contact-details.component';
 import { FormFinalStageComponent } from './components/form-final-stage/form-final-stage.component';
+import { SortPipePipe } from './shared/sort-pipe.pipe';
+import { FilterSimplePipe } from './shared/filter-simple.pipe';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { FormFinalStageComponent } from './components/form-final-stage/form-fina
     FormAddPicturesComponent,
     FormContactDetailsComponent,
     FormFinalStageComponent,
+    SortPipePipe,
+    FilterSimplePipe,
   ],
   imports: [
     BrowserModule,

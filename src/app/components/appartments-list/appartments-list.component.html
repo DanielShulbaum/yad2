@@ -2,30 +2,34 @@
   <div class="appartements_filter">
     <div class="appartements_filter_right">
       <div>מיין לפי</div>
-      <div class="appartments_main_filter_container" (click)="onClickMainSort()">
+      <div class="appartments_main_filter_container" (click)="onClickMainSort($event)">
         <div>{{sortBy}}</div>
         <i class= "fa-solid fa-chevron-down"></i>
             <div *ngIf="mainSortShow" class="app_main_filter_check">
+              <!-- <div class="app_check_line" *ngFor="let sort of sortValues; index as i">
+                <label>
+                  <input type="radio" [name] = sortValues[i] [value]=sortValues[i] >{{sortValues[i]}}
+                </label>
+              </div> -->
               <!-- possible can be replaced by *ngFor  -->
-              <div class="app_check_line" (click)="onClickSortDate()">
+              <div class="app_check_line" (click)="onClickSortDate($event)">
                 <input type="radio" name="sortBy" id="date" value=sortByDate checked>
-                <label for="sortByDate">{{sortValues[0]}}</label>
+                <label for="sortBy">{{sortValues[0]}} </label>
               </div>
-              <div class="app_check_line" (click)="onClickSortPriceLow()" >
+              <div class="app_check_line" (click)="onClickSortPriceLow($event)" >
                 <input type="radio" name="sortBy" id="priceFromLow" value=sortByPriceLow  >
-                <label for="sortByPriceLow">{{sortValues[1]}}</label>
+                <label for="sortBy">{{sortValues[1]}}</label>
               </div>
-              <div class="app_check_line" (click)="onClickSortPriceHigh()">
+              <div class="app_check_line" (click)="onClickSortPriceHigh($event)">
                 <input type="radio" name="sortBy" id="priceFromHigh" value=sortByPriceHigh >
-                <label for="sortByPriceHigh">{{sortValues[2]}}</label>
+                <label for="sortBy">{{sortValues[2]}}</label>
               </div>
             </div>
       </div>
-
     </div>
 
-    <div class="appartements_filter_left" (click)="onClickSecondarySort()">
-      <div class= "appartements_filter_container">
+    <div class="appartements_filter_left" >
+      <div class= "appartements_filter_container" (click)="onClickSecondarySort()">
         <i class="fa-solid fa-filter"></i>
         <span>סנן תוצאות</span>
       </div>
@@ -34,19 +38,16 @@
         <span>תצוגת מפה</span>
       </div>
       <div *ngIf="secondarySortShow" class="secondary_filter" >
-        <div class="appartements_filter_line">
-          <input type="checkbox">עם מחיר
+        <div class="appartements_filter_line" (click)="onClickFilterPrice()">
+          <input #checkboxes type="checkbox">עם מחיר
         </div>
-        <div class="appartements_filter_line">
-          <input type="checkbox">עם תמונה
+        <div class="appartements_filter_line" (click)="onClickFilterPicture()">
+          <input #checkboxes type="checkbox">עם תמונה
         </div>
-        <div class="secondary_filter_last_line">
-          <span>ניקוי</span>
-          <span class="orange_color">סינון</span>
-        </div>
-      </div>
-
+        <div class="secondary_filter_last_line" (click)="onClearFilterChoice()">
+          <button [ngStyle]="{'disabled': (filterWithPriceOnly||filterWithPicturesOnly)? true:false}">ניקוי</button>
+          <!-- line above not working -->
+          <span class="orange_color" (click)="onClickFilter()">סינון </span>
     </div>
-
   </div>
 </div>

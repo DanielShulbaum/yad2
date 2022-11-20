@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter-floor',
@@ -7,16 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterFloorComponent implements OnInit {
   floors:number[] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
-  chosenStartFloor:number|undefined;
+  chosenStartFloor:number=0;
+  // chosenMaxFloor:number|undefined=undefined;
+
+  @Output() transferMinFloor = new EventEmitter<number>()
+  @Input() chosenMaxFloorC:number=17;
   constructor() { }
 
   ngOnInit(): void {
   }
   onClickAll(){
-    this.chosenStartFloor = undefined;
+    this.chosenStartFloor = 0;
   }
   onClickFloor(floor:number){
     this.chosenStartFloor = floor;
+    this.transferMinFloor.emit(this.chosenStartFloor);
   }
   onClickBasement(){
     this.chosenStartFloor = -1;

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { NewPostService } from 'src/app/services/new-post.service';
 
 @Component({
   selector: 'app-asset-details',
@@ -7,13 +8,15 @@ import { FormBuilder,FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./asset-details.component.scss']
 })
 export class AssetDetailsComponent implements OnInit {
-  assetDetails!:FormGroup;
+  @Output() transferClose3Stage = new EventEmitter<boolean>()
+  @Output() transferComplete3Stage = new EventEmitter<boolean>()
+  assetDetails!:FormGroup ;
   roomsOptions:number[]=[
     1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5
   ];
   options:any[]=['ללא',1,2,3];
-  chosenParkingLots:number=0;
-  chosenBalconiesNum:number=0;
+
+  // chosenBalconiesNum:number=0;
 
   hasAirCondition:boolean=false;
   hasShelter:boolean=false;
@@ -26,7 +29,12 @@ export class AssetDetailsComponent implements OnInit {
   hasKosherKitchen:boolean=false;
   hasSunBoiler:boolean=false;
   hasGrating:boolean=false;
-  constructor(private fb: FormBuilder) {
+
+  assetDescriptionLetters:string="";
+
+
+
+  constructor(private fb: FormBuilder, private newPostService:NewPostService) {
 
   }
 
@@ -34,27 +42,26 @@ export class AssetDetailsComponent implements OnInit {
 
     this.assetDetails = this.fb.group({
       assetRoomsNumber: this.fb.control('', Validators.required),
+      assetParkingLots:this.fb.control('', Validators.required),
+      assetBalconiesNum:this.fb.control('', Validators.required),
     });
 
   }
   onSubmitDetailsForm(){
+    this.newPostService.onGetAssetDetails(this.assetDetails,
+      this.hasAirCondition,this.hasShelter,this.hasStorage, this.hasFurniture, this.hasIncapableAccess, this.hasLift,
+      this.hasTadiran,this.isRenovated,this.hasKosherKitchen,this.hasSunBoiler,this.hasGrating,
+      this.assetDescriptionLetters );
+      this.transferComplete3Stage.emit(true);
+  }
 
-  }
-  onParkingClick(choice:any){
-
-    if(choice ==='ללא'){
-      this.chosenParkingLots=0;
-    }else{
-      this.chosenParkingLots = choice;
-    }
-  }
-  onBalconyClick(choice:any){
-    if(choice ==='ללא'){
-      this.chosenBalconiesNum=0;
-    }else{
-      this.chosenBalconiesNum = choice;
-    }
-  }
+  // onBalconyClick(choice:any){
+  //   if(choice ==='ללא'){
+  //     this.chosenBalconiesNum=0;
+  //   }else{
+  //     this.chosenBalconiesNum = choice;
+  //   }
+  // }
   onAirConditionClick(){
     this.hasAirCondition=!this.hasAirCondition
   }
@@ -87,5 +94,9 @@ export class AssetDetailsComponent implements OnInit {
   }
   onGratingClick(){
     this.hasGrating = !this.hasGrating;
+  }
+
+  onClickBack3Stage(){
+    this.transferClose3Stage.emit(false);
   }
 }

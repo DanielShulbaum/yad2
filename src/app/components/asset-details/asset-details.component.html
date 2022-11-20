@@ -1,5 +1,5 @@
 
-<form  [formGroup]="assetDetails" (ngSubmit)="onSubmitDetailsForm()">
+<form  [formGroup]="assetDetails" #formAssetDetails = "ngForm" (ngSubmit)="onSubmitDetailsForm()">
   <div class="form_container">
     <div class="post_stage_title">
       <div class="post_stage_title_item">
@@ -9,28 +9,71 @@
     </div>
 
     <div class="line_title">מספר חדרים*</div>
-    <select  class="form_input" formControlName="assetRoomsNumber" >
-      <option selected disabled hidden >בחירת מספר חדרים</option>
-      <option ngValue="{{ i }}" *ngFor="let roomsNum of roomsOptions; let i = index">{{ roomsNum }}</option>
+    <select  class="form_input" formControlName="assetRoomsNumber"
+    [style.border]="!assetDetails.get('assetRoomsNumber')!.valid && formAssetDetails.submitted ? '1px solid #ff0000':''">
+      <option value="" selected disabled hidden >בחירת מספר חדרים</option>
+      <option ngValue="{{ roomsNum }}" *ngFor="let roomsNum of roomsOptions; let i = index">{{ roomsNum }}</option>
     </select>
+    <!-- <span *ngIf="!assetDetails.get('assetType')!.valid && formAssetDetails.submitted" class="error_message">שדה חובה</span> -->
 
     <div class="line_title">חניה</div>
-    <div class="input_container">
-      <!-- <div class="input_radio"  *ngFor="let option of options; let i = index" (click)="onParkingClick(i)">{{option}}</div> -->
-      <div  class="input_radio" (click)="onParkingClick(0)" >ללא</div>
-      <div class="input_radio" (click)="onParkingClick(1)">1</div>
-      <div class="input_radio" (click)="onParkingClick(2)">2</div>
-      <div class="input_radio" (click)="onParkingClick(3)">3</div>
+    <div class="input_radio_line">
+      <label for="parking"> </label>
+      <div>
+        <input id="0" type="radio" value="0" name="assetParkingLots" formControlName="assetParkingLots" checked>
+        <label for="0"></label>
+        <span class="first_num">ללא</span>
+      </div>
+      <div>
+        <input id="1" type="radio" value="1" name="assetParkingLots" formControlName="assetParkingLots">
+        <label for="1"></label>
+        <span class="second_num">1</span>
+      </div>
+      <div>
+        <input id="2" type="radio" value="2" name="assetParkingLots" formControlName="assetParkingLots">
+        <label for="2"></label>
+        <span class="third_num">2</span>
+      </div>
+      <div>
+        <input id="3" type="radio" value="3" name="assetParkingLots" formControlName="assetParkingLots">
+        <label for="3"></label>
+        <span class="fourth_num">3</span>
+      </div>
     </div>
 
     <div class="line_title">מרפסת</div>
-    <div class="input_container">
+    <!-- <div class="input_container"> -->
       <!-- <div class="input_radio"  *ngFor="let option of options; let i = index" (click)="onBalconyClick(i)">{{option}}</div> -->
-      <div  class="input_radio" (click)="onBalconyClick(0)" >ללא</div>
+      <!-- <div  class="input_radio" (click)="onBalconyClick(0)" >ללא</div>
       <div class="input_radio" (click)="onBalconyClick(1)">1</div>
       <div class="input_radio" (click)="onBalconyClick(2)">2</div>
       <div class="input_radio" (click)="onBalconyClick(3)">3</div>
+    </div> -->
+    <div class="input_radio_line">
+      <label for="parking"> </label>
+      <div>
+        <input id="0" type="radio" value="0" name="assetBalconiesNum" formControlName="assetBalconiesNum" checked>
+        <label for="0"></label>
+        <span class="first_num">ללא</span>
+      </div>
+      <div>
+        <input id="1" type="radio" value="1" name="assetBalconiesNum" formControlName="assetBalconiesNum">
+        <label for="1"></label>
+        <span class="second_num">1</span>
+      </div>
+      <div>
+        <input id="2" type="radio" value="2" name="assetBalconiesNum" formControlName="assetBalconiesNum">
+        <label for="2"></label>
+        <span class="third_num">2</span>
+      </div>
+      <div>
+        <input id="3" type="radio" value="3" name="assetBalconiesNum" formControlName="assetBalconiesNum">
+        <label for="3"></label>
+        <span class="fourth_num">3</span>
+      </div>
     </div>
+    <!-- [ngStyle]="{ 'color': streetField.classList.contains('disabled') ? '#ccc' : '#ff7100'}" -->
+
     <div class="post_stage_sec_title">
       <span>מאפייני הנכס</span>
     </div>
@@ -97,20 +140,28 @@
     <div class="line_title">פרוט הנכס</div>
     <div class="post_input_section">
       <div class="text_title">
-        <input class="lightgray" disabled type="text" placeholder="ממליצים לך בחום להוסיף תיאור">
-        <div>"word/max"</div>
+        <div class="input_container_color">
+          <div class="color_bar" [ngStyle]="{'width:':assetDescriptionLetters.length/400+'%'}"
+          ></div>
+          <input class="lightgray" disabled type="text" placeholder="ממליצים לך בחום להוסיף תיאור">
+        </div>
+        <div id="wordCount">
+          <span>{{assetDescriptionLetters.length}}</span>
+          <span>/400</span>
+        </div>
       </div>
     </div>
     <br>
     <div class="post_input_section">
-      <textarea  name="assetDescription" id="" cols="5" maxlength="400" rows="8"
+
+      <textarea   [ngModelOptions]="{standalone: true}" [(ngModel)]="assetDescriptionLetters" #text name="assetDescription" id="assetDescription" cols="5" maxlength="400" rows="8"
         placeholder="זה המקום לתאר את הפרטים הבולטים, למשל, האם נערך שיפוץ במבנה, מה שופץ, כיווני אוויר, האווירה ברחוב וכו'"></textarea>
       </div>
     <div class="textline">אין צורך להוסיף מספר טלפון כחלק מהתיאור, בהמשך התהליך יש אזור מסודר לזה</div>
 
     <div class="post_input_section ">
       <div class="button_container">
-        <button class="button_back">חזרה</button>
+        <button class="button_back" (click)="onClickBack3Stage()">חזרה</button>
         <button class="button_continue" type="submit">
           <span class=" show_till620">המשך</span>
           <span class="show_after620">להמשיך לשלב הבא</span>

@@ -1,4 +1,4 @@
-<app-modale *ngIf="modaleShow"></app-modale>
+<app-modale (transferCloseModale)="passShowModale($event)" *ngIf="modaleShow"></app-modale>
 <div class="header">
   <div class="right_header">
     <div class="logo-wrapper">
@@ -89,10 +89,11 @@
 
 
 
-      <a href="#" class="header_middle_tabs appear_after880"
+      <a (click)="onUserClick()" class="header_middle_tabs appear_after880"
         (mouseenter)="onUserMenu()" (mouseleave)="onUserMenu()">
         <i class="fa-regular fa-user"></i>
-        <span class="header_middle_tabs_content">שם משתמש</span>
+        <span *ngIf="abriviation===''" class="header_middle_tabs_content">התחברות</span>
+        <span *ngIf="abriviation!==''" class="header_middle_tabs_content">{{abriviation}}</span>
           <app-user-menu *ngIf="userMenuShow"></app-user-menu>
       </a>
     </div>

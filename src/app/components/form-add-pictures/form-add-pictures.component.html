@@ -1,5 +1,5 @@
 
-<form  [formGroup]="assetPictures" (ngSubmit)="onSubmitPictures()">
+<form  [formGroup]="assetPictures" onkeydown="return event.key != 'Enter';" #formAssetPictures= "ngForm" (ngSubmit)="onSubmitPictures()">
   <div class="form_container">
     <div class="post_stage_title">
       <div class="post_stage_title_item">
@@ -21,8 +21,9 @@
 
 
     <div class="pictures_input_line">
-        <div class="picture_input_item">
+        <div class="picture_input_item" (click)="onClickUpload(1)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(1)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp1" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <img src="https://yad2upload.cdnwiz.com/newupload/icons/video.jpg" alt="video">
             <span>העלאת סרטון</span>
@@ -30,8 +31,9 @@
         </div>
         <div class="picture_input_item gray_border">
           <div class="gray_background_title">תמונה ראשית</div>
-          <div class="picture_input_item no_border">
+          <div class="picture_input_item no_border" (click)="onClickUpload(2)">
             <input type="file" title="העלאת סרטון" style="visibility: hidden">
+            <input (keyup.enter)="onEnter(2)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp2" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
             <div class="img_title">
               <i class="fa-solid fa-plus"></i>
               <span>העלאת תמונות</span>
@@ -40,67 +42,76 @@
         </div>
       </div>
       <div class="section_end"></div>
-      <div class="line_title">מ"ר בנוי</div>
+      <div class="line_title">תמונות נוספות</div>
       <div class="pictures_input_line">
 
-        <div class="picture_input_item ">
+        <div class="picture_input_item "(click)="onClickUpload(3)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(3)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp3" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <i class="fa-solid fa-plus"></i>
             <span>העלאת תמונות</span>
           </div>
         </div>
-        <div class="picture_input_item ">
+        <div class="picture_input_item " (click)="onClickUpload(4)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(4)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp4" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <i class="fa-solid fa-plus"></i>
             <span>העלאת תמונות</span>
           </div>
         </div>
-        <div class="picture_input_item ">
+        <div class="picture_input_item "(click)="onClickUpload(5)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(5)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp5" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <i class="fa-solid fa-plus"></i>
             <span>העלאת תמונות</span>
           </div>
         </div>
-        <div class="picture_input_item ">
+        <div class="picture_input_item " (click)="onClickUpload(6)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(6)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp6" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <i class="fa-solid fa-plus"></i>
             <span>העלאת תמונות</span>
           </div>
         </div>
-        <div class="picture_input_item ">
+        <div class="picture_input_item "(click)="onClickUpload(7)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(7)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp7" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <i class="fa-solid fa-plus"></i>
             <span>העלאת תמונות</span>
           </div>
         </div>
-        <div class="picture_input_item ">
+        <div class="picture_input_item "(click)="onClickUpload(8)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(8)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp8" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <i class="fa-solid fa-plus"></i>
             <span>העלאת תמונות</span>
           </div>
         </div>
-        <div class="picture_input_item ">
+        <div class="picture_input_item "(click)="onClickUpload(9)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(9)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp9" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <i class="fa-solid fa-plus"></i>
             <span>העלאת תמונות</span>
           </div>
         </div>
-        <div class="picture_input_item ">
+        <div class="picture_input_item "(click)="onClickUpload(10)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(10)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp10" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <i class="fa-solid fa-plus"></i>
             <span>העלאת תמונות</span>
           </div>
         </div>
-        <div class="picture_input_item ">
+        <div class="picture_input_item "(click)="onClickUpload(11)">
           <input type="file" title="העלאת סרטון" style="visibility: hidden">
+          <input (keyup.enter)="onEnter(11)" [(ngModel)]="linkAdress" [ngModelOptions]="{standalone: true}" class="text_inpute_appear" *ngIf="changeToTextInp11" type="text" placeholder="הכנס קישור לתמונה ולחץ ENTER">
           <div class="img_title">
             <i class="fa-solid fa-plus"></i>
             <span>העלאת תמונות</span>
@@ -111,7 +122,7 @@
 
     <div class="post_input_section ">
       <div class="button_container">
-        <button class="button_back">חזרה</button>
+        <button class="button_back" (click)="onClickReturn()" >חזרה</button>
         <button class="button_continue" type="submit">
           <span class=" show_till620">המשך</span>
           <span class="show_after620">להמשיך לשלב הבא</span>

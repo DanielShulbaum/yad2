@@ -1,5 +1,5 @@
 
-<form  [formGroup]="assetContactDetails" (ngSubmit)="onSubmitContactDetailsForm()">
+<form #formContactDetails= "ngForm" [formGroup]="assetContactDetails" (ngSubmit)="onSubmitContactDetailsForm()">
   <div class="form_container">
     <div class="post_stage_title">
       <div class="post_stage_title_item">
@@ -13,11 +13,16 @@
     <br>
     <div class="line_title">שם איש קשר*</div>
     <div class="post_input_section">
-      <input class="form_input" type="text" >
+      <input class="form_input" type="text" formControlName = "contactName"
+      [style.border]="assetContactDetails.controls['contactName'].hasError && formContactDetails.submitted ? '1px solid #ff0000':''">
+      <div *ngIf="assetContactDetails.controls['contactName'].hasError && formContactDetails.submitted" class="error_message">שדה חובה</div>
     </div>
+
     <div class="line_title">טלפון ראשי*</div>
     <div class="post_input_section">
-      <input type="tel" class="form_input" id="phone" name="phone"  pattern="[0-9]{3}-[0-9]{7}" >
+      <input type="tel" formControlName = "contactPhone" class="form_input" id="phone" name="phone"  pattern="[0-9]{3}-[0-9]{7}"
+      [style.border]="assetContactDetails.controls['contactPhone'].hasError && formContactDetails.submitted ? '1px solid #ff0000':''">
+      <div *ngIf="assetContactDetails.controls['contactPhone'].hasError && formContactDetails.submitted" class="error_message">שדה חובה</div>
     </div>
     <div class="section_end"></div>
 
@@ -33,11 +38,12 @@
     <div *ngIf="showAddContactSection">
         <div class="line_title">איש קשר נוסף</div>
       <div class="post_input_section">
-        <input class="form_input" type="text" >
+        <input class="form_input" type="text" formControlName = "contactAdditionalName">
       </div>
       <div class="line_title">טלפון נוסף</div>
       <div class="post_input_section">
-        <input class="form_input" type="tel" >
+        <input class="form_input" type="tel" formControlName = "contactAdditionalPhone" >
+        <span *ngIf="assetContactDetails.controls['contactAdditionalPhone'].hasError && formContactDetails.submitted" class="error_message">יש להזין מספר</span>
       </div>
       <div class="line_title"(click)="onClickAddContact()">
         <i class="fa-solid fa-trash-can"></i>
@@ -47,7 +53,7 @@
 
 
     <div class="textline">
-      <input type="checkbox">
+      <input type="checkbox" formControlName = "postNumeration">
       <span>אני רוצה שיופיע מספר וירטואלי במודעה שלי</span>
       <span class="orange_color">
         <i class="fa-solid fa-circle-question"></i>
@@ -68,15 +74,15 @@
 
     <div class="line_title">דוא"ל</div>
     <div class="post_input_section">
-      <input type="email" class="form_input"  >
+      <input type="email" class="form_input" formControlName = "contactEmail" >
     </div>
 
     <div class="post_input_section background_gray">
-      <input type="checkbox" >
+      <input type="checkbox" formControlName = "termsAccept" >
       <span class=> קראתי ואישרתי את  </span>
       <span class="orange_color"> התקנון*</span>
     </div>
-
+    <div *ngIf="assetContactDetails.controls['termsAccept'].hasError && formContactDetails.submitted" class="error_message"> חובה להסכים לתקנון</div>
 
 
     <br>

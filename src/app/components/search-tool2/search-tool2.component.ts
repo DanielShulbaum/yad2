@@ -1,4 +1,5 @@
 import {  Component,  OnInit } from '@angular/core';
+import { FormBuilder, FormControlName, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search-tool2',
@@ -6,21 +7,28 @@ import {  Component,  OnInit } from '@angular/core';
   styleUrls: ['./search-tool2.component.scss']
 })
 export class SearchTool2Component implements OnInit {
+
+  basicSearch!:FormGroup ;
+  advancedSearch!:FormGroup;
+
   numberOfAssetsChecked:number=0;
   chosenAppTypes:boolean[]=[];
   chosenHousesTypes:boolean[]=[];
   chosenOtherTypes:boolean[]=[];
   chosenMinRooms:number=0;
   chosenMaxRooms:number=12;
+  chosenMinFloor:number=0;
+  chosenMaxFloor:number=17;
 
    //variables of showing menus
    propertiesShow:boolean = false;
    roomsFilterShow:boolean = false;
-   advancedSearchShow:boolean = true;
+   advancedSearchShow:boolean = false;
    startingFloorListShow = false;
    finalFloorListShow = false;
 
    //icons of checkboxs
+
    parking:boolean=false;
    lift:boolean=false;
    airCondition:boolean=false;
@@ -35,13 +43,52 @@ export class SearchTool2Component implements OnInit {
 
    //to get a date that was chosen
    appartementEntrance:Date | undefined;
-  constructor() { }
+  constructor(private fb:FormBuilder, ) { }
 
   ngOnInit(): void {
+
+    // this.basicSearch=this.fb.group({
+    //   baseSearch:this.fb.group({
+    //     location:this.fb.control(''),
+    //     min_price:this.fb.control(''),
+    //     max_price:this.fb.control(''),
+    //     }),
+    //   advancedSearch:this.fb.group({
+    //     loca:this.fb.control(''),
+    //   })
+    //   })
+    this.basicSearch=this.fb.group({
+      location:this.fb.control(''),
+        min_price:this.fb.control(''),
+        max_price:this.fb.control(''),
+        chosenMinRooms:this.fb.control(''),
+        chosenMaxRooms:this.fb.control(''),
+    })
+      this.advancedSearch=this.fb.group({
+        parking:this.fb.control(''),
+        elevator:this.fb.control(''),
+        airConditioner:this.fb.control(''),
+        balcony:this.fb.control(''),
+        shelter:this.fb.control(''),
+        grating:this.fb.control(''),
+        storage:this.fb.control(''),
+        handicapped:this.fb.control(''),
+        renovated:this.fb.control(''),
+        furnitured:this.fb.control(''),
+        exclusive:this.fb.control(''),
+        minFloor:this.fb.control(''),
+        maxFloor:this.fb.control(''),
+        minArea:this.fb.control(''),
+        maxArea:this.fb.control(''),
+        entrDate:this.fb.control(''),
+        flexEntr:this.fb.control(''),
+        freeText:this.fb.control(''),
+      });
+
   }
+
   passMinRoom(event:number){
     this.chosenMinRooms=event;
-
   }
   passMaxRoom(event:number){
     this.chosenMaxRooms=event;
@@ -64,7 +111,17 @@ export class SearchTool2Component implements OnInit {
   passNum(event:number){
     this.numberOfAssetsChecked = event;
   }
+  passMinFloor(event:any){
+    this.chosenMinFloor = event;
+    this.startingFloorListShow=false;
+    console.log('minfloor' + this.chosenMinFloor);
 
+  }
+  passMaxFloor(event:any){
+    this.chosenMaxFloor = event;
+    this.finalFloorListShow=false;
+    console.log('maxfloor' + this.chosenMaxFloor);
+  }
   onClickProperties(){
     this.propertiesShow = !this.propertiesShow;
   }
@@ -115,5 +172,16 @@ export class SearchTool2Component implements OnInit {
   onClickFinalFloor(){
     this.finalFloorListShow = !this.finalFloorListShow;
     this.startingFloorListShow = false;
+  }
+
+  submitBasicSearch(){
+    console.log(this.basicSearch);
+  }
+  submitAdvancedSearch(){
+    console.log(this.advancedSearch);
+
+  }
+  onClickClear(){
+    this.advancedSearch.reset()
   }
 }

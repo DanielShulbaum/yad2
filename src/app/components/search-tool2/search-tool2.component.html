@@ -8,293 +8,225 @@
       </button>
     </div>
 
-    <div class="search_filters">
-      <div class="filter-box">
-        <label for="address">חפשו אזור, עיר, שכונה,או רחוב</label>
-        <input class="width-big" id="address-input"type="text" placeholder="לדוגמא: נחלאות" />
-      </div>
-
-      <div class="filter-box width-middle" (click)="onClickProperties()">
-        <label for="">סוג נכס</label>
-        <div class="dropdown-filter">
-          <span *ngIf="numberOfAssetsChecked ===0">בחרו סוגי נכסים</span>
-          <span *ngIf="numberOfAssetsChecked !==0">{{numberOfAssetsChecked}} סוגי נכסים</span>
-          <i class="fa-solid black_color margin_right_auto"
-            [ngClass]="!propertiesShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+    <form [formGroup]="basicSearch" (ngSubmit)="submitBasicSearch()">
+      <div  class="search_filters">
+        <div class="filter-box">
+          <label for="general_loc">חפשו אזור, עיר, שכונה,או רחוב</label>
+          <input formControlName="location" class="width-big" id="general_loc"type="text"  placeholder="לדוגמא: נחלאות" />
         </div>
-      </div>
-      <!-- <app-filter-appartment-kind *ngIf="propertiesShow" (transferNumberChecked)="numberOfAssetsChecked" ></app-filter-appartment-kind> -->
-      <app-filter-appartment-kind *ngIf="propertiesShow"
-        (transferNumberChecked)="passNum($event)" (transferAppartTypes)="passAppType($event)"
-        (transferHouseTypes)="passHouseType($event)" (transferOtherTypes)="passOtherType($event)"></app-filter-appartment-kind>
 
-
-
-      <div class="filter-box width-small" (click)="onClickRooms()">
-        <label for="">חדרים</label>
-        <div class="dropdown-filter">
-          <span *ngIf="chosenMinRooms===0 && chosenMaxRooms===12">חדרים</span>
-          <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms!==12" >{{chosenMaxRooms}}-{{chosenMinRooms}}</span>
-          <span *ngIf="chosenMinRooms===0 && chosenMaxRooms!==12">עד- {{chosenMaxRooms}}</span>
-          <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms===12">מ- {{chosenMinRooms}}</span>
-          <i class="fa-solid black_color margin_right_auto"
-            [ngClass]="!roomsFilterShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+        <div class="filter-box width-middle" (click)="onClickProperties()">
+          <label for="">סוג נכס</label>
+          <div class="dropdown-filter">
+            <span *ngIf="numberOfAssetsChecked ===0">בחרו סוגי נכסים</span>
+            <span *ngIf="numberOfAssetsChecked !==0">{{numberOfAssetsChecked}} סוגי נכסים</span>
+            <i class="fa-solid black_color margin_right_auto"
+              [ngClass]="!propertiesShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+          </div>
         </div>
-      </div>
+        <!-- <app-filter-appartment-kind *ngIf="propertiesShow" (transferNumberChecked)="numberOfAssetsChecked" ></app-filter-appartment-kind> -->
+        <app-filter-appartment-kind *ngIf="propertiesShow"
+          (transferNumberChecked)="passNum($event)" (transferAppartTypes)="passAppType($event)"
+          (transferHouseTypes)="passHouseType($event)" (transferOtherTypes)="passOtherType($event)"></app-filter-appartment-kind>
 
-      <app-filter-rooms *ngIf="roomsFilterShow"
-        (transferMinRooms)="passMinRoom($event)" (transferMaxRooms)="passMaxRoom($event)"></app-filter-rooms>
 
-      <div class="filter-box">
-        <label for="">מחיר</label>
-        <input class="width-small" type="number" name="from" id="min-rooms" placeholder="מ-"/>
-        <input class="width-small" type="number" name="to" id="max-rooms" placeholder="עד-"/>
-      </div>
 
-      <!-- buttons  -->
-      <div class="buttons">
-        <button
-          class="adviced_search_btn width-middle"
-          onclick="onClickAdvancedSearch()"
-          type="button"
-        >
-          <i class="fa-solid fa-circle-plus"></i>
-          <span>חיפוש מתקדם</span>
-        </button>
-
-        <button class="search_btn width-small" type="button">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <span>חיפוש</span>
-        </button>
-      </div>
-    </div>
-
-    <div *ngIf="advancedSearchShow" class="advanced_search_container">
-      <div class="advanced_search_properties">
-        <!-- title  -->
-        <h4>מאפייני דירה</h4>
-
-        <!-- checkboxes  -->
-        <div class="advanced_search_line">
-          <span class="check_item" (click)="onClickParking()">
-            <i
-              *ngIf="!parking"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="parking"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>חניה</span>
-          </span>
-
-          <span class="check_item" (click)="onClickLift()">
-            <i
-              *ngIf="!lift"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="lift"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>מעלית</span>
-          </span>
-          <span class="check_item" (click)="onClickAirCondition()">
-            <i
-              *ngIf="!airCondition"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="airCondition"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>מיזוג</span>
-          </span>
-          <span class="check_item" (click)="onClickBalcony()">
-            <i
-              *ngIf="!balcony"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="balcony"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>מרפסת</span>
-          </span>
-          <span class="check_item" (click)="onClickShelter()">
-            <i
-              *ngIf="!shelter"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="shelter"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>ממ"ד</span>
-          </span>
-          <span class="check_item" (click)="onClickGrating()">
-            <i
-              *ngIf="!grating"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="grating"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>סורגים</span>
-          </span>
-          <span class="check_item" (click)="onClickStorage()">
-            <i
-              *ngIf="!storage"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="storage"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>מחסן</span>
-          </span>
-          <span class="check_item" (click)="onClickHandicapped()">
-            <i
-              *ngIf="!handicapped"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="handicapped"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>גישה לנכים</span>
-          </span>
-          <span class="check_item" (click)="onClickRenovated()">
-            <i
-              *ngIf="!renovated"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="renovated"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>משופצת</span>
-          </span>
-          <span class="check_item" (click)="onClickFurnitured()">
-            <i
-              *ngIf="!furnitured"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="furnitured"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>מרוהטת</span>
-          </span>
-          <span class="check_item" (click)="onClickExclusive()">
-            <i
-              *ngIf="!exclusive"
-              class="advanced_search_checkbox fa-regular fa-square"
-            ></i>
-            <i
-              *ngIf="exclusive"
-              class="advanced_search_checked fa-solid fa-check"
-            ></i>
-            <span>בבלעדיות</span>
-          </span>
-        </div>
-      </div>
-
-      <div class="adv_search_middle advanced_search_properties">
-        <div class="adv_search_middle_item">
-          <span>קומה</span>
-
-          <div class="adv_search_input_container">
-            <div
-              class="adv_search_input dropdown-filter"
-              (click)="onClickStartFloor()"
-            >
-              <input class="width-small" type="text" placeholder="מ-" />
-              <i
-                class="fa-solid"
-                [ngClass]="
-                  startingFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'
-                "
-              ></i>
-            </div>
-            <div
-              class="adv_search_input dropdown-filter"
-              (click)="onClickFinalFloor()"
-            >
-              <input class="width-small" type="text" placeholder="עד-" />
-              <i
-                class="fa-solid"
-                [ngClass]="
-                  finalFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'
-                "
-              ></i>
-            </div>
+        <div class="filter-box width-small" (click)="onClickRooms()">
+          <label for="">חדרים</label>
+          <div class="dropdown-filter">
+            <span *ngIf="chosenMinRooms===0 && chosenMaxRooms===12">חדרים</span>
+            <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms!==12" >{{chosenMaxRooms}}-{{chosenMinRooms}}</span>
+            <span *ngIf="chosenMinRooms===0 && chosenMaxRooms!==12">עד- {{chosenMaxRooms}}</span>
+            <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms===12">מ- {{chosenMinRooms}}</span>
+            <i class="fa-solid black_color margin_right_auto"
+              [ngClass]="!roomsFilterShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
           </div>
         </div>
 
-        <app-filter-floor *ngIf="startingFloorListShow"></app-filter-floor>
-        <app-filter-floor2 *ngIf="finalFloorListShow"></app-filter-floor2>
+        <app-filter-rooms *ngIf="roomsFilterShow"
+          (transferMinRooms)="passMinRoom($event)" (transferMaxRooms)="passMaxRoom($event)"></app-filter-rooms>
 
-        <div class="adv_search_middle_item">
-          <span>גודל הדירה (במ"ר)</span>
-          <div>
-            <div class="adv_search_input_container">
-              <div class="adv_search_input dropdown-filter">
-                <input class="width-small" type="text" placeholder="מ-" />
-              </div>
+          <input formControlName="chosenMinRooms" style="display:none ;" type="text" value={{chosenMinRooms}} >
+          <input formControlName="chosenMaxRooms" style="display:none ;" type="text" value={{chosenMaxRooms}} >
 
-              <div class="adv_search_input dropdown-filter">
-                <input class="width-small" type="text" placeholder="עד-" />
-              </div>
-            </div>
-          </div>
+        <div class="filter-box">
+          <label for="">מחיר</label>
+          <input class="width-small" type="number" name="from" id="min-price" placeholder="מ-"
+              formControlName="min_price"/>
+          <input class="width-small" type="number" name="to" id="max-price" placeholder="עד-"
+              formControlName="max_price"/>
         </div>
-        <div class="adv_search_middle_item">
-          <span>תאריך כניסה</span>
-          <div>
-            <div class="adv_search_container long">
-              <div class="adv_search_input">
-                <input
-                  type="date"
-                  name="appartmentEntrance"
-                  [(ngModel)]="appartementEntrance"
-                  placeholder="החל מ- הזינו תאריך"
-                />
-              </div>
-              <div class="adv_search_input">
-                <input type="checkbox" placeholder="כניסה מיידית" />
-                <span>כניסה מיידית</span>
-              </div>
-            </div>
-          </div>
+
+        <!-- buttons  -->
+        <div class="buttons">
+          <button class="adviced_search_btn width-middle" (click)="onClickAdvancedSearch()"  type="button">
+            <i class="fa-solid fa-circle-plus"></i>
+            <span>חיפוש מתקדם</span>
+          </button>
+
+          <button class="search_btn width-small" type="submit" (click)="submitBasicSearch">חיפוש
+          </button>
         </div>
       </div>
+    </form>
 
 
-      <div class="adv_search_bottom advanced_search_properties">
-        <div class="adv_search_middle_item">
-          <span>חיפוש חופשי</span>
-          <div class="adv_search_input_container">
-            <div class="adv_search_input">
-              <input type="text" placeholder="" />
-            </div>
+    <form [formGroup]="advancedSearch" (ngSubmit)="submitAdvancedSearch()">
+      <div  *ngIf="advancedSearchShow" class="advanced_search_container">
 
-            <input type="checkbox" disabled />
-            <span>הצגת מושבים וקיבוצים בלבד</span>
-            <span>
-              <i class="fa-regular fa-circle-question"></i>
+        <div class="advanced_search_properties">
+          <!-- title  -->
+          <h4>מאפייני דירה</h4>
+
+          <!-- checkboxes  -->
+          <div class="advanced_search_line">
+
+            <span class="check_item" (click)="onClickParking()">
+              <input formControlName="parking"  type="checkbox"/>חניה
+              <!-- <i *ngIf="!parking" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="parking" class="advanced_search_checked fa-solid fa-check" ></i>
+              <span>חניה</span> -->
+            </span>
+
+            <span class="check_item" (click)="onClickLift()">
+              <input  formControlName="elevator" type="checkbox"/>מעלית
+              <!-- <i *ngIf="!lift" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="lift" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>מעלית</span> -->
+            </span>
+            <span class="check_item" (click)="onClickAirCondition()">
+              <input  formControlName="airConditioner" type="checkbox"/>מיזוג
+              <!-- <i *ngIf="!airCondition" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="airCondition" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>מיזוג</span> -->
+            </span>
+            <span class="check_item" (click)="onClickBalcony()">
+              <input  formControlName="balcony" type="checkbox"/>מרפסת
+              <!-- <i *ngIf="!balcony" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="balcony" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>מרפסת</span> -->
+            </span>
+            <span class="check_item" (click)="onClickShelter()">
+              <input  formControlName="shelter" type="checkbox"/>ממ"ד
+              <!-- <i *ngIf="!shelter" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="shelter" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>ממ"ד</span> -->
+            </span>
+            <span class="check_item" (click)="onClickGrating()">
+              <input  formControlName="grating" type="checkbox"/>סורגים
+              <!-- <i *ngIf="!grating" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="grating" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>סורגים</span> -->
+            </span>
+            <span class="check_item" (click)="onClickStorage()">
+              <input  formControlName="storage" type="checkbox"/>מחסן
+              <!-- <i *ngIf="!storage" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="storage" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>מחסן</span> -->
+            </span>
+            <span class="check_item" (click)="onClickHandicapped()">
+              <input  formControlName="handicapped" type="checkbox"/>גישה לנכים
+              <!-- <i *ngIf="!handicapped" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="handicapped" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>גישה לנכים</span> -->
+            </span>
+            <span class="check_item" (click)="onClickRenovated()">
+              <input  formControlName="renovated" type="checkbox"/>משופצת
+              <!-- <i *ngIf="!renovated" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="renovated" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>משופצת</span> -->
+            </span>
+            <span class="check_item" (click)="onClickFurnitured()">
+              <input  formControlName="furnitured" type="checkbox"/>מרוהטת
+              <!-- <i *ngIf="!furnitured" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="furnitured" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>מרוהטת</span> -->
+            </span>
+            <span class="check_item" (click)="onClickExclusive()">
+              <input  formControlName="exclusive" type="checkbox"/>בבלעדיות
+              <!-- <i *ngIf="!exclusive" class="advanced_search_checkbox fa-regular fa-square"></i>
+              <i *ngIf="exclusive" class="advanced_search_checked fa-solid fa-check"></i>
+              <span>בבלעדיות</span> -->
             </span>
           </div>
         </div>
-      </div>
-      <div class="adv_search_result advanced_search_properties">
-        <div></div>
-        <div class="adv_search_result_button">
-          <div>חיפוש</div>
+
+        <div class="adv_search_middle advanced_search_properties">
+          <div class="adv_search_middle_item">
+            <span>קומה</span>
+            <div class="adv_search_input_container">
+              <div class="adv_search_input dropdown-filter"(click)="onClickStartFloor()">
+                <input formControlName="minFloor" class="width-small" type="text" placeholder="מ-" value="{{chosenMinFloor}}"/>
+                <i class="fa-solid" [ngClass]="startingFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'"></i>
+              </div>
+              <div class="adv_search_input dropdown-filter" (click)="onClickFinalFloor()">
+                <input formControlName="maxFloor" class="width-small" type="text" placeholder="עד-" value="{{chosenMaxFloor}}" />
+                <i class="fa-solid" [ngClass]="finalFloorListShow ? 'fa-chevron-up' : ' fa-chevron-down'"></i>
+              </div>
+            </div>
+          </div>
+
+          <app-filter-floor [chosenMaxFloorC]="chosenMaxFloor" (transferMinFloor)="passMinFloor($event)" *ngIf="startingFloorListShow"></app-filter-floor>
+          <app-filter-floor2 [chosenMinFloorC]="chosenMinFloor" (transferMaxFloor)="passMaxFloor($event)" *ngIf="finalFloorListShow"></app-filter-floor2>
+
+          <div class="adv_search_middle_item">
+            <span>גודל הדירה (במ"ר)</span>
+            <div>
+              <div class="adv_search_input_container">
+                <div class="adv_search_input dropdown-filter">
+                  <input formControlName="minArea" class="width-small" type="text" placeholder="מ-" />
+                </div>
+
+                <div class="adv_search_input dropdown-filter">
+                  <input formControlName="maxArea" class="width-small" type="text" placeholder="עד-" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="adv_search_middle_item">
+            <span>תאריך כניסה</span>
+            <div>
+              <div class="adv_search_container long">
+                <div class="adv_search_input">
+
+                  <input formControlName="entrDate" type="date" name="appartmentEntrance" placeholder="החל מ- הזינו תאריך"/>
+                  <!-- [(ngModel)]="appartementEntrance" -->
+                </div>
+                <div class="adv_search_input">
+                  <input formControlName="flexEntr" type="checkbox" placeholder="כניסה מיידית" />
+                  <span>כניסה מיידית</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="adv_search_result_clear">נקה</div>
+
+
+        <div class="adv_search_bottom advanced_search_properties">
+          <div class="adv_search_middle_item">
+            <span>חיפוש חופשי</span>
+            <div class="adv_search_input_container">
+              <div class="adv_search_input">
+                <input formControlName="freeText" type="text" placeholder="" />
+              </div>
+
+              <input type="checkbox" disabled />
+              <span>הצגת מושבים וקיבוצים בלבד</span>
+              <span>
+                <i class="fa-regular fa-circle-question"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="adv_search_result advanced_search_properties">
+          <div></div>
+          <button class="adv_search_result_button" type="submit" (click)="submitAdvancedSearch()">
+            <div>חיפוש</div>
+          </button>
+          <div (click)="onClickClear()" class="adv_search_result_clear">נקה</div>
+        </div>
+
       </div>
-    </div>
+    </form>
   </div>
 </div>

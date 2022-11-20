@@ -1,4 +1,4 @@
-<form  [formGroup]="finalStage" (ngSubmit)="onSubmitFinalStageForm()">
+<form  >
   <div class="form_container">
     <div class="post_stage_title">
       <div class="post_stage_title_item">
@@ -140,12 +140,12 @@
           </div>
           <div class="days_text">120 ימים</div>
         </div>
-        <button type="submit" class="button_container_emph black_color">בחירה במסלול</button>
+        <button (click)="onSubmitFinalStageForm()" type="submit" class="button_container_emph black_color">בחירה במסלול</button>
       </div>
     </div>
 
     <div class="post_input_section">
-      <input type="checkbox">אני מאשר קבלת דיוור פרסומי הקשור למודעה שפרסמתי באתר יד 2 (להסרה - יש להוריד את הסימון בתיבה)
+      <input type="checkbox" checked>אני מאשר קבלת דיוור פרסומי הקשור למודעה שפרסמתי באתר יד 2 (להסרה - יש להוריד את הסימון בתיבה)
 
     </div>
 

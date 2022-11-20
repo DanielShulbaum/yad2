@@ -1,5 +1,5 @@
 .main_view {
-  width: 100vw;
+  // width: 100vw;
 }
 
 .search_container {
@@ -59,16 +59,19 @@ h3 span {
 
   font-size: 1rem;
 }
-
+// input[type="date"] {
+//   direction: rtl;
+// }
 /* filter input , filter button  */
-input,
+input[type="text"],
+input[type="number"],
+input[type="date"],
 .search_filters button,
 .dropdown-filter {
   height: 2.7rem;
   background-color: white;
   border: 1px hsl(0, 3%, 85%) solid;
   padding: 0 0.5em;
-
   font-size: 0.9rem;
 }
 
@@ -114,9 +117,7 @@ button,
 button i {
   margin-left: 0.3em;
 }
-// input[type="date"] {
-//   direction: rtl;
-// }
+
 .buttons .adviced_search_btn {
   border: none;
   background-color: hsl(0, 0%, 90%);
@@ -157,6 +158,15 @@ button i {
   align-items: center;
   justify-content: space-between;
   padding: 1.5em 1em;
+  input[type="checkbox"]{
+    width: 20px!important;
+    height: 20px!important;
+    vertical-align:text-top!important;
+
+  }
+  input[type="checkbox"]:checked{
+    accent-color:orangered!important
+  }
 }
 .advanced_search_checkbox {
   margin-right: 1px;
@@ -199,12 +209,10 @@ button i {
   // min-width: 120px;
   display: flex;
   flex-direction: column;
-  // margin-right: 5px;
-  // margin-left: 15px;
-  // flex-wrap: wrap;
-  //     flex-grow: 4;
-  //     flex-shrink: 1;
-  //     flex-basis: 0%;
+  input[type="text"]{
+  border-left: none;
+  border-right: none;
+  }
 }
 
 .adv_search_input_container {
@@ -225,6 +233,15 @@ button i {
   // border: 1px solid gray;
   // margin-left: 5px;
   // align-items: center;
+  input[type="checkbox"]{
+    width: 20px!important;
+    height: 20px!important;
+    vertical-align:text-top!important;
+
+  }
+  input[type="checkbox"]:checked{
+    accent-color:orangered!important
+  }
 
   // input[type="checkbox"] {
   //   width: 1.1rem !important;
@@ -239,37 +256,21 @@ button i {
   //   font-size: 1.1rem;
   //   text-align: center;
   //   line-height: 1.1rem;
-  // background: orange;
+  //   accent-color: orange;
   // }
-  input {
-    border: none;
-    border-bottom: 1px solid hsl(0, 3%, 85%);
-    border-top: 1px solid hsl(0, 3%, 85%);
-  }
+  // input[type="checkbox"]:checked{
+  //   accent-color: orange;
+  // }
+  // input {
+  //   border: none;
+  //   border-bottom: 1px solid hsl(0, 3%, 85%);
+  //   border-top: 1px solid hsl(0, 3%, 85%);
+  // }
 
   // input[type="date"] {
   //   direction: rtl;
-  // }
 
-  input[type="checkbox"]:checked:after {
-    // width: 1.2rem !important;
-    // height: 1.2rem !important;
-    // outline: 1px solid gray;
-    content: "\2713"; //'✔';
-    color: white;
-    background: orange;
-  }
 
-  // input {
-  //   border: none;
-  //   width: 80%;
-  // }
-  // input[type='checkbox']:checked:after {
-  //   content: '\2713';color: white;
-  // }
-  input:focus {
-    outline: none;
-  }
 }
 
 .adv_search_container.long {
@@ -296,6 +297,14 @@ button i {
 
 .adv_search_input {
   display: flex;
+  align-items: center;
+  input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+  }
+  input[type="checkbox"]:checked{
+    accent-color:orangered!important
+  }
 }
 
 .no_border {
@@ -320,9 +329,10 @@ button i {
     width: 330px;
   }
   .adv_search_input_container {
+    display: flex;
     // width: 100%;
     // max-width: 900px;
-    // align-items: center;
+    align-items: center;
     // gap: 5px;
     // color: gray;
 
@@ -354,17 +364,34 @@ button i {
   // border-bottom: 1px solid gray;
   border: none;
   justify-content: space-between;
+  button{
+
+    outline: none;
+  }
 }
 .adv_search_result_button {
   display: flex;
   width: 80px;
   height: 40px;
-  background: orange;
+  background: #ff7100;
   color: white;
   align-items: center;
   justify-content: center;
+  border: none;
 }
+
 .adv_search_result_clear {
   justify-self: end;
   padding-left: 30px;
+}
+// to remove arrows from input number
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.adv_search_result_clear:hover {
+  justify-self: end;
+  padding-left: 30px;
+  cursor: pointer;
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header2',
@@ -7,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Header2Component implements OnInit {
   modaleShow:boolean=false;
-
   realEstateShow:boolean = false;
   carShow:boolean = false;
   secondHandShow:boolean = false;
@@ -19,10 +22,25 @@ export class Header2Component implements OnInit {
   noticeShow:boolean = false;
   likedShow:boolean = false;
   userMenuShow:boolean = false;
-  constructor() { }
+
+  abriviation:string='';
+  subscriptionToCurrentUser:Subscription = new Subscription;
+  currentUser:User|undefined=undefined;
+  constructor(private router:Router, private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.subscriptionToCurrentUser = this.authService.currentUser.
+        subscribe(user => {
+          if(user !== (undefined || null)){
+            this.currentUser = user;
+            this.abriviation = this.currentUser.name[0]+this.currentUser.surname[0];
+
+
+          }
+        })
   }
+
+
 // consider to enter all these elements to array and work based on index
 onClickModale(){
   this.modaleShow = !this.modaleShow;
@@ -59,5 +77,11 @@ onLikeShow(){
 }
 onUserMenu(){
   this.userMenuShow = !this.userMenuShow;
+}
+passShowModale(event:boolean){
+  this.modaleShow = event;
+}
+onUserClick(){
+  this.router.navigate(['/auth']);
 }
 }

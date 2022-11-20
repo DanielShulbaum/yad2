@@ -5,8 +5,8 @@ export class Appartement {//consider changing to interface
 
   constructor (
     public id:number,
-    public imgPath:string,//[]
-    public price:number,
+
+
     public postDate:Date,
     public streetName:string,
     public houseNumber:number,
@@ -17,7 +17,6 @@ export class Appartement {//consider changing to interface
     public floorNumber:number,
     public area:number,
     public description:string,
-    public condition:string,
     public floorsInBuilding:number,
     public entranceDate:Date,
     public parkingLots:number,
@@ -37,7 +36,12 @@ export class Appartement {//consider changing to interface
     public hasTadiranAir:boolean,
     public hasFurniture:boolean,
     public isFlexEntranceDate:boolean,  //this.entranceDate!==null?false:true
-    public hasResidentialUnit:boolean
+    public hasResidentialUnit:boolean,
+
+
+    public imgPath?:string[],//[]
+    public price?:number,
+
      ) {
 
   }

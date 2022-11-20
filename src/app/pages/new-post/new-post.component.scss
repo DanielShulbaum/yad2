@@ -4,6 +4,15 @@
   margin: 0;
   padding: 0;
 }
+input[type="checkbox"]{
+  width: 20px!important;
+  height: 20px!important;
+  vertical-align:text-top!important;
+
+}
+input[type="checkbox"]:checked{
+  accent-color:orangered!important
+}
 .newpost_header{
   padding: 0 20px;
   width: 100vw;
@@ -104,11 +113,13 @@ body{
   }
 }
 .post_stage_title{
+  position: relative;
   display: flex;
   width: 100%;
   font-size: 1.5rem;
   align-items: center;
   gap: 20px;
+  cursor: pointer;
   div{
     display: flex;
     align-items:center;
@@ -133,13 +144,23 @@ body{
   padding: 20px;
   width: 45%;
   border: 1px gray solid;
+  cursor: pointer;
   i{
     font-size: 4rem;
   }
   @media (min-width:880px) {
     width: 20%;
   }
+.full_width{
 
+    width: 743px!important;
+
+}
+}
+.edit_icon{
+  position: absolute;
+  left: 10px;
+  cursor: pointer;
 }
 .post_stage_item:hover{
   border: 1px orange solid;
@@ -215,6 +236,7 @@ body{
   border-radius: 15px;
   border: lightgray 1px solid;
   background: white;
+  cursor: pointer;
 }
 .button_continue{
   height: 35px;
@@ -223,6 +245,7 @@ body{
   border: orangered 1px solid;
   background: white;
   color: orangered;
+  cursor: pointer;
 }
 .button_continue:hover{
   background: orangered;
@@ -244,12 +267,8 @@ body{
     display: block;
   }
 }
-input[type="checkbox"]{
-  width: 20px;
-  height: 20px;
-  vertical-align:text-top;
 
-}
-input[type="checkbox"]:checked{
-  accent-color:orangered
+.error_message{
+  color: red;
+  display: block;
 }

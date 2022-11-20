@@ -68,6 +68,7 @@
   }
 }
 .post_input_section{
+  flex-wrap: wrap;//
   display: flex;
   align-items: center;
   width: 100%;
@@ -142,5 +143,9 @@
     font-size: 0.9rem;
   }
 
-
+}
+.error_message{
+  width: 100%;
+  display: block;
+  color: red;
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter  } from '@angular/core';
+
 
 @Component({
   selector: 'app-modale',
@@ -15,12 +16,15 @@ export class ModaleComponent implements OnInit {
       demandedShow:boolean=false;
       bussinesShow:boolean=false;
       petsShow:boolean=false;
+      showModale:boolean=true;
+      @Output() transferCloseModale = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
   }
   onClickCloseModale(){
-
+    this.showModale=false;
+    this.transferCloseModale.emit(this.showModale);
   }
   onClickRealEstate(){
     this.realEstateShow = !this.realEstateShow;
