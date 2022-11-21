@@ -103,16 +103,6 @@ export class NewPostService {
     this.hasGrating=hasGrating;//entered
     this.assetDescription = assetDescription; //entered
 
-    // console.log(this.assetDescription);
-    // console.log(this.hasGrating);
-    // console.log(this.hasKosherKitchen);
-    // console.log(this.isRenovated);
-    // console.log(this.hasFurniture);
-    // console.log(this.hasAirCondition);
-    // console.log(this.assetParkingLots);
-    // console.log(this.assetBalconiesNum);
-    // console.log(this.hasShelter);
-
   }
   onGetPaymentsAsset(form: FormGroup){
     this.assetBuiltArea = form.value.builtArea;
@@ -131,6 +121,7 @@ export class NewPostService {
     this.postNumeration=form.value.postNumeration;;
   }
   OnAddNewPost(){
+
     let post = new Appartement(this.appartementService.counter++,new Date(),this.assetStreet,
     this.assetHouse, this.assetType,this.assetNeighbourhood,this.assetCity,this.assetRoomsNumber,
     this.assetFloorNum,this.assetTotalArea, this.assetDescription, this.assetNumOfFloorsBuilding,
@@ -138,8 +129,15 @@ export class NewPostService {
     this.hasAirCondition, this.hasGrating, this.hasLift, this.hasKosherKitchen, this.hasSunBoiler,
     this.hasIncapableAccess, this.isRenovated, this.hasShelter, this.hasStorage, this.hasTadiran,
     this.hasFurniture, this.isAssetEntrFlex,false,this.picturesLinksArray,this.assetPrice);
+
+    //line below adds appartement to service
     this.appartementService.appartementList.push(post);
-    console.log(post);
+
+    // optional
+    const postJson = JSON.stringify(post);
+
+    this.appartementService.postAppartements(post);
+    console.log(postJson);
 
     this.appartementService.counter++;
     this.router.navigate(['/home']);

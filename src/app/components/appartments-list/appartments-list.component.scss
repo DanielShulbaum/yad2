@@ -4,14 +4,17 @@
   margin: 10px 0 5px;
   max-width: 970px;
   width: 100%;
+  // border: 1px solid gray;
 }
 .container{
   width: 100%;
-  background: green;
+  // background: green;
   display: flex;
   flex-direction: column;
   font-family: "Rubik", sans-serif;
   font-size: 0.9rem;
+
+
 }
 .appartements_filter{
   display: flex;

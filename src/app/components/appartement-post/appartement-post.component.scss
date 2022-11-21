@@ -1,10 +1,11 @@
 .main_container{
   margin: 0.2rem ;
   width: 100%;
-  background: gray;
+  // background: gray;
   // height: 150px; //to delete later
   display: flex;
   flex-direction: column;
+  border: 1px gray solid;
 }
 .min_post{
   display: flex;

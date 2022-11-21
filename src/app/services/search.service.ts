@@ -12,22 +12,33 @@ minRooms:number = 0;
 maxRooms:number = 12;
 minPrice?:number;
 maxPrice?:number;
-searchString?:string;
+minFloor:number = 0;
+maxFloor:number=17;
+minArea:number = 0;
+maxArea:number = 150;
+searchString:string ="";
 chosenAppTypes = ['דירה','דירת גן','גג\פנטהאוז','דופלקס','דירת נופש','מרתף\פרטר','טריפלקס','יחידת דיור','סטודיו\לופט',]
 chosenHousesTypes=["'בית פרטי/קוטג",'דו משפחתי','משק חקלאי/נחלה',"משק עזר",]
 chosenOtherTypes=['מגרשים','דיור מוגן','בניין מגורים','מחסן','חניה',"קב' רכישת/ זכות לנכס",'כללי',]
 
-  constructor(private appartementService:AppartementsService) { }
+  constructor() { }
 
-  // searchFilter$=new Subject<string>();
+  searchFilter$=new Subject<string>();
 
-  getBasicSearch(chosenAppTypes:boolean[],chosenHousesTypes:boolean[],chosenOtherTypes:boolean[],
-                 location?:string, minRooms?:number, maxRooms?:number, minPrice?:number, maxPrice?:number,
-                  ){
-    if(location!==undefined){
+
+
+  getBasicSearch(basicSearch:boolean,chosenAppTypes:boolean[],chosenHousesTypes:boolean[],chosenOtherTypes:boolean[],
+                 location?:string, minRooms?:number, maxRooms?:number, minPrice?:number, maxPrice?:number,){
+
+    this.searchString ="";
+    if(location!==''){
       this.location = location;
-      this.searchString=this.searchString+"streetName like="+location+'|'+"cityName like="+location+
-      '|'+ 'neighbourhoodName like='+location;
+      this.searchString=this.searchString+"cityName_like="+location
+      // ||streetName_like
+      // this.searchString=this.searchString+"streetName_like="+location
+      // this.searchString=this.searchString+"cityName_like="+location+"&"+"streetName_like="+location
+      // this.searchString=this.searchString+"streetName like="+location+'||'+"cityName like="+location+
+      // '||'+ 'neighbourhoodName like='+location;
     }
     if(minRooms!==undefined){
       this.minRooms = minRooms;
@@ -35,34 +46,114 @@ chosenOtherTypes=['מגרשים','דיור מוגן','בניין מגורים','
     if(maxRooms!==undefined){
       this.maxRooms = maxRooms;
     }
-    if(minPrice!==undefined){
+
+    if(minPrice!=0){
       this.minPrice = minPrice;
     }
-    if(maxPrice!==undefined){
+    if(maxPrice!=0){
       this.maxPrice = maxPrice;
     }
+// set rooms
     this.setRoomsSearch();
     this.setPriceSearch();
     for(let index = 0; index<chosenAppTypes.length; index++){
       if(chosenAppTypes[index] === true){
-        this.searchString = this.searchString+'appartementKind'+ this.chosenAppTypes[index];
+        this.searchString = this.searchString+'appartementKind='+ this.chosenAppTypes[index]+'&';
       }
     }
     for(let index = 0; index<chosenHousesTypes.length; index++){
       if(chosenHousesTypes[index] === true){
-        this.searchString = this.searchString+'appartementKind'+ this.chosenHousesTypes[index];
+        this.searchString = this.searchString+'appartementKind='+ this.chosenHousesTypes[index]+'&';
       }
     }
     for(let index = 0; index<chosenOtherTypes.length; index++){
       if(chosenOtherTypes[index] === true){
-        this.searchString = this.searchString+'appartementKind'+ this.chosenOtherTypes[index];
+        this.searchString = this.searchString+'appartementKind='+ this.chosenOtherTypes[index]+'&';
       }
     }
-
-    // if(this.searchString !== undefined){
-    //     this.searchFilter$.next(this.searchString);
-    // }
+    if(basicSearch){
+      this.passSearchString();
+    }
   }
+  getAdvancedSearch(parking:boolean,elevator:boolean,airConditioner:boolean,
+    shelter:boolean, grating:boolean, storage:boolean, handicapped:boolean, renovated:boolean,
+    furnitured:boolean,minFloor:number,maxFloor:number,minArea:number,
+    maxArea:number,entrDate:Date,flexEntr:boolean,freeText:string){
+
+      if(parking){
+        this.searchString=this.searchString+"parkingLots=2&";
+      }
+      if(elevator){
+        this.searchString=this.searchString+"lift=true&";
+      }
+      if(airConditioner){
+        this.searchString=this.searchString+"airConditioner=true&";
+      }
+      if(shelter){
+        this.searchString=this.searchString+"hasShelter=true&";
+      }
+      if(grating){
+        this.searchString=this.searchString+"gratings=true&";
+      }
+      if(storage){
+        this.searchString=this.searchString+"hasStoragePlace=true&";
+      }
+      if(handicapped){
+        this.searchString=this.searchString+"handicappedAccess=true&";
+      }
+      if(renovated){
+        this.searchString=this.searchString+"isRenovated=true&";
+      }
+      if(furnitured){
+        this.searchString=this.searchString+"hasFurniture=true&";
+      }
+      if(handicapped){
+        this.searchString=this.searchString+"handicappedAccess=true&";
+      }
+      if(handicapped){
+        this.searchString=this.searchString+"handicappedAccess=true&";
+      }
+      if(handicapped){
+        this.searchString=this.searchString+"handicappedAccess=true&";
+      }
+      if(minFloor!=0){
+        this.minFloor = minFloor;
+      }
+      if(maxFloor!=0){
+        this.maxFloor = maxFloor;
+      }
+      if(minArea!=0){
+        this.minArea = minArea;
+      }
+      if(maxArea!=0){
+        this.maxArea = maxArea;
+      }
+
+
+      this.setFloor();
+      this.setArea();
+
+      this.passSearchString()
+
+  }
+
+  passSearchString(){
+    if(this.searchString !== undefined){
+      this.searchFilter$.next(this.searchString);
+      console.log(this.searchString);
+  }
+  }
+
+setFloor(){
+  for(let index=this.minFloor;index<=this.maxFloor;index++){
+    this.searchString = this.searchString+"floorNumber="+index+'&';
+  }
+}
+setArea(){
+  for(let index=this.minArea;index<=this.maxArea;index=index+10){
+    this.searchString = this.searchString+"area="+index+'&';
+  }
+}
 
 setRoomsSearch(){
   for(let index = this.minRooms; index<=this.maxRooms;index = index+0.5){
@@ -70,16 +161,12 @@ setRoomsSearch(){
   }
 }
 setPriceSearch(){
-  if(this.minPrice!==undefined && this.maxPrice !==undefined){
-    for(let index = this.minPrice; index<=this.maxPrice; index = index+10000){
-      this.searchString = this.searchString+'price='+index+'&';
-    }
-  }else if(this.minPrice !==undefined){
-    for(let index = this.minPrice; index<500000000;index = index+10000){
+  if(this.minPrice !==undefined){
+    for(let index = this.minPrice; index<500000000;index = index+1000000){
       this.searchString = this.searchString+'price='+index+'&';
     }
   }else if(this.maxPrice!==undefined){
-    for(let index = 0; index <=this.maxPrice;index = index+10000){
+    for(let index = 0; index <=this.maxPrice;index = index+1000000){
       this.searchString = this.searchString+'price='+index+'&';
     }
   }

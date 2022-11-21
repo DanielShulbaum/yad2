@@ -176,24 +176,30 @@ export class SearchTool2Component implements OnInit {
   }
 
   submitBasicSearch(){
-   this.searchService.getBasicSearch(this.chosenAppTypes,this.chosenHousesTypes,this.chosenOtherTypes,
+   this.searchService.getBasicSearch(true,this.chosenAppTypes,this.chosenHousesTypes,this.chosenOtherTypes,
       this.basicSearch.value.location, this.chosenMinRooms, this.chosenMaxRooms,
-        this.basicSearch.value.minPrice,this.basicSearch.value.maxPrice,)
+        this.basicSearch.value.min_price,this.basicSearch.value.max_price)
 
   // this.appartementsService.getAppartementsByFilter(this.chosenAppTypes,this.chosenHousesTypes,this.chosenOtherTypes,
   //       this.basicSearch.value.location, this.chosenMinRooms, this.chosenMaxRooms,
   //         this.basicSearch.value.minPrice,this.basicSearch.value.maxPrice)
 
-  //create subject in service
-  // maint content subscribed to subject
-  // and gets params of search - after geting params  - activates getAppartements and
-// params trasnferred from searchtool after click to the subject - all
+
   }
 
   submitAdvancedSearch(){
-    console.log(this.advancedSearch);
+    this.searchService.getBasicSearch(false,this.chosenAppTypes,this.chosenHousesTypes,this.chosenOtherTypes,
+      this.basicSearch.value.location, this.chosenMinRooms, this.chosenMaxRooms,
+        this.basicSearch.value.min_price,this.basicSearch.value.max_price);
 
-  }
+
+  this.searchService.getAdvancedSearch(this.advancedSearch.value.parking,this.advancedSearch.value.elevator,this.advancedSearch.value.airConditioner,
+    this.advancedSearch.value.shelter,this.advancedSearch.value.grating,this.advancedSearch.value.storage,this.advancedSearch.value.handicapped,
+    this.advancedSearch.value.renovated,this.advancedSearch.value.furnitured,this.advancedSearch.value.minFloor,
+    this.advancedSearch.value.maxFloor,this.advancedSearch.value.minArea,this.advancedSearch.value.maxArea,this.advancedSearch.value.entrDate,this.advancedSearch.value.flexEntr,
+    this.advancedSearch.value.freeText)
+
+      }
   onClickClear(){
     this.advancedSearch.reset()
   }

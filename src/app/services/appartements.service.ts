@@ -365,11 +365,13 @@ getAppartementsList(){
 }
 
 getAppartements( filters?:string):Observable<any>{
-  if(filters!== undefined){
-    console.log(filters);
+  // if(filters!== undefined){
+  //   console.log(filters);
+  // }
+  // console.log('get appartements');
+  if(filters === undefined){
+    return this.http.get("http://localhost:3000/appartements?");
   }
-  console.log('get appartements');
-
   return this.http.get("http://localhost:3000/appartements?" + filters);
 }
 // getAppartementsByFilter(chosenAppTypes:boolean[],chosenHousesTypes:boolean[],chosenOtherTypes:boolean[],
@@ -380,8 +382,8 @@ getAppartements( filters?:string):Observable<any>{
 //   return this.getAppartements(searchString);
 // }
 
-postAppartements(data:Appartement):Observable<any>{
-  return this.http.post('http://localhost:3000/appartements',{data});
+postAppartements(data:Appartement){
+   this.http.post('http://localhost:3000/appartements',{data});
 }
 
 }
