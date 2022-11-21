@@ -41,6 +41,7 @@ import { FormContactDetailsComponent } from './components/form-contact-details/f
 import { FormFinalStageComponent } from './components/form-final-stage/form-final-stage.component';
 import { SortPipePipe } from './shared/sort-pipe.pipe';
 import { FilterSimplePipe } from './shared/filter-simple.pipe';
+import { HttpClient, HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -87,7 +88,9 @@ import { FilterSimplePipe } from './shared/filter-simple.pipe';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

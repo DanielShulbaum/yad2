@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy, } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { Appartement } from 'src/app/models/appartement.model';
 import { AppartementsService } from 'src/app/services/appartements.service';
+import { SearchService } from 'src/app/services/search.service';
+// import { HttpClient} from '@angular/common/http'
 
 
 
@@ -13,17 +15,33 @@ import { AppartementsService } from 'src/app/services/appartements.service';
 export class MainContentComponent implements OnInit, OnDestroy {
 
   subscriptionAppartementsList: Subscription=new Subscription;
+  subscriptionAppList:Subscription = new Subscription;
+  subscriptionToSearchFilter:Subscription = new Subscription;
   appartementListToShow:Appartement[]=[];
+  appList:Appartement[]=[];
   sortBy:number=0;
   filterWithPrice=false;
   filterWithPictures=false;
-  constructor(private appartementsService:AppartementsService) { }
+  filterSearch:string='';
+
+
+  constructor(private appartementsService:AppartementsService, private searchService:SearchService ) { }
 
   ngOnInit(): void {
-    this.subscriptionAppartementsList = this.appartementsService.getAppartementsList()
-      .subscribe(appartements => {
+
+    this.subscriptionAppList = this.appartementsService.getAppartements().
+      subscribe({next:(appartements) =>{
         this.appartementListToShow = appartements;
-      });
+      }});
+
+      // this.subscriptionToSearchFilter = this.searchService.searchFilter$.
+      // subscribe({next:(search) =>{
+      //   this.filterSearch = search;
+      //   this.appartementsService.getAppartements(this.filterSearch).
+      //   subscribe({next:(appartements) =>{
+      //     this.appartementListToShow = appartements;}})
+      // }});
+
 
 // regular appearance by id
     // this.subscriptionAppartementsList = this.appartementsService.getAppartementsList()
@@ -44,6 +62,8 @@ export class MainContentComponent implements OnInit, OnDestroy {
     //       }});
   }
 
+
+
   passSortChoice(event:number){
     this.sortBy=event;
     // commented out 14.11.22
@@ -60,6 +80,13 @@ export class MainContentComponent implements OnInit, OnDestroy {
     this.filterWithPictures=event;
   }
 
+  showRoomsandID(){
+    const filter = "roomsNumber=5&id=1"
+    this.subscriptionAppList = this.appartementsService.getAppartements(filter).
+    subscribe({next:(appartements) =>{
+      this.appartementListToShow = appartements;
+    }});
+  }
 // commented out 14.11.22
   // updateListBySort(){
   //   if(this.sortBy===2){
@@ -119,5 +146,6 @@ export class MainContentComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.subscriptionAppartementsList.unsubscribe();
+    this.subscriptionToSearchFilter.unsubscribe();
   }
 }

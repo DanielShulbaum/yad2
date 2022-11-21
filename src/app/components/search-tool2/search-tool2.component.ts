@@ -1,5 +1,7 @@
 import {  Component,  OnInit } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup } from '@angular/forms';
+import { AppartementsService } from 'src/app/services/appartements.service';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-search-tool2',
@@ -43,7 +45,7 @@ export class SearchTool2Component implements OnInit {
 
    //to get a date that was chosen
    appartementEntrance:Date | undefined;
-  constructor(private fb:FormBuilder, ) { }
+  constructor(private fb:FormBuilder, private searchService:SearchService, private appartementsService:AppartementsService ) { }
 
   ngOnInit(): void {
 
@@ -58,7 +60,7 @@ export class SearchTool2Component implements OnInit {
     //   })
     //   })
     this.basicSearch=this.fb.group({
-      location:this.fb.control(''),
+        location:this.fb.control(''),
         min_price:this.fb.control(''),
         max_price:this.fb.control(''),
         chosenMinRooms:this.fb.control(''),
@@ -84,7 +86,6 @@ export class SearchTool2Component implements OnInit {
         flexEntr:this.fb.control(''),
         freeText:this.fb.control(''),
       });
-
   }
 
   passMinRoom(event:number){
@@ -175,8 +176,20 @@ export class SearchTool2Component implements OnInit {
   }
 
   submitBasicSearch(){
-    console.log(this.basicSearch);
+   this.searchService.getBasicSearch(this.chosenAppTypes,this.chosenHousesTypes,this.chosenOtherTypes,
+      this.basicSearch.value.location, this.chosenMinRooms, this.chosenMaxRooms,
+        this.basicSearch.value.minPrice,this.basicSearch.value.maxPrice,)
+
+  // this.appartementsService.getAppartementsByFilter(this.chosenAppTypes,this.chosenHousesTypes,this.chosenOtherTypes,
+  //       this.basicSearch.value.location, this.chosenMinRooms, this.chosenMaxRooms,
+  //         this.basicSearch.value.minPrice,this.basicSearch.value.maxPrice)
+
+  //create subject in service
+  // maint content subscribed to subject
+  // and gets params of search - after geting params  - activates getAppartements and
+// params trasnferred from searchtool after click to the subject - all
   }
+
   submitAdvancedSearch(){
     console.log(this.advancedSearch);
 

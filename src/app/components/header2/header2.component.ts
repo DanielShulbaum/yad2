@@ -34,8 +34,6 @@ export class Header2Component implements OnInit {
           if(user !== (undefined || null)){
             this.currentUser = user;
             this.abriviation = this.currentUser.name[0]+this.currentUser.surname[0];
-
-
           }
         })
   }
@@ -83,5 +81,8 @@ passShowModale(event:boolean){
 }
 onUserClick(){
   this.router.navigate(['/auth']);
+}
+onNewPostClick(){
+  this.router.navigate(['/new-post']);
 }
 }

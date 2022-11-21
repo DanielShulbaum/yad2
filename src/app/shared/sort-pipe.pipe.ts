@@ -17,8 +17,6 @@ export class SortPipePipe implements PipeTransform {
       sortedItems=this.sortByDate(items);
     }
 
-
-
     return sortedItems;
   }
 

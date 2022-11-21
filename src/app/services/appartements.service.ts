@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Appartement } from '../models/appartement.model';
 import { User } from '../models/user.model';
+import { HttpClient} from '@angular/common/http'
+import { SearchService } from './search.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { User } from '../models/user.model';
 export class AppartementsService {
   // appartementList:Appartement[]=[];
 counter:number=1;
+// appList:Appartement[]=[];
 appartementList:Appartement[]=[
 
   new Appartement(
@@ -350,13 +353,35 @@ appartementList:Appartement[]=[
   ),
 ];
 
-
+// roomsNumber=5&id=1
 appartementsList$ = new BehaviorSubject<Appartement[]>(this.appartementList);
 
+// appartementsList$ = new BehaviorSubject<any>(this.getAppartements());
+
+
+constructor(private http:HttpClient,private searchService:SearchService ) { }
 getAppartementsList(){
   return this.appartementsList$;
 }
 
+getAppartements( filters?:string):Observable<any>{
+  if(filters!== undefined){
+    console.log(filters);
+  }
+  console.log('get appartements');
 
-  constructor() { }
+  return this.http.get("http://localhost:3000/appartements?" + filters);
+}
+// getAppartementsByFilter(chosenAppTypes:boolean[],chosenHousesTypes:boolean[],chosenOtherTypes:boolean[],
+//   location?:string, minRooms?:number, maxRooms?:number, minPrice?:number, maxPrice?:number,):Observable<Appartement[]>{
+
+//     let searchString=this.searchService.getBasicSearch(chosenAppTypes,chosenHousesTypes,chosenOtherTypes,
+//       location,minRooms,maxRooms,minPrice,maxPrice);
+//   return this.getAppartements(searchString);
+// }
+
+postAppartements(data:Appartement):Observable<any>{
+  return this.http.post('http://localhost:3000/appartements',{data});
+}
+
 }
