@@ -48,7 +48,10 @@ export class AssetDetailsComponent implements OnInit {
 
   }
   onSubmitDetailsForm(){
-    this.newPostService.onGetAssetDetails(this.assetDetails,
+    if(!this.assetDetails.valid){
+      return;
+    }
+      this.newPostService.onGetAssetDetails(this.assetDetails,
       this.hasAirCondition,this.hasShelter,this.hasStorage, this.hasFurniture, this.hasIncapableAccess, this.hasLift,
       this.hasTadiran,this.isRenovated,this.hasKosherKitchen,this.hasSunBoiler,this.hasGrating,
       this.assetDescriptionLetters );

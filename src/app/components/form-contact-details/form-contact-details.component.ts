@@ -18,8 +18,8 @@ export class FormContactDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.assetContactDetails = this.fb.group({
       contactName:this.fb.control('', Validators.required),
-      contactPhone:this.fb.control('',[Validators.required,Validators.pattern("^[0-9]*$")]),
-      contactAdditionalPhone:this.fb.control('', Validators.pattern("^[0-9]*$")),
+      contactPhone:this.fb.control('',Validators.required),
+      contactAdditionalPhone:this.fb.control('', Validators.minLength(10)),
       contactEmail:this.fb.control('', Validators.email),
       termsAccept:this.fb.control('', Validators.required),
       postNumeration:this.fb.control(''),
@@ -29,6 +29,10 @@ export class FormContactDetailsComponent implements OnInit {
   }
 
   onSubmitContactDetailsForm(){
+    if(!this.assetContactDetails.valid){
+         return;
+    }
+
     this.newPostService.onGetContactDetails(this.assetContactDetails);
     this.transferComplete6Stage.emit(true);
   }

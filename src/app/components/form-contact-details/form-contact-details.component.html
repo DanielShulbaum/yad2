@@ -1,5 +1,5 @@
 
-<form #formContactDetails= "ngForm" [formGroup]="assetContactDetails" (ngSubmit)="onSubmitContactDetailsForm()">
+<form [formGroup]="assetContactDetails" #formContactDetails= "ngForm"  (ngSubmit)="onSubmitContactDetailsForm()">
   <div class="form_container">
     <div class="post_stage_title">
       <div class="post_stage_title_item">
@@ -14,15 +14,16 @@
     <div class="line_title">שם איש קשר*</div>
     <div class="post_input_section">
       <input class="form_input" type="text" formControlName = "contactName"
-      [style.border]="assetContactDetails.controls['contactName'].hasError && formContactDetails.submitted ? '1px solid #ff0000':''">
-      <div *ngIf="assetContactDetails.controls['contactName'].hasError && formContactDetails.submitted" class="error_message">שדה חובה</div>
+      [style.border]="assetContactDetails.controls['contactName'].hasError('required') && formContactDetails.submitted ? '1px solid #ff0000':''">
+      <div *ngIf="assetContactDetails.controls['contactName'].hasError('required')  && formContactDetails.submitted" class="error_message">שדה חובה</div>
     </div>
 
     <div class="line_title">טלפון ראשי*</div>
     <div class="post_input_section">
-      <input type="tel" formControlName = "contactPhone" class="form_input" id="phone" name="phone"  pattern="[0-9]{3}-[0-9]{7}"
-      [style.border]="assetContactDetails.controls['contactPhone'].hasError && formContactDetails.submitted ? '1px solid #ff0000':''">
-      <div *ngIf="assetContactDetails.controls['contactPhone'].hasError && formContactDetails.submitted" class="error_message">שדה חובה</div>
+      <input type="text" formControlName = "contactPhone" class="form_input" id="phone" name="phone"  pattern="[0-9]{3}-[0-9]{7}"
+      [style.border]="!assetContactDetails.get('contactPhone')!.valid && formContactDetails.submitted ? '1px solid #ff0000':''">
+      <div *ngIf="!assetContactDetails.get('contactPhone')!.valid && formContactDetails.submitted" class="error_message">יש להזין בפורמאט של 053-6986987</div>
+
     </div>
     <div class="section_end"></div>
 
@@ -43,7 +44,7 @@
       <div class="line_title">טלפון נוסף</div>
       <div class="post_input_section">
         <input class="form_input" type="tel" formControlName = "contactAdditionalPhone" >
-        <span *ngIf="assetContactDetails.controls['contactAdditionalPhone'].hasError && formContactDetails.submitted" class="error_message">יש להזין מספר</span>
+        <span *ngIf="assetContactDetails.controls['contactAdditionalPhone'].hasError('pattern') && formContactDetails.submitted" class="error_message">יש להזין מספר</span>
       </div>
       <div class="line_title"(click)="onClickAddContact()">
         <i class="fa-solid fa-trash-can"></i>
@@ -82,7 +83,7 @@
       <span class=> קראתי ואישרתי את  </span>
       <span class="orange_color"> התקנון*</span>
     </div>
-    <div *ngIf="assetContactDetails.controls['termsAccept'].hasError && formContactDetails.submitted" class="error_message"> חובה להסכים לתקנון</div>
+    <div *ngIf="assetContactDetails.controls['termsAccept'].hasError('required') && formContactDetails.submitted" class="error_message"> חובה להסכים לתקנון</div>
 
 
     <br>

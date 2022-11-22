@@ -39,7 +39,7 @@ export class Appartement {//consider changing to interface
     public hasResidentialUnit:boolean,
 
 
-    public imgPath?:string[],//[]
+    public imgPath:string[],//[]
     public price?:number,
 
      ) {

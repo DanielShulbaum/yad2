@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class NewPostService {
+
   subscriptionToCurrentUser:Subscription = new Subscription
   currentUser!:User;
 
@@ -131,15 +132,21 @@ export class NewPostService {
     this.hasFurniture, this.isAssetEntrFlex,false,this.picturesLinksArray,this.assetPrice);
 
     //line below adds appartement to service
-    this.appartementService.appartementList.push(post);
+    // this.appartementService.appartementList.push(post);
 
     // optional
     const postJson = JSON.stringify(post);
 
-    this.appartementService.postAppartements(post);
-    console.log(postJson);
+    this.appartementService.postAppartements(post).
+    subscribe((post)=>{
 
-    this.appartementService.counter++;
-    this.router.navigate(['/home']);
+      this.appartementService.counter++;
+      this.router.navigate(['/home']);
+    })
+
+
+
+
+
   }
 }

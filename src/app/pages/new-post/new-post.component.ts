@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  AbstractControl,  FormArray,  FormControl,  FormGroup,  ValidationErrors,  ValidatorFn,  Validators,  FormBuilder, NgForm, } from '@angular/forms';
+import { FormGroup,    Validators,  FormBuilder, } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -26,21 +26,21 @@ export class NewPostComponent implements OnInit {
   'משופץ (שופץ ב5 השנים האחרונות)',
   'במצב שמור (במצב טוב, לא שופץ)',
   'דרוש שיפוץ (זקוק לעבודת שיפוץ)',];
-  assetAdressForm!:FormGroup //= new FormGroup();
+  assetAdressForm!:FormGroup;
   assetDetails!:FormGroup;
 
   showFirstStage:boolean=false;
   showSecondStage:boolean=false;
   completedSecondStage:boolean=false;
-  showThirdStage:boolean=false//true//false;
+  showThirdStage:boolean=false
   completedThirdStage:boolean=false;
   showFourthStage:boolean=false;
   completedFourthStage:boolean=false;
-  showFifthStage:boolean=false;//false
+  showFifthStage:boolean=false;
   completedFifthStage:boolean=false;
-  showSixthStage:boolean=false//false;
+  showSixthStage:boolean=false;
   completedSixthStage:boolean=false;
-  showSevenStage:boolean=false//false;
+  showSevenStage:boolean=false
   completedSevenStage:boolean=false;
   constructor(private fb: FormBuilder, private authService:AuthService, private newPostService:NewPostService) { }
 
@@ -56,8 +56,6 @@ export class NewPostComponent implements OnInit {
       assetOnColumns:this.fb.control(''),
       assetNeighbourhood:this.fb.control(''),
       assetSaleArea:this.fb.control(''),
-
-
     })
     this.subscriptionToCurrentUser = this.authService.currentUser.
         subscribe(user => {
@@ -65,18 +63,22 @@ export class NewPostComponent implements OnInit {
             this.currentUser = user;
           }
         })
-
   }
 
   onSubmitAdressForm(){
+  if(!this.assetAdressForm.valid){
+      return;
+
+    }
     this.newPostService.onGetAdressAsset(this.assetAdressForm);
     this.showSecondStage=!this.showSecondStage;
     this.completedSecondStage = !this.completedSecondStage;
     this.showThirdStage = !this.showThirdStage;
   }
-  onSubmitDetailsForm(){
 
-  }
+  // onSubmitDetailsForm(){
+
+  // }
 
   onClickForSale(){
     this.showFirstStage = !this.showFirstStage;

@@ -25,6 +25,9 @@ export class PostPaymentsComponent implements OnInit {
   }
 
   onSubmitPaymentsForm(){
+    if(!this.assetPayments.valid){
+      return;
+    }
     this.transferComplete4Stage.emit(true);
     this.newPostService.onGetPaymentsAsset(this.assetPayments);
 

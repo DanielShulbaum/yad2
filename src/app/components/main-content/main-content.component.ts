@@ -17,6 +17,7 @@ export class MainContentComponent implements OnInit, OnDestroy {
   subscriptionAppartementsList: Subscription=new Subscription;
   subscriptionAppList:Subscription = new Subscription;
   subscriptionToFilter:Subscription = new Subscription;
+  subscriptionToPost:Subscription = new Subscription;
   appartementListToShow:Appartement[]=[];
   appList:Appartement[]=[];
   sortBy:number=0;
@@ -38,6 +39,8 @@ export class MainContentComponent implements OnInit, OnDestroy {
     this.subscriptionAppartementsList = this.appartementsService.getAppartements()
     .subscribe({next:(appartements) => {
       this.appartementListToShow = appartements;
+      console.log('appartements saved');
+
     }})
 
     this.subscriptionToFilter=this.searchService.searchFilter$.
@@ -48,6 +51,9 @@ export class MainContentComponent implements OnInit, OnDestroy {
                   this.appartementListToShow = appartements;
                 }})
       }})
+
+
+
   }
 
   passSortChoice(event:number){
@@ -64,6 +70,9 @@ export class MainContentComponent implements OnInit, OnDestroy {
   }
   passFilterPictures(event:boolean){
     this.filterWithPictures=event;
+    this.appartementListToShow = this.appartementListToShow.filter( appartement=>{
+      return appartement.imgPath.length>0;
+    })
   }
 
   showRoomsandID(){
