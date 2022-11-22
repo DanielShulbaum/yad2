@@ -76,10 +76,6 @@ export class NewPostComponent implements OnInit {
     this.showThirdStage = !this.showThirdStage;
   }
 
-  // onSubmitDetailsForm(){
-
-  // }
-
   onClickForSale(){
     this.showFirstStage = !this.showFirstStage;
     this.showSecondStage=!this.showSecondStage;

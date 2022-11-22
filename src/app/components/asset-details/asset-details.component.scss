@@ -264,7 +264,7 @@
     text-align: center;
   }
   div{
-    // width: 20%;
+
   }
   @media (min-width:680px) {
     width: 40%;
@@ -290,22 +290,14 @@ textarea{
   position: relative;
   display: flex;
   input{
-    /* The native appearance is hidden */
+
   appearance: none;
   -webkit-appearance: none;
     width: 50px;
     height: 50px;
-  /* For a circular appearance we need a border-radius. */
   border-radius: 0%;
-
-  /* The background will be the radio dot's color. */
-
-
-  /* The border will be the spacing between the dot and the outer circle */
   border: 1px solid rgb(17, 16, 16);
 
-  /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
-  // box-shadow: 0 0 0 1px #FF5722;
   }
   input:checked{
     background-color: lightgray;

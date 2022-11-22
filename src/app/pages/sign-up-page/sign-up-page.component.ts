@@ -22,19 +22,17 @@ export class SignUpPageComponent implements OnInit {
   }
 
   onSignup(form:NgForm){
-    console.log(form);
+
     if(!form.valid){
       return;
     }
     let user = new User(form.value.name,this.password,form.value.surname,form.value.phone,this.email,this.authService.users.length + 1)
     this.authService.users.push(user);
     this.authService.currentUser.next(user);
-    // console.log(this.authService.users);
-    // console.log(this.authService.currentUser);
+
     this.showSecondRegistrationPhase=false;
     this.router.navigate(['/home']);
-    // console.log('user data');
-    // console.log(user);
+
   }
 
   onClickHidePassword(){

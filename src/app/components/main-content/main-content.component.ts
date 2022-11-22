@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Appartement } from 'src/app/models/appartement.model';
 import { AppartementsService } from 'src/app/services/appartements.service';
 import { SearchService } from 'src/app/services/search.service';
-// import { HttpClient} from '@angular/common/http'
+
 
 
 
@@ -29,17 +29,11 @@ export class MainContentComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // this.subscriptionAppList = this.appartementsService.getAppartements().
-    //   subscribe(appartements =>{
-    //     this.appartementListToShow = appartements;
-    //   });
 
-
-// regular appearance by id
     this.subscriptionAppartementsList = this.appartementsService.getAppartements()
     .subscribe({next:(appartements) => {
       this.appartementListToShow = appartements;
-      console.log('appartements saved');
+
 
     }})
 
@@ -58,8 +52,7 @@ export class MainContentComponent implements OnInit, OnDestroy {
 
   passSortChoice(event:number){
     this.sortBy=event;
-    // commented out 14.11.22
-    // this.updateListBySort();
+
   }
 
   passFilterPrice(event:boolean){

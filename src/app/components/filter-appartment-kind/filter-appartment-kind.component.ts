@@ -13,9 +13,6 @@ export class FilterAppartmentKindComponent implements OnInit {
   @Output() transferAppartTypes = new EventEmitter<boolean[]>()
   @Output() transferHouseTypes = new EventEmitter<boolean[]>()
   @Output() transferOtherTypes = new EventEmitter<boolean[]>()
-
-  // this.passNumberOfChanges.emit(this.numberOfChanges)
-
   appartementsShow=false;
   housesShow=false;
   otherShow=false;
@@ -27,12 +24,6 @@ export class FilterAppartmentKindComponent implements OnInit {
   other:[boolean,boolean,boolean,boolean,boolean,boolean,boolean]
                 = [false,false,false,false,false,false,false];
 
-
-  // appType=[
-  //           [false,false,false,false,false,false,false,false,false],
-  //           [false,false,false,false],
-  //           [false,false,false,false,false,false,false];
-  //         ]
 
   allAppartmentsChecked:boolean=false;
   partOfAppartements:boolean=false;
@@ -106,32 +97,10 @@ export class FilterAppartmentKindComponent implements OnInit {
      this.countAllChecked()
   }
 
-  // checkIndic(array:boolean[], itemNumbers:number, allItemsChecked:boolean, partOfItemsChecked:boolean){
-  //   for(let i = 0; i<array.length; i++){
-  //     if(array[i]){
-  //       itemNumbers++;
-  //     }
-  //     console.log(itemNumbers);
-  //     console.log('this' + this.numberAppartmentsChecked);
-
-  //   if(itemNumbers===9){
-  //         allItemsChecked = true;
-  //         partOfItemsChecked=false;
-  //     } else if(itemNumbers ===0){
-  //         allItemsChecked = false;
-  //         partOfItemsChecked=false;
-  //     }else{
-  //         partOfItemsChecked=true;
-  //         allItemsChecked=false;
-  //     }
-  //   }
-  //   itemNumbers = 0;
-  // }
 
   onClickAppEl(num:number){
     this.appartments[num] = !this.appartments[num];
-    // this.checkIndic(this.appartments,this.numberAppartmentsChecked,this.allAppartmentsChecked,
-    //         this.partOfAppartements);
+
     for(let i = 0; i<this.appartments.length; i++){
       if(this.appartments[i]){
         this.numberAppartmentsChecked++;
@@ -182,7 +151,7 @@ export class FilterAppartmentKindComponent implements OnInit {
     this.countOther();
     this.counterChecked=this.counterAppartements+this.counterHouses+this.counterOther;
     this.transferNumberChecked.emit(this.counterChecked)
-    console.log('num check' + this.counterChecked);
+
 
   }
 

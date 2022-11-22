@@ -9,7 +9,7 @@ import { User } from '../models/user.model';
 })
 export class AuthService {
 
-  // currentUser = new BehaviorSubject<User | null>(null);
+
   errorMessage = new BehaviorSubject<boolean>(false);
   usersCounter:number =  3;
   constructor(private router:Router) { }
@@ -22,8 +22,7 @@ export class AuthService {
     new User(
       'Udi','Hyperact3','Shirabi', 536983963,'Udi@gmail.com',3)
   ]
-  //line below for checking
-  currentUser = new BehaviorSubject<User | null>(this.users[1]);
+  currentUser = new BehaviorSubject<User | null>(null);
 
   signIn(form:NgForm){
     try{
@@ -48,14 +47,12 @@ export class AuthService {
           this.router.navigate(['/home']);
           }else{
             this.errorMessage.next(true);
-            // errorMessage = 'Password not correct';
-            // throw new Error(errorMessage);
+
           }
         }
       }if(!approvedUser) {
         this.errorMessage.next(true);
-        // errorMessage = 'Username is not valid';
-        //   throw new Error(errorMessage);
+       ;
       }
     }catch(error){
       this.errorMessage.next(true);

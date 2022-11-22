@@ -35,7 +35,6 @@ export class FormAddPicturesComponent implements OnInit {
   onSubmitPictures(){
     this.transferComplete5Stage.emit(true);
     this.newPostService.picturesLinksArray = JSON.parse(JSON.stringify(this.linksArray))
-    console.log(this.newPostService.picturesLinksArray);
 
   }
   onClickUpload(num:number){
@@ -57,7 +56,7 @@ export class FormAddPicturesComponent implements OnInit {
   onEnter(num:number){
    this.linksArray.push(this.linkAdress);
    this.linkAdress='';
-   console.table(this.linksArray);
+
    switch(num){
     case 1: this.changeToTextInp1 = false;break;
     case 2: this.changeToTextInp2 = false;break;

@@ -14,9 +14,7 @@ i {
   margin: 0 auto;
 }
 
-// :host {
-//   margin-bottom: 5px;
-// }
+
 .header {
   width: 98%;
   height: 70px;
@@ -26,7 +24,7 @@ i {
   align-items: center;
   font-family: "Rubik", sans-serif;
   color: hsl(0, 0%, 21%);
-  // line-height: 70px;
+
   background-color: white;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
 }
@@ -64,7 +62,7 @@ i {
   line-height: 70px;
   width: 730px;
   a {
-    //added not working
+
     display: inline-table;
     text-align: center;
   }
@@ -153,7 +151,7 @@ i {
     align-items: center;
 
     gap: 20px;
-    // white-space: nowrap;
+
   }
 }
 

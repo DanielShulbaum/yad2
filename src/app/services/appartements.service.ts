@@ -9,9 +9,9 @@ import { SearchService } from './search.service';
   providedIn: 'root'
 })
 export class AppartementsService {
-  // appartementList:Appartement[]=[];
+
 counter:number=1;
-// appList:Appartement[]=[];
+
 
 example:{} = {"id":43,"postDate":"2022-11-22T09:58:55.180Z","streetName":"sds","houseNumber":"6","appartementKind":"בית פרטי/קוטג","neighbourhoodName":"","cityName":"dsv","roomsNumber":"4","floorNumber":"3","area":"60","description":"eEfEfW4","floorsInBuilding":"5","entranceDate":"2022-11-30","parkingLots":"1","numberOfBalconies":"3","belongsToUser":{"name":"Seba","password":"Hyperact3","surname":"Gever","phone":536983963,"email":"Seba@gmail.com","idUser":2},"airConditioner":false,"gratings":false,"lift":false,"kosherKitchen":false,"sunBoiler":true,"handicappedAccess":false,"isRenovated":false,"hasShelter":true,"hasStoragePlace":false,"hasTadiranAir":true,"hasFurniture":false,"isFlexEntranceDate":"","hasResidentialUnit":false,"imgPath":[],"price":""}
 appartementList:Appartement[]=[
@@ -355,10 +355,10 @@ appartementList:Appartement[]=[
   ),
 ];
 
-// roomsNumber=5&id=1
+
 appartementsList$ = new BehaviorSubject<Appartement[]>(this.appartementList);
 
-// appartementsList$ = new BehaviorSubject<any>(this.getAppartements());
+
 
 
 constructor(private http:HttpClient,private searchService:SearchService ) { }
@@ -382,7 +382,7 @@ postAppartements(data:Appartement):Observable<any>{
   const body = JSON.stringify(data);
   console.log(data);
    return this.http.post('http://localhost:3000/appartements',body,{'headers':headers});
-    // this.appartementList.push(data);
+
 }
 
 postExample(data:any){

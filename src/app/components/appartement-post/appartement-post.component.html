@@ -42,7 +42,6 @@
       <span *ngIf="appartement.imgPath!==undefined">
           <img src={{appartement.imgPath[0]}} alt="">
       </span>
-      <!-- <img [src]="appartement.imgPath[0]" alt=""> -->
       <div class="heart_container">
         <i class="fa-regular fa-heart"></i>
       </div>
@@ -101,7 +100,7 @@
       <div class ="post_main_line">{{appartement.description}}</div>
       <div class ="post_main_line">
         <div class="post_main_line_internal">מצב הנכס:
-          <!-- <span class="bold_text">{{appartement.condition}}</span> -->
+
           <span *ngIf="appartement.isRenovated" class="bold_text">משופצת</span>
           <span *ngIf="!appartement.isRenovated" class="bold_text">לא משופצת</span>
         </div>

@@ -73,45 +73,45 @@ export class NewPostService {
 
 
   onGetAdressAsset(form: FormGroup){
-    this.assetType = form.value.assetType;      //entered
+    this.assetType = form.value.assetType;
     this.assetCondition = form.value.assetCondition;
-    this.assetCity = form.value.assetCity;      //entered
-    this.assetStreet = form.value.assetStreet; //entered
-    this.assetHouse = form.value.assetHouse;    //entered
-    this.assetFloorNum = form.value.assetFloorNum; //entered
-    this.assetNumOfFloorsBuilding = form.value.assetNumOfFloorsBuilding; //entered
+    this.assetCity = form.value.assetCity;
+    this.assetStreet = form.value.assetStreet;
+    this.assetHouse = form.value.assetHouse;
+    this.assetFloorNum = form.value.assetFloorNum;
+    this.assetNumOfFloorsBuilding = form.value.assetNumOfFloorsBuilding;
     this.assetOnColumns = form.value.assetOnColumns;
-    this.assetNeighbourhood = form.value.assetNeighbourhood;  //entered
+    this.assetNeighbourhood = form.value.assetNeighbourhood;
     this.assetSaleArea = form.value.assetSaleArea;
   }
   onGetAssetDetails(form: FormGroup,
     hasAirCondition:boolean,hasShelter:boolean,hasStorage:boolean, hasFurniture:boolean, hasIncapableAccess:boolean, hasLift:boolean,
     hasTadiran:boolean,isRenovated:boolean,hasKosherKitchen:boolean,hasSunBoiler:boolean,hasGrating:boolean,
     assetDescription:string){
-    this.assetRoomsNumber = form.value.assetRoomsNumber; //entered
-    this.assetParkingLots = form.value.assetParkingLots; //entered
-    this.assetBalconiesNum = form.value.assetBalconiesNum; //entered
-    this.hasAirCondition = hasAirCondition;//entered
-    this.hasShelter =hasShelter; //entered
-    this.hasStorage=hasStorage;//entered
-    this.hasFurniture=hasFurniture;//entered
-    this.hasIncapableAccess=hasIncapableAccess;//entered
-    this.hasLift=hasLift;//entered
-    this.hasTadiran=hasTadiran;//entered
-    this.isRenovated=isRenovated;//entered
-    this.hasKosherKitchen=hasKosherKitchen;//entered
-    this.hasSunBoiler=hasSunBoiler;//entered
-    this.hasGrating=hasGrating;//entered
-    this.assetDescription = assetDescription; //entered
+    this.assetRoomsNumber = form.value.assetRoomsNumber;
+    this.assetParkingLots = form.value.assetParkingLots;
+    this.assetBalconiesNum = form.value.assetBalconiesNum;
+    this.hasAirCondition = hasAirCondition;
+    this.hasShelter =hasShelter;
+    this.hasStorage=hasStorage;
+    this.hasFurniture=hasFurniture;
+    this.hasIncapableAccess=hasIncapableAccess;
+    this.hasLift=hasLift;
+    this.hasTadiran=hasTadiran;
+    this.isRenovated=isRenovated;
+    this.hasKosherKitchen=hasKosherKitchen;
+    this.hasSunBoiler=hasSunBoiler;
+    this.hasGrating=hasGrating;
+    this.assetDescription = assetDescription;
 
   }
   onGetPaymentsAsset(form: FormGroup){
     this.assetBuiltArea = form.value.builtArea;
-    this.assetTotalArea = form.value.totalArea; //entered
-    this.assetPrice = form.value.assetPrice;//entered
-    this.assetEntrDate = form.value.assetEntrDate; //entered
+    this.assetTotalArea = form.value.totalArea;
+    this.assetPrice = form.value.assetPrice;
+    this.assetEntrDate = form.value.assetEntrDate;
     this.isAssetEntrImmediate = form.value.assetEntrDateImmediately;
-    this.isAssetEntrFlex = form.value.assetEntrDateFlex;//entered
+    this.isAssetEntrFlex = form.value.assetEntrDateFlex;
   }
   onGetContactDetails(form: FormGroup){
     this.contactName=form.value.contactName;
@@ -131,11 +131,7 @@ export class NewPostService {
     this.hasIncapableAccess, this.isRenovated, this.hasShelter, this.hasStorage, this.hasTadiran,
     this.hasFurniture, this.isAssetEntrFlex,false,this.picturesLinksArray,this.assetPrice);
 
-    //line below adds appartement to service
-    // this.appartementService.appartementList.push(post);
 
-    // optional
-    const postJson = JSON.stringify(post);
 
     this.appartementService.postAppartements(post).
     subscribe((post)=>{

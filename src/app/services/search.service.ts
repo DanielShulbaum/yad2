@@ -34,11 +34,7 @@ chosenOtherTypes=['מגרשים','דיור מוגן','בניין מגורים','
     if(location!==''){
       this.location = location;
       this.searchString=this.searchString+"cityName_like="+location
-      // ||streetName_like
-      // this.searchString=this.searchString+"streetName_like="+location
-      // this.searchString=this.searchString+"cityName_like="+location+"&"+"streetName_like="+location
-      // this.searchString=this.searchString+"streetName like="+location+'||'+"cityName like="+location+
-      // '||'+ 'neighbourhoodName like='+location;
+
     }
     if(minRooms!==undefined){
       this.minRooms = minRooms;
@@ -53,7 +49,7 @@ chosenOtherTypes=['מגרשים','דיור מוגן','בניין מגורים','
     if(maxPrice!=0){
       this.maxPrice = maxPrice;
     }
-// set rooms
+
     this.setRoomsSearch();
     this.setPriceSearch();
     for(let index = 0; index<chosenAppTypes.length; index++){
@@ -173,7 +169,5 @@ setPriceSearch(){
 }
 
 
-
-// "roomsNumber=5&id=1"
 
 }

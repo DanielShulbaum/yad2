@@ -1,6 +1,5 @@
 .main_view{
-  // width: 100vw;
-  display: flex;
+    display: flex;
   flex-direction: column;
   align-items: center;
 
@@ -11,7 +10,6 @@
   margin: 20px auto;
   padding: 1em 0;;
   height: 100%;
-  // background: red;
   display: grid;
   grid-template-columns: 3fr 1fr;
   border: 1px solid gray;
@@ -21,14 +19,12 @@
 
 }
 .appartements_list{
-  // background: green;
   height: 100%;
   width: 100%;
   border: 1px solid gray;
 
 }
 .advertise{
-  // background: blue;
   height: 100%;
   width: 250px;
   @media (max-width: 880px) {

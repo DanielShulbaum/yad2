@@ -58,13 +58,6 @@ export class AssetDetailsComponent implements OnInit {
       this.transferComplete3Stage.emit(true);
   }
 
-  // onBalconyClick(choice:any){
-  //   if(choice ==='ללא'){
-  //     this.chosenBalconiesNum=0;
-  //   }else{
-  //     this.chosenBalconiesNum = choice;
-  //   }
-  // }
   onAirConditionClick(){
     this.hasAirCondition=!this.hasAirCondition
   }

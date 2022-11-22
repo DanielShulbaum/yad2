@@ -27,7 +27,6 @@ export class AppartmentsListComponent implements OnInit {
   onClickMainSort(event:any){
     event.stopPropagation();
     this.mainSortShow = !this.mainSortShow;
-    console.log('clicked main sort');
   }
   onClickSortDate(event:any){
     event.stopPropagation();
@@ -54,9 +53,9 @@ export class AppartmentsListComponent implements OnInit {
     this.secondarySortShow = !this.secondarySortShow;
   }
   onClickFilterPrice(){
-    console.log('click price filter ' + this.filterWithPriceOnly);
+
     this.filterWithPriceOnly = !this.filterWithPriceOnly;
-    console.log('click price filter2 ' + this.filterWithPriceOnly);
+
   }
   onClickFilterPicture(){
     this.filterWithPicturesOnly = !this.filterWithPicturesOnly;
@@ -71,7 +70,6 @@ export class AppartmentsListComponent implements OnInit {
     this.transferFilterPrice.emit(this.filterWithPriceOnly);
   }
   onClickFilter(){
-    console.log('click filter ' + this.filterWithPriceOnly);
     this.transferFilterPictures.emit(this.filterWithPicturesOnly);
     this.transferFilterPrice.emit(this.filterWithPriceOnly);
     this.secondarySortShow = !this.secondarySortShow;

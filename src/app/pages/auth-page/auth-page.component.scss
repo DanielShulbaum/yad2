@@ -1,7 +1,7 @@
 
 .auth_page_container {
   min-height: 100vh;
-  // padding: 0 clamp(0.5rem, 5.04vw + -0.76rem, 5rem);
+
   background-color: white;
   @media (min-width: 880px) {
     background-color: hsl(34, 100%, 95%);
@@ -15,7 +15,6 @@
   cursor: pointer;
 }
 
-// .desktop-only {
 .over880{
   @media (max-width: 880px) {
     display: none !important;
@@ -23,13 +22,13 @@
 }
 
 .upto880{
-// .mobile-only {
+
   @media (min-width: 880px) {
     display: none !important;
   }
 }
 
-// header
+
 header {
   .logo-link {
     display: block;
@@ -53,7 +52,6 @@ header {
   }
 }
 
-// back button
 .btn-back-nav {
   position: fixed;
   left: 25px;
@@ -124,7 +122,6 @@ header {
   }
 }
 
-// feature-item
 .user-info__features {
   display: flex;
   justify-content: space-between;

@@ -6,12 +6,6 @@
         <div>{{sortBy}}</div>
         <i class= "fa-solid fa-chevron-down"></i>
             <div *ngIf="mainSortShow" class="app_main_filter_check">
-              <!-- <div class="app_check_line" *ngFor="let sort of sortValues; index as i">
-                <label>
-                  <input type="radio" [name] = sortValues[i] [value]=sortValues[i] >{{sortValues[i]}}
-                </label>
-              </div> -->
-              <!-- possible can be replaced by *ngFor  -->
               <div class="app_check_line" (click)="onClickSortDate($event)">
                 <input type="radio" name="sortBy" id="date" value=sortByDate checked>
                 <label for="sortBy">{{sortValues[0]}} </label>
@@ -46,7 +40,6 @@
         </div>
         <div class="secondary_filter_last_line" (click)="onClearFilterChoice()">
           <button [ngStyle]="{'disabled': (filterWithPriceOnly||filterWithPicturesOnly)? true:false}">ניקוי</button>
-          <!-- line above not working -->
           <span class="orange_color" (click)="onClickFilter()">סינון </span>
     </div>
   </div>
