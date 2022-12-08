@@ -366,13 +366,19 @@ getAppartementsList(){
   return this.appartementsList$;
 }
 
-getAppartements( filters?:string):Observable<any>{
+getAppartements(page:number, filters?:string ):Observable<any>{
 
   if(filters === undefined){
-    return this.http.get("http://localhost:3000/appartements?");
+    return this.http.get("http://localhost:3000/appartements?_page=" +page);
   }
-  return this.http.get("http://localhost:3000/appartements?" + filters);
+  return this.http.get("http://localhost:3000/appartements?" +page + filters);
 }
+
+// if(filters === undefined){
+//   return this.http.get("http://localhost:3000/appartements?_page=" );
+// }
+// return this.http.get("http://localhost:3000/appartements?" + filters);
+// }
 
 
 

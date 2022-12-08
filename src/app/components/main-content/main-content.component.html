@@ -6,8 +6,13 @@
       <!-- <button (click)="showRoomsandID()">here</button> -->
       <app-appartments-list (transferSortChoice)="passSortChoice($event)"
           (transferFilterPrice)="passFilterPrice($event)" (transferFilterPictures)="passFilterPictures($event)"></app-appartments-list>
-      <app-appartement-post [appartement] = "appartement" *ngFor="let appartement of appartementListToShow|sortPipe:sortBy; let i = index"
-      ></app-appartement-post>
+
+      <app-appartement-post  infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000"
+      (scrolled)="onScroll()"
+      [appartement] = "appartement" *ngFor="let appartement of appartementListToShow|sortPipe:sortBy; let i = index"
+          ></app-appartement-post>
+      <!-- <app-appartement-post [appartement] = "appartement" *ngFor="let appartement of appartementListToShow|sortPipe:sortBy; let i = index"
+      ></app-appartement-post> -->
     </main>
     <aside class="advertise"></aside>
   </section>

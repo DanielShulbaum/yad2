@@ -18,6 +18,7 @@ export class MainContentComponent implements OnInit, OnDestroy {
   subscriptionAppList:Subscription = new Subscription;
   subscriptionToFilter:Subscription = new Subscription;
   subscriptionToPost:Subscription = new Subscription;
+  page:number = 1;
   appartementListToShow:Appartement[]=[];
   appList:Appartement[]=[];
   sortBy:number=0;
@@ -30,26 +31,45 @@ export class MainContentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
 
-    this.subscriptionAppartementsList = this.appartementsService.getAppartements()
+    // this.subscriptionAppartementsList = this.appartementsService.getAppartements()
+    // .subscribe({next:(appartements) => {
+    //   this.appartementListToShow = appartements;
+    // }})
+
+    this.subscriptionAppartementsList = this.appartementsService.getAppartements(this.page)
     .subscribe({next:(appartements) => {
       this.appartementListToShow = appartements;
-
-
     }})
 
-    this.subscriptionToFilter=this.searchService.searchFilter$.
+    // this.subscriptionToFilter=this.searchService.searchFilter$.
+    //   subscribe({next:(search)=>{
+    //     this.searchFilter = search;
+    //                 this.subscriptionAppartementsList = this.appartementsService.getAppartements(this.searchFilter)
+    //                   .subscribe({next:(appartements) => {
+    //               this.appartementListToShow = appartements;
+    //             }})
+    //   }})
+
+
+      this.subscriptionToFilter=this.searchService.searchFilter$.
       subscribe({next:(search)=>{
         this.searchFilter = search;
-                    this.subscriptionAppartementsList = this.appartementsService.getAppartements(this.searchFilter)
+                    this.subscriptionAppartementsList = this.appartementsService.getAppartements(this.page,this.searchFilter)
                       .subscribe({next:(appartements) => {
                   this.appartementListToShow = appartements;
                 }})
       }})
 
-
-
+  }
+//
+  onScroll():void{
+    this.appartementsService.getAppartements(++this.page,this.searchFilter).
+    subscribe({next:(appartements)=>{
+      this.appartementListToShow.push(...appartements);
+    }})
   }
 
+//
   passSortChoice(event:number){
     this.sortBy=event;
 
@@ -71,10 +91,16 @@ export class MainContentComponent implements OnInit, OnDestroy {
   showRoomsandID(){
 
     const filter = "roomsNumber=5&id=1"
-    this.subscriptionAppList = this.appartementsService.getAppartements(filter).
+    this.subscriptionAppList = this.appartementsService.getAppartements(this.page, filter).
       subscribe({next:(appartements) =>{
         this.appartementListToShow = appartements;
     }});
+
+    // const filter = "roomsNumber=5&id=1"
+    // this.subscriptionAppList = this.appartementsService.getAppartements( filter).
+    //   subscribe({next:(appartements) =>{
+    //     this.appartementListToShow = appartements;
+    // }});
   }
 
 

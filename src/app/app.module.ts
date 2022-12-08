@@ -40,7 +40,9 @@ import { FormContactDetailsComponent } from './components/form-contact-details/f
 import { FormFinalStageComponent } from './components/form-final-stage/form-final-stage.component';
 import { SortPipePipe } from './shared/sort-pipe.pipe';
 import { FilterSimplePipe } from './shared/filter-simple.pipe';
-import { HttpClient, HttpClientModule} from '@angular/common/http'
+import { HttpClient, HttpClientModule} from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,8 @@ import { HttpClient, HttpClientModule} from '@angular/common/http'
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-
+    MatCardModule,
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
