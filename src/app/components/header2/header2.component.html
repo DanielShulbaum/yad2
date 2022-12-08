@@ -89,11 +89,13 @@
 
 
 
-      <a (click)="onUserClick()" class="header_middle_tabs appear_after880"
+      <a  class="header_middle_tabs appear_after880"
         (mouseenter)="onUserMenu()" (mouseleave)="onUserMenu()">
-        <i class="fa-regular fa-user"></i>
-        <span *ngIf="abriviation===''" class="header_middle_tabs_content">התחברות</span>
-        <span *ngIf="abriviation!==''" class="header_middle_tabs_content">{{abriviation}}</span>
+        <i *ngIf="abriviation==='' " class="fa-regular fa-user"></i>
+        <span *ngIf="abriviation==='' " class="header_middle_tabs_content" (click)="onUserClick()">התחברות</span>
+        <div class="abriviation" *ngIf="abriviation!=='' ">
+          <span  class="header_middle_tabs_content">{{abriviation}}</span>
+        </div>
           <app-user-menu *ngIf="userMenuShow"></app-user-menu>
       </a>
     </div>

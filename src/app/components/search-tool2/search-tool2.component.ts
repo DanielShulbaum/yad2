@@ -196,8 +196,7 @@ export class SearchTool2Component implements OnInit {
   this.searchService.getAdvancedSearch(this.advancedSearch.value.parking,this.advancedSearch.value.elevator,this.advancedSearch.value.airConditioner,
     this.advancedSearch.value.shelter,this.advancedSearch.value.grating,this.advancedSearch.value.storage,this.advancedSearch.value.handicapped,
     this.advancedSearch.value.renovated,this.advancedSearch.value.furnitured,this.advancedSearch.value.minFloor,
-    this.advancedSearch.value.maxFloor,this.advancedSearch.value.minArea,this.advancedSearch.value.maxArea,this.advancedSearch.value.entrDate,this.advancedSearch.value.flexEntr,
-    this.advancedSearch.value.freeText)
+    this.advancedSearch.value.maxFloor,this.advancedSearch.value.minArea,this.advancedSearch.value.maxArea)
 
       }
   onClickClear(){

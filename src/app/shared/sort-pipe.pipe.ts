@@ -8,7 +8,6 @@ export class SortPipePipe implements PipeTransform {
 
   transform(items:Appartement[],sortType:number) {
     let sortedItems:Appartement[] = [];
-
     if(sortType===2){
       sortedItems = this.sortDescending(items);
     } else if(sortType===1){
@@ -16,10 +15,8 @@ export class SortPipePipe implements PipeTransform {
     }else{
       sortedItems=this.sortByDate(items);
     }
-
     return sortedItems;
   }
-
   sortByDate(items:Appartement[]){
     return [...items.sort(function(a,b) {
       let keyA = new Date(a.postDate),

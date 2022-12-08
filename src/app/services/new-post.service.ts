@@ -135,13 +135,9 @@ export class NewPostService {
 
     this.appartementService.postAppartements(post).
     subscribe((post)=>{
-
       this.appartementService.counter++;
       this.router.navigate(['/home']);
     })
-
-
-
 
 
   }

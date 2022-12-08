@@ -1,6 +1,6 @@
 <div class="header_open_menu">
 
-    <div class="menu_list">
+    <div *ngIf="loggedUser" class="menu_list">
       <a href="#">
         <span>
           <i class="fa-regular fa-user"></i>
@@ -14,7 +14,7 @@
         <span>
           <i class="fa-solid fa-arrow-right-arrow-left"></i>
         </span>
-        <span>השוואת מחירים</span>
+        <span>השוואת רכבים</span>
       </a>
     </div>
 
@@ -27,12 +27,12 @@
       </a>
     </div>
 
-    <div class="menu_list">
-      <a href="#">
+    <div *ngIf="loggedUser" class="menu_list">
+      <a >
         <span>
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
         </span>
-        <span>התנתקות</span>
+        <span (click)="onClickSignOut()">התנתקות</span>
       </a>
     </div>
 

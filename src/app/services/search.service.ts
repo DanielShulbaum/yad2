@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Appartement } from '../models/appartement.model';
-import { AppartementsService } from './appartements.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +73,7 @@ chosenOtherTypes=['מגרשים','דיור מוגן','בניין מגורים','
   getAdvancedSearch(parking:boolean,elevator:boolean,airConditioner:boolean,
     shelter:boolean, grating:boolean, storage:boolean, handicapped:boolean, renovated:boolean,
     furnitured:boolean,minFloor:number,maxFloor:number,minArea:number,
-    maxArea:number,entrDate:Date,flexEntr:boolean,freeText:string){
+    maxArea:number){
 
       if(parking){
         this.searchString=this.searchString+"parkingLots=2&";
@@ -136,7 +135,7 @@ chosenOtherTypes=['מגרשים','דיור מוגן','בניין מגורים','
   passSearchString(){
     if(this.searchString !== undefined){
       this.searchFilter$.next(this.searchString);
-      console.log(this.searchString);
+
   }
   }
 

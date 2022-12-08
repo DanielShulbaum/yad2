@@ -18,11 +18,11 @@ export class AuthService {
     new User(
       'Almog','Hyperact3','Putin', 536983963,'almog@gmail.com',1),
     new User(
-      'Seba','Hyperact3','Gever', 536983963,'Seba@gmail.com',2),
+      'Seba','Hyperact3','Talp', 536983963,'Seba@gmail.com',2),
     new User(
       'Udi','Hyperact3','Shirabi', 536983963,'Udi@gmail.com',3)
   ]
-  currentUser = new BehaviorSubject<User | null>(null);
+  currentUser = new BehaviorSubject<User | null>( this.users[0]);
 
   signIn(form:NgForm){
     try{
@@ -47,7 +47,6 @@ export class AuthService {
           this.router.navigate(['/home']);
           }else{
             this.errorMessage.next(true);
-
           }
         }
       }if(!approvedUser) {

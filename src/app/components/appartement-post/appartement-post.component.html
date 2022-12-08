@@ -2,9 +2,9 @@
   <div class="min_post" (click)="onClickExpanPost()"
               *ngIf="!expandedPost">
     <div class="min_post_img">
-      <img [src]="appartement.imgPath" alt="">
+        <img  [src]="appartement.imgPath" onerror="this.src='https://assets.yad2.co.il/yad2site/y2assets/images/pages/feed/feed_re_placeholder_small.png'">
       <div class="heart_container">
-        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart heart"></i>
       </div>
     </div>
     <div class="min_post_content">
@@ -40,15 +40,14 @@
   <div class="min_post" (click)="onClickExpanPost()" *ngIf="expandedPost">
     <div class="max_post_img">
       <span *ngIf="appartement.imgPath!==undefined">
-          <img src={{appartement.imgPath[0]}} alt="">
+          <img src={{appartement.imgPath[0]}} onerror="this.src='https://assets.yad2.co.il/yad2site/y2assets/images/pages/feed/feed_re_placeholder_small.png'"s>
       </span>
       <div class="heart_container">
-        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart heart"></i>
       </div>
-      <div class="img_count">
+      <div *ngIf="appartement.imgPath.length!==0" class="img_count">
         <i class="fa-regular fa-image"></i>
-        <span *ngIf="appartement.imgPath!==undefined">{{appartement.imgPath.length}}</span>
-        <span *ngIf="appartement.imgPath===undefined">0</span>
+        <span >{{appartement.imgPath.length}}</span>
       </div>
     </div>
 
@@ -61,7 +60,13 @@
         <div class="date_text">{{appartement.postDate | date: "dd/MM/yyyy"}}</div>
       </div>
       <div class="min_post_line2 line2_change">
-        <div>{{appartement.streetName}}  {{appartement.houseNumber}}</div>
+        <div>{{appartement.streetName}}  {{appartement.houseNumber}}
+          <span class="map">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>מפה</span>
+          </span>
+        </div>
+
         <div> {{appartement.appartementKind}},  {{appartement.neighbourhoodName}}, {{appartement.cityName}}</div>
       </div>
       <div class="min_post_line3">
@@ -183,7 +188,7 @@
 
       <div class ="post_bottom_line">
         <div class="post_bottom_right">
-          <h4>עסקאות אחרונות ברובע</h4>
+          <h3>עסקאות אחרונות ברובע</h3>
           <div class="post_bottom_table_line gray_smallfont">
             <span>יום מכירה</span>
             <span>כתובת</span>
@@ -212,12 +217,16 @@
 
         </div>
         <div class="post_bottom_left">
-          <div class ="gray_smallfont">מכירים את השכונה?</div>
-          <div>
-            <span>איך השכונה?</span>
+          <div class ="gray_smallfont gray_headline">מכירים את השכונה?</div>
+          <div class="bottom_left_second">
+            <h3>איך השכונה?</h3>
             <i class="fa-sharp fa-solid fa-table-cells-large"></i>
           </div>
-          <div></div>
+          <div class="bottom_left_first">90%</div>
+          <div class="bottom_left_line">מהמשיבים אומרים</div>
+          <div class="bottom_left_line">שבדרך כלל</div>
+          <div class="bottom_left_line">השכונה נקייה...</div>
+          <div class="bottom_left_last">תובנות נוספות</div>
         </div>
 
         <div></div>

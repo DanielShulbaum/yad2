@@ -385,7 +385,5 @@ postAppartements(data:Appartement):Observable<any>{
 
 }
 
-postExample(data:any){
-  this.http.post('http://localhost:3000/appartements',data);
-}
+
 }

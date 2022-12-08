@@ -135,16 +135,28 @@ i {
   align-items: center;
   justify-content: center;
   gap: 10px;
+
+  cursor: pointer;
 }
 
 .header_middle_tabs:hover {
   background: hsl(0, 0%, 95%);
 }
 
+.abriviation{
+display: flex;
+align-items: center;
+justify-content: center;
+width: 35px;
+height: 35px;
+border-radius: 50%;
+background: rgb(235, 230, 147);
+color: red;
+}
 .header_middle_tabs_content {
   display: none;
 
-  @media (min-width: 1640px) {
+  @media (min-width: 880px) {
     font-size: 15px;
     display: flex;
     justify-content: center;

@@ -23,7 +23,7 @@ export class Header2Component implements OnInit {
   likedShow:boolean = false;
   userMenuShow:boolean = false;
 
-  abriviation:string='';
+  abriviation:string = '';
   subscriptionToCurrentUser:Subscription = new Subscription;
   currentUser:User|undefined=undefined;
   constructor(private router:Router, private authService:AuthService) { }
@@ -35,9 +35,12 @@ export class Header2Component implements OnInit {
             this.currentUser = user;
             this.abriviation = this.currentUser.name[0]+this.currentUser.surname[0];
           }
+          if (user === (undefined || null)){
+            this.abriviation = '';
+          }
         })
   }
-
+  //
 
 // consider to enter all these elements to array and work based on index
 onClickModale(){
