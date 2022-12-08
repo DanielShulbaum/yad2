@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder,UntypedFormGroup, Validators } from '@angular/forms';
 import { NewPostService } from 'src/app/services/new-post.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { NewPostService } from 'src/app/services/new-post.service';
 export class PostPaymentsComponent implements OnInit {
   @Output() transferClose4Stage = new EventEmitter<boolean>()
   @Output() transferComplete4Stage = new EventEmitter<boolean>()
-  assetPayments!:FormGroup;
-  constructor(private fb: FormBuilder, private newPostService:NewPostService) { }
+  assetPayments!:UntypedFormGroup;
+  constructor(private fb: UntypedFormBuilder, private newPostService:NewPostService) { }
 
   ngOnInit(): void {
     this.assetPayments = this.fb.group({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { UntypedFormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import {  Subscription } from 'rxjs';
 import { Appartement} from '../models/appartement.model';
@@ -72,7 +72,7 @@ export class NewPostService {
   }
 
 
-  onGetAdressAsset(form: FormGroup){
+  onGetAdressAsset(form: UntypedFormGroup){
     this.assetType = form.value.assetType;
     this.assetCondition = form.value.assetCondition;
     this.assetCity = form.value.assetCity;
@@ -84,7 +84,7 @@ export class NewPostService {
     this.assetNeighbourhood = form.value.assetNeighbourhood;
     this.assetSaleArea = form.value.assetSaleArea;
   }
-  onGetAssetDetails(form: FormGroup,
+  onGetAssetDetails(form: UntypedFormGroup,
     hasAirCondition:boolean,hasShelter:boolean,hasStorage:boolean, hasFurniture:boolean, hasIncapableAccess:boolean, hasLift:boolean,
     hasTadiran:boolean,isRenovated:boolean,hasKosherKitchen:boolean,hasSunBoiler:boolean,hasGrating:boolean,
     assetDescription:string){
@@ -105,7 +105,7 @@ export class NewPostService {
     this.assetDescription = assetDescription;
 
   }
-  onGetPaymentsAsset(form: FormGroup){
+  onGetPaymentsAsset(form: UntypedFormGroup){
     this.assetBuiltArea = form.value.builtArea;
     this.assetTotalArea = form.value.totalArea;
     this.assetPrice = form.value.assetPrice;
@@ -113,7 +113,7 @@ export class NewPostService {
     this.isAssetEntrImmediate = form.value.assetEntrDateImmediately;
     this.isAssetEntrFlex = form.value.assetEntrDateFlex;
   }
-  onGetContactDetails(form: FormGroup){
+  onGetContactDetails(form: UntypedFormGroup){
     this.contactName=form.value.contactName;
     this.contactPhone=form.value.contactPhone;
     this.contactAdditionalPhone=form.value.contactAdditionalPhone;

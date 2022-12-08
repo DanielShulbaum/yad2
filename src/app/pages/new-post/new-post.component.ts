@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,    Validators,  FormBuilder, } from '@angular/forms';
+import { UntypedFormGroup,    Validators,  UntypedFormBuilder, } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -26,8 +26,8 @@ export class NewPostComponent implements OnInit {
   'משופץ (שופץ ב5 השנים האחרונות)',
   'במצב שמור (במצב טוב, לא שופץ)',
   'דרוש שיפוץ (זקוק לעבודת שיפוץ)',];
-  assetAdressForm!:FormGroup;
-  assetDetails!:FormGroup;
+  assetAdressForm!:UntypedFormGroup;
+  assetDetails!:UntypedFormGroup;
 
   showFirstStage:boolean=false;
   showSecondStage:boolean=false;
@@ -42,7 +42,7 @@ export class NewPostComponent implements OnInit {
   completedSixthStage:boolean=false;
   showSevenStage:boolean=false
   completedSevenStage:boolean=false;
-  constructor(private fb: FormBuilder, private authService:AuthService, private newPostService:NewPostService) { }
+  constructor(private fb: UntypedFormBuilder, private authService:AuthService, private newPostService:NewPostService) { }
 
   ngOnInit(): void {
     this.assetAdressForm = this.fb.group({

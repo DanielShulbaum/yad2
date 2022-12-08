@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder,FormGroup } from '@angular/forms';
+import { UntypedFormBuilder,UntypedFormGroup } from '@angular/forms';
 import { NewPostService } from 'src/app/services/new-post.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { NewPostService } from 'src/app/services/new-post.service';
 export class FormAddPicturesComponent implements OnInit {
   @Output() transferClose5Stage = new EventEmitter<boolean>()
   @Output() transferComplete5Stage = new EventEmitter<boolean>()
-  assetPictures!:FormGroup;
+  assetPictures!:UntypedFormGroup;
 
   changeToTextInp1:boolean=false;
   changeToTextInp2:boolean=false;
@@ -25,7 +25,7 @@ export class FormAddPicturesComponent implements OnInit {
   changeToTextInp11:boolean=false;
   linkAdress:string='';
   linksArray:string[] = [];
-  constructor(private fb: FormBuilder, private newPostService:NewPostService) { }
+  constructor(private fb: UntypedFormBuilder, private newPostService:NewPostService) { }
 
   ngOnInit(): void {
     this.assetPictures = this.fb.group({

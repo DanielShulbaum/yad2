@@ -1,5 +1,5 @@
 import {  Component,  OnInit } from '@angular/core';
-import { FormBuilder, FormControlName, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, FormControlName, UntypedFormGroup } from '@angular/forms';
 import { AppartementsService } from 'src/app/services/appartements.service';
 import { SearchService } from 'src/app/services/search.service';
 
@@ -10,8 +10,8 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class SearchTool2Component implements OnInit {
 
-  basicSearch!:FormGroup ;
-  advancedSearch!:FormGroup;
+  basicSearch!:UntypedFormGroup ;
+  advancedSearch!:UntypedFormGroup;
 
   numberOfAssetsChecked:number=0;
   chosenAppTypes:boolean[]=[];
@@ -45,7 +45,7 @@ export class SearchTool2Component implements OnInit {
 
    //to get a date that was chosen
    appartementEntrance:Date | undefined;
-  constructor(private fb:FormBuilder, private searchService:SearchService, private appartementsService:AppartementsService ) { }
+  constructor(private fb:UntypedFormBuilder, private searchService:SearchService, private appartementsService:AppartementsService ) { }
 
   ngOnInit(): void {
 

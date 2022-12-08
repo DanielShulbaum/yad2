@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder,UntypedFormGroup, Validators } from '@angular/forms';
 import { NewPostService } from 'src/app/services/new-post.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { NewPostService } from 'src/app/services/new-post.service';
 export class AssetDetailsComponent implements OnInit {
   @Output() transferClose3Stage = new EventEmitter<boolean>()
   @Output() transferComplete3Stage = new EventEmitter<boolean>()
-  assetDetails!:FormGroup ;
+  assetDetails!:UntypedFormGroup ;
   roomsOptions:number[]=[
     1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5
   ];
@@ -34,7 +34,7 @@ export class AssetDetailsComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder, private newPostService:NewPostService) {
+  constructor(private fb: UntypedFormBuilder, private newPostService:NewPostService) {
 
   }
 
