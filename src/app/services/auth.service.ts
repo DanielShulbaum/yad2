@@ -48,10 +48,7 @@ export class AuthService {
             )
           this.currentUser.next(tempUser);
           console.log('authservice ' + this.currentUser );
-
-
           return this.currentUser;
-
           }else{
             this.errorMessage.next(true);
           }

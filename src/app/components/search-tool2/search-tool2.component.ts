@@ -47,8 +47,6 @@ export class SearchTool2Component implements OnInit
   constructor(private fb:UntypedFormBuilder, private searchService:SearchService, private appartementsService:AppartementsService ) { }
 
   ngOnInit(): void {
-
-
     this.basicSearch=this.fb.group({
         location:this.fb.control(''),
         min_price:this.fb.control(''),
@@ -77,14 +75,12 @@ export class SearchTool2Component implements OnInit
         freeText:this.fb.control(''),
       });
   }
-
   passMinRoom(event:number){
     this.chosenMinRooms=event;
   }
   passMaxRoom(event:number){
     this.chosenMaxRooms=event;
   }
-
   passHouseType(event:boolean[]){
     this.chosenHousesTypes = event;
     console.table(this.chosenHousesTypes);
@@ -191,43 +187,33 @@ export class SearchTool2Component implements OnInit
       this.basicSearch.value.location, this.chosenMinRooms, this.chosenMaxRooms,
         this.basicSearch.value.min_price,this.basicSearch.value.max_price)
 
-  // this.appartementsService.getAppartementsByFilter(this.chosenAppTypes,this.chosenHousesTypes,this.chosenOtherTypes,
-  //       this.basicSearch.value.location, this.chosenMinRooms, this.chosenMaxRooms,
-  //         this.basicSearch.value.minPrice,this.basicSearch.value.maxPrice)
   }
-
   submitAdvancedSearch(){
     this.searchService.getBasicSearch(false,this.chosenAppTypes,this.chosenHousesTypes,this.chosenOtherTypes,
       this.basicSearch.value.location, this.chosenMinRooms, this.chosenMaxRooms,
         this.basicSearch.value.min_price,this.basicSearch.value.max_price);
-
 
     this.searchService.getAdvancedSearch(this.preferences[0],this.preferences[1],this.preferences[2],
       this.preferences[3],this.preferences[4],this.preferences[5],this.preferences[6],
       this.preferences[7],this.preferences[8],this.advancedSearch.value.minFloor,
       this.advancedSearch.value.maxFloor,this.advancedSearch.value.minArea,this.advancedSearch.value.maxArea)
 
-  // this.searchService.getAdvancedSearch(this.advancedSearch.value.parking,this.advancedSearch.value.elevator,this.advancedSearch.value.airConditioner,
-  //   this.advancedSearch.value.shelter,this.advancedSearch.value.grating,this.advancedSearch.value.storage,this.advancedSearch.value.handicapped,
-  //   this.advancedSearch.value.renovated,this.advancedSearch.value.furnitured,this.advancedSearch.value.minFloor,
-  //   this.advancedSearch.value.maxFloor,this.advancedSearch.value.minArea,this.advancedSearch.value.maxArea)
-
       }
   onClickClear(){
     this.advancedSearch.reset()
     this.basicSearch.reset();
-
-    // this.preferences.forEach(el=>{el=false;});
     this.numberPreferencesChosen=0;
+    this.chosenMinRooms=0;
+    this.chosenMaxRooms=13;
     this.searchService.searchString=undefined;
     this.searchService.passSearchString();
-    // this.appartementsService.getAppartements()
+    this.numberOfAssetsChecked=0;
   }
   onDateClick(){
     if(this.advancedSearch.get('flexEntr') !==null ){
       this.advancedSearch.get('flexEntr')!.reset();
     }
-    // && this.advancedSearch.get('entrDate') !==null
+
   }
   onFlexEntrClick(){
     if(this.advancedSearch.get('entrDate') !==null ){

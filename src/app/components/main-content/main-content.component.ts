@@ -69,20 +69,7 @@ export class MainContentComponent implements OnInit, OnDestroy {
     })
   }
 
-  // showRoomsandID(){
 
-  //   const filter = "roomsNumber=5&id=1"
-  //   this.subscriptionAppList = this.appartementsService.getAppartements(this.page, filter).
-  //     subscribe({next:(appartements) =>{
-  //       this.appartementListToShow = appartements;
-  //   }});
-
-  //   // const filter = "roomsNumber=5&id=1"
-  //   // this.subscriptionAppList = this.appartementsService.getAppartements( filter).
-  //   //   subscribe({next:(appartements) =>{
-  //   //     this.appartementListToShow = appartements;
-  //   // }});
-  // }
 
   ngOnDestroy(){
     this.subscriptionAppartementsList.unsubscribe();

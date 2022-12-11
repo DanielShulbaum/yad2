@@ -12,7 +12,6 @@ export class AppartementsService {
 
 counter:number=1;
 
-
 // appartementList:Appartement[]=[
 
 //   new Appartement(
@@ -362,15 +361,11 @@ getAppartementsList(){
 }
 
 getAppartements(page:number, filters?:string ):Observable<any>{
-
-
   if(!filters ){
-
     return this.http.get("http://localhost:3000/appartements?_page="+page+"&_limit=10") as Observable<Appartement[]>;
   }
   return this.http.get("http://localhost:3000/appartements?_page=" +page + filters) as Observable<Appartement[]>;
 }
-
 
 postAppartements(data:Appartement):Observable<any>{
   const headers = {'content-type': 'application/json'};
@@ -378,6 +373,4 @@ postAppartements(data:Appartement):Observable<any>{
   console.log(data);
    return this.http.post('http://localhost:3000/appartements',body,{'headers':headers});
   }
-
-
 }
