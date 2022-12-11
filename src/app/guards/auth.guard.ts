@@ -25,17 +25,4 @@ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
   }
 }
 
-// canActivate(route: ActivatedRouteSnapshot, router: RouterStateSnapshot)
-// : boolean | UrlTree | Promise<boolean> | Observable<boolean | UrlTree>   {
-//     return this.authService.currentUser.pipe(map(user => {
-//       take(1);
-//       const isLogged = !!user;
-//       if (isLogged) {
-//         return true;
-//       }
-//       return this.router.createUrlTree(['/auth']);
-//       }),
-//     );
-//   }
 
-// }

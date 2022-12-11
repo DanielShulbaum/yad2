@@ -12,7 +12,7 @@ export class AppartementsService {
 
 counter:number=1;
 
-example:{} = {"id":43,"postDate":"2022-11-22T09:58:55.180Z","streetName":"sds","houseNumber":"6","appartementKind":"בית פרטי/קוטג","neighbourhoodName":"","cityName":"dsv","roomsNumber":"4","floorNumber":"3","area":"60","description":"eEfEfW4","floorsInBuilding":"5","entranceDate":"2022-11-30","parkingLots":"1","numberOfBalconies":"3","belongsToUser":{"name":"Seba","password":"Hyperact3","surname":"Gever","phone":536983963,"email":"Seba@gmail.com","idUser":2},"airConditioner":false,"gratings":false,"lift":false,"kosherKitchen":false,"sunBoiler":true,"handicappedAccess":false,"isRenovated":false,"hasShelter":true,"hasStoragePlace":false,"hasTadiranAir":true,"hasFurniture":false,"isFlexEntranceDate":"","hasResidentialUnit":false,"imgPath":[],"price":""}
+
 // appartementList:Appartement[]=[
 
 //   new Appartement(
@@ -363,10 +363,12 @@ getAppartementsList(){
 
 getAppartements(page:number, filters?:string ):Observable<any>{
 
-  if(filters === undefined){
+
+  if(!filters ){
+
     return this.http.get("http://localhost:3000/appartements?_page="+page+"&_limit=10") as Observable<Appartement[]>;
   }
-  return this.http.get("http://localhost:3000/appartements?_page=" +page + filters);
+  return this.http.get("http://localhost:3000/appartements?_page=" +page + filters) as Observable<Appartement[]>;
 }
 
 

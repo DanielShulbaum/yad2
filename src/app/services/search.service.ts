@@ -15,16 +15,14 @@ minFloor:number = 0;
 maxFloor:number=17;
 minArea:number = 0;
 maxArea:number = 150;
-searchString:string ="";
+searchString:string|undefined ="";
 chosenAppTypes = ['דירה','דירת גן','גג\פנטהאוז','דופלקס','דירת נופש','מרתף\פרטר','טריפלקס','יחידת דיור','סטודיו\לופט',]
 chosenHousesTypes=["'בית פרטי/קוטג",'דו משפחתי','משק חקלאי/נחלה',"משק עזר",]
 chosenOtherTypes=['מגרשים','דיור מוגן','בניין מגורים','מחסן','חניה',"קב' רכישת/ זכות לנכס",'כללי',]
 
   constructor() { }
 
-  searchFilter$=new Subject<string>();
-
-
+  searchFilter$=new Subject<string|undefined>();
 
   getBasicSearch(basicSearch:boolean,chosenAppTypes:boolean[],chosenHousesTypes:boolean[],chosenOtherTypes:boolean[],
                  location?:string, minRooms?:number, maxRooms?:number, minPrice?:number, maxPrice?:number,){
@@ -33,7 +31,6 @@ chosenOtherTypes=['מגרשים','דיור מוגן','בניין מגורים','
     if(location!==''){
       this.location = location;
       this.searchString=this.searchString+"cityName_like="+location
-
     }
     if(minRooms!==undefined){
       this.minRooms = minRooms;
@@ -123,20 +120,19 @@ chosenOtherTypes=['מגרשים','דיור מוגן','בניין מגורים','
       if(maxArea!=0){
         this.maxArea = maxArea;
       }
-
-
       this.setFloor();
       this.setArea();
-
       this.passSearchString()
 
   }
 
   passSearchString(){
-    if(this.searchString !== undefined){
-      this.searchFilter$.next(this.searchString);
+    console.log(this.searchString);
 
-  }
+    // if(this.searchString !== undefined){
+      this.searchFilter$.next(this.searchString);
+  // }
+
   }
 
 setFloor(){

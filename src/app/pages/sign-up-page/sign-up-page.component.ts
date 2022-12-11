@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { format } from 'path';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -22,7 +21,6 @@ export class SignUpPageComponent implements OnInit {
   }
 
   onSignup(form:NgForm){
-
     if(!form.valid){
       return;
     }
@@ -31,7 +29,6 @@ export class SignUpPageComponent implements OnInit {
     this.authService.currentUser.next(user);
     this.showSecondRegistrationPhase=false;
     this.router.navigate(['/home']);
-
   }
 
   onClickHidePassword(){

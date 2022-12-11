@@ -215,6 +215,13 @@ export class SearchTool2Component implements OnInit
       }
   onClickClear(){
     this.advancedSearch.reset()
+    this.basicSearch.reset();
+
+    // this.preferences.forEach(el=>{el=false;});
+    this.numberPreferencesChosen=0;
+    this.searchService.searchString=undefined;
+    this.searchService.passSearchString();
+    // this.appartementsService.getAppartements()
   }
   onDateClick(){
     if(this.advancedSearch.get('flexEntr') !==null ){

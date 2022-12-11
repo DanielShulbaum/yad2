@@ -22,7 +22,7 @@ export class MainContentComponent implements OnInit, OnDestroy {
   sortBy:number=0;
   filterWithPrice=false;
   filterWithPictures=false;
-  searchFilter:string=''
+  searchFilter:string|undefined
 
   constructor(private appartementsService:AppartementsService, private searchService:SearchService ) { }
 
@@ -36,13 +36,14 @@ export class MainContentComponent implements OnInit, OnDestroy {
       this.subscriptionToFilter=this.searchService.searchFilter$.
       subscribe({next:(search)=>{
         this.searchFilter = search;
+        //
+        this.page = 1;
                     this.subscriptionAppartementsList = this.appartementsService.getAppartements(this.page,this.searchFilter)
                       .subscribe({next:(appartements:Appartement[]) => {
                   this.appartementListToShow = appartements;
                 }})
       }})
   }
-
   onScroll():void{
     this.appartementsService.getAppartements(this.page++,this.searchFilter).
     subscribe({next:(appartements:Appartement[])=>{
@@ -51,7 +52,6 @@ export class MainContentComponent implements OnInit, OnDestroy {
       console.log(this.appartementListToShow);
     }})
   }
-
   passSortChoice(event:number){
     this.sortBy=event;
   }
@@ -83,7 +83,6 @@ export class MainContentComponent implements OnInit, OnDestroy {
   //   //     this.appartementListToShow = appartements;
   //   // }});
   // }
-
 
   ngOnDestroy(){
     this.subscriptionAppartementsList.unsubscribe();
