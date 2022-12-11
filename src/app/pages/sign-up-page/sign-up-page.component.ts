@@ -29,7 +29,6 @@ export class SignUpPageComponent implements OnInit {
     let user = new User(form.value.name,this.password,form.value.surname,form.value.phone,this.email,this.authService.users.length + 1)
     this.authService.users.push(user);
     this.authService.currentUser.next(user);
-
     this.showSecondRegistrationPhase=false;
     this.router.navigate(['/home']);
 
