@@ -43,6 +43,12 @@ import { FilterSimplePipe } from './shared/filter-simple.pipe';
 import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SeparatorDirective } from './directives/separator.directive';
+import { NotFoundComponent } from './pages/404/not-found.component';
+import { ProgressBarAngularModule } from 'progress-bar-angular';
+import { ProgressBarModule } from 'angular-progress-bar';
+
+
 
 @NgModule({
   declarations: [
@@ -60,7 +66,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     NoticeMenuComponent,
     LikedMenuComponent,
     UserMenuComponent,
-
     FilterAppartmentKindComponent,
     FilterRoomsComponent,
     FilterFloorComponent,
@@ -83,6 +88,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     FormFinalStageComponent,
     SortPipePipe,
     FilterSimplePipe,
+    SeparatorDirective,
+    NotFoundComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -92,6 +101,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     HttpClientModule,
     MatCardModule,
     InfiniteScrollModule,
+    ProgressBarAngularModule,
+    ProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

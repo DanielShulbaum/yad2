@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup,    Validators,  UntypedFormBuilder, } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -32,7 +33,7 @@ export class NewPostComponent implements OnInit {
   showFirstStage:boolean=false;
   showSecondStage:boolean=false;
   completedSecondStage:boolean=false;
-  showThirdStage:boolean=false
+  showThirdStage:boolean=false;
   completedThirdStage:boolean=false;
   showFourthStage:boolean=false;
   completedFourthStage:boolean=false;
@@ -40,9 +41,10 @@ export class NewPostComponent implements OnInit {
   completedFifthStage:boolean=false;
   showSixthStage:boolean=false;
   completedSixthStage:boolean=false;
-  showSevenStage:boolean=false
+  showSevenStage:boolean=false;
   completedSevenStage:boolean=false;
-  constructor(private fb: UntypedFormBuilder, private authService:AuthService, private newPostService:NewPostService) { }
+  constructor(private fb: UntypedFormBuilder, private authService:AuthService, private newPostService:NewPostService,
+              private router:Router) { }
 
   ngOnInit(): void {
     this.assetAdressForm = this.fb.group({
@@ -68,7 +70,6 @@ export class NewPostComponent implements OnInit {
   onSubmitAdressForm(){
   if(!this.assetAdressForm.valid){
       return;
-
     }
     this.newPostService.onGetAdressAsset(this.assetAdressForm);
     this.showSecondStage=!this.showSecondStage;
@@ -115,5 +116,35 @@ export class NewPostComponent implements OnInit {
   this.completedSixthStage= event;
   this.showSixthStage = false;
   this.showSevenStage = true;
+  }
+  onEditSecond(){
+    this.showSecondStage=true;
+    this.completedSecondStage=false;
+    this.showThirdStage=false;
+  }
+
+  onEditThird(){
+    this.showThirdStage=true;
+    this.completedThirdStage=false;
+    this.showFourthStage=false;
+  }
+  onEditFourth(){
+    this.showFourthStage=true;
+    this.completedFourthStage=false;
+    this.showFifthStage=false;
+  }
+  onEditFifth(){
+    this.showFifthStage=true;
+    this.completedFifthStage=false;
+    this.showSixthStage=false;
+  }
+  onEditSixth(){
+    this.showSixthStage=true;
+    this.completedSixthStage=false;
+    this.showSevenStage=false;
+  }
+  onClickQuit(){
+    this.authService.currentUser.next(null);
+    this.router.navigate(['/home'])
   }
 }

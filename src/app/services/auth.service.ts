@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -12,6 +12,11 @@ export class AuthService {
 
   errorMessage = new BehaviorSubject<boolean>(false);
   usersCounter:number =  3;
+
+  //
+  returnUrl:string='';
+  //
+
   constructor(private router:Router) { }
 
   public users:User[] = [
@@ -22,15 +27,13 @@ export class AuthService {
     new User(
       'Udi','Hyperact3','Shirabi', 536983963,'Udi@gmail.com',3)
   ]
-  currentUser = new BehaviorSubject<User | null>( this.users[0]);
+  currentUser = new BehaviorSubject<User | null>(null);
 
-  signIn(form:NgForm){
+  signIn(form:NgForm):BehaviorSubject<User|null>|void{
     try{
       const email = form.value.email;
       const password = form.value.password;
-
       let approvedUser = false;
-
       for(let index=0; index<this.users.length; index++){
         if(this.users[index].email === email){
           if(this.users[index].password === password){
@@ -44,18 +47,21 @@ export class AuthService {
               this.users[index].idUser,
             )
           this.currentUser.next(tempUser);
-          this.router.navigate(['/home']);
+          console.log('authservice ' + this.currentUser );
+
+
+          return this.currentUser;
+
           }else{
             this.errorMessage.next(true);
           }
         }
       }if(!approvedUser) {
         this.errorMessage.next(true);
-       ;
       }
     }catch(error){
-      this.errorMessage.next(true);
       form.reset();
+      this.errorMessage.next(true);
       {alert(error)}
     }
   }

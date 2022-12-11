@@ -36,10 +36,10 @@
     <div class="line_title">תאריך כניסה*</div>
     <div class="post_input_section">
       <div class="text_title">
-        <input class="payments_date_input" type="date" formControlName = "assetEntrDate">
+        <input class="payments_date_input" type="date" formControlName = "assetEntrDate" (change)="onDateClick()">
         <div class="payments_checkbox">
-          <input type="checkbox" formControlName = "assetEntrDateImmediately"> מיידי
-          <input type="checkbox" formControlName = "assetEntrDateFlex"> גמיש
+          <input type="checkbox" formControlName = "assetEntrDateImmediately" (change)="onImmDateClick()"> מיידי
+          <input type="checkbox" formControlName = "assetEntrDateFlex" (change)="onFlexDateClick()"> גמיש
         </div>
       </div>
       <span *ngIf="assetPayments.controls['assetEntrDate'].hasError('required') && formAssetPayments.submitted" class="error_message">יש לבחור מועד</span>

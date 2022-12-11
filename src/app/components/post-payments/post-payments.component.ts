@@ -36,5 +36,18 @@ export class PostPaymentsComponent implements OnInit {
     this.transferClose4Stage.emit(false);
   }
 
+  onDateClick(){
+      this.assetPayments.get('assetEntrDateImmediately')!.reset()
+      this.assetPayments.get('assetEntrDateFlex')!.reset()
+  }
 
+  onImmDateClick(){
+    this.assetPayments.get('assetEntrDate')!.reset()
+    this.assetPayments.get('assetEntrDateFlex')!.reset()
+  }
+
+  onFlexDateClick(){
+    this.assetPayments.get('assetEntrDateImmediately')!.reset()
+    this.assetPayments.get('assetEntrDate')!.reset()
+  }
 }

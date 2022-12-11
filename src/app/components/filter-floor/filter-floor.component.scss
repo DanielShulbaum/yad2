@@ -20,9 +20,12 @@
   max-height: 320px;
   overflow-y: scroll;
 }
-
+.bold_text{
+  font-weight: 600;
+}
 .list_item{
   padding: 8px;
+  cursor: pointer;
 
 }
 .list_item:hover{

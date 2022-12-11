@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Appartement } from 'src/app/models/appartement.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 
 
 @Component({
@@ -18,11 +18,15 @@ export class FilterAppartmentKindComponent implements OnInit {
   otherShow=false;
 
 
-  appartments:[boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean]
-              = [false,false,false,false,false,false,false,false,false];
-  houses:[boolean,boolean,boolean,boolean] = [false,false,false,false];
-  other:[boolean,boolean,boolean,boolean,boolean,boolean,boolean]
-                = [false,false,false,false,false,false,false];
+
+  @Input() appartments!:boolean[]
+  @Input() houses!:boolean[]
+  @Input() other!:boolean[]
+  // appartments:[boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean]
+  //             = [false,false,false,false,false,false,false,false,false];
+  // houses:[boolean,boolean,boolean,boolean] = [false,false,false,false];
+  // other:[boolean,boolean,boolean,boolean,boolean,boolean,boolean]
+  //               = [false,false,false,false,false,false,false];
 
 
   allAppartmentsChecked:boolean=false;
@@ -48,6 +52,10 @@ export class FilterAppartmentKindComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.countAppartements();
+    this.countHouses();
+    this.countOther();
+    this.statusCategoriesCheck();
   }
 
   onClickAll(){
@@ -75,12 +83,18 @@ export class FilterAppartmentKindComponent implements OnInit {
       this.allChecked=true;
       this.noneChecked=false;
       this.partChecked=false;
-    }else if(!this.partOfAppartements && !this.partOfHouses && !this.partOfOtherChecked){
+      return;
+    }else if(this.allAppartmentsChecked || this.allHousesChecked || this.allOtherChecked){
+      this.allChecked=false;
+      this.noneChecked=false;
+      this.partChecked=true;
+    }
+    else if(!this.partOfAppartements && !this.partOfHouses && !this.partOfOtherChecked){
       this.allChecked=false;
       this.noneChecked=true;
       this.partChecked=false;
     }
-    else{
+    else if(this.partOfAppartements || this.partOfHouses || this.partOfOtherChecked){
       this.allChecked=false;
       this.noneChecked=false;
       this.partChecked=true;
@@ -128,6 +142,11 @@ export class FilterAppartmentKindComponent implements OnInit {
         this.counterAppartements++
       }
     }
+    if(this.counterAppartements===9){
+      this.allAppartmentsChecked=true
+    }else if(this.counterAppartements!==0){
+      this.partOfAppartements=true;
+    }
   }
   countHouses(){
     this.counterHouses=0;
@@ -135,6 +154,11 @@ export class FilterAppartmentKindComponent implements OnInit {
       if(this.houses[i]){
         this.counterHouses++
       }
+    }
+    if(this.counterHouses===4){
+      this.allHousesChecked=true
+    }else if(this.counterHouses!==0){
+      this.partOfHouses=true;
     }
   }
   countOther(){
@@ -144,6 +168,11 @@ export class FilterAppartmentKindComponent implements OnInit {
         this.counterOther++
       }
     }
+    if(this.counterOther===7){
+      this.allOtherChecked=true
+    }else if(this.counterOther!==0){
+      this.partOfOtherChecked=true;
+    }
   }
   countAllChecked(){
     this.countAppartements();
@@ -151,8 +180,6 @@ export class FilterAppartmentKindComponent implements OnInit {
     this.countOther();
     this.counterChecked=this.counterAppartements+this.counterHouses+this.counterOther;
     this.transferNumberChecked.emit(this.counterChecked)
-
-
   }
 
   onClickHouseEl(num:number){
@@ -191,7 +218,7 @@ export class FilterAppartmentKindComponent implements OnInit {
           this.partOfOtherChecked=false;
       }else{
           this.partOfOtherChecked=true;
-          this.partOfOtherChecked=false;
+          this.allOtherChecked=false;
       }
     }
     this.numberOfOtherChecked = 0;
@@ -231,6 +258,5 @@ export class FilterAppartmentKindComponent implements OnInit {
     this.transferAppartTypes.emit(this.appartments);
     this.transferHouseTypes.emit(this.houses);
     this.transferOtherTypes.emit(this.other);
-
   }
 }

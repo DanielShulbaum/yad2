@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Appartement } from '../models/appartement.model';
 
 @Pipe({
-  name: 'sortPipe'
+  name: 'sortPipe',
+  pure:false
 })
 export class SortPipePipe implements PipeTransform {
 

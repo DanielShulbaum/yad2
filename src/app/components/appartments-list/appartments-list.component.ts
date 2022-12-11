@@ -1,4 +1,5 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { timeStamp } from 'console';
 
 @Component({
   selector: 'app-appartments-list',
@@ -10,19 +11,33 @@ export class AppartmentsListComponent implements OnInit {
 
   sortValues:string[] = ['לפי תאריך',"מחיר - מהזול ליקר","מחיר - מהיקר לזול"];
   sortBy = this.sortValues[0];
-  sortOption=0;
+  @Input() sortOption=0;
   mainSortShow:boolean=false;
   secondarySortShow:boolean=false;
-  filterWithPriceOnly=false;
-  filterWithPicturesOnly=false;
+  secondarySortChecked:boolean=false;
+  @Input() filterWithPriceOnly!:boolean;
+  @Input() filterWithPicturesOnly!:boolean;
 
   @Output() transferSortChoice = new EventEmitter<number>();
   @Output() transferFilterPrice = new EventEmitter<boolean>();
   @Output() transferFilterPictures = new EventEmitter<boolean>();
+
+
   constructor() { }
 
   ngOnInit(): void {
+    if(this.checkboxes!==undefined){
+      this.checkboxes.forEach((element) => {
+        if(element.nativeElement.checked){
+          this.secondarySortChecked=true;
+        }
+      });
+    }
   }
+  // this.checkboxes.forEach((element) => {
+  //   element.nativeElement.checked = false;
+  // });
+
 
   onClickMainSort(event:any){
     event.stopPropagation();
@@ -53,17 +68,18 @@ export class AppartmentsListComponent implements OnInit {
     this.secondarySortShow = !this.secondarySortShow;
   }
   onClickFilterPrice(){
-
     this.filterWithPriceOnly = !this.filterWithPriceOnly;
-
+    this.secondarySortChecked=true;
   }
   onClickFilterPicture(){
     this.filterWithPicturesOnly = !this.filterWithPicturesOnly;
+    this.secondarySortChecked=true;
   }
   onClearFilterChoice(){
   this.checkboxes.forEach((element) => {
     element.nativeElement.checked = false;
   });
+    this.secondarySortChecked=false;
     this.filterWithPriceOnly=false;
     this.filterWithPicturesOnly=false;
     this.transferFilterPictures.emit(this.filterWithPicturesOnly);

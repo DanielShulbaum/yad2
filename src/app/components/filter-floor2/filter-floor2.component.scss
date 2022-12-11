@@ -23,8 +23,11 @@
 
 .list_item{
   padding: 8px;
-
+  cursor: pointer;
 }
 .list_item:hover{
   background: lightgray;
+}
+.bold_text{
+  font-weight: 600;
 }

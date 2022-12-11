@@ -7,15 +7,17 @@
         <i class= "fa-solid fa-chevron-down"></i>
             <div *ngIf="mainSortShow" class="app_main_filter_check">
               <div class="app_check_line" (click)="onClickSortDate($event)">
-                <input type="radio" name="sortBy" id="date" value=sortByDate checked>
+                <input type="radio"  #sortByDate name="sortBy" id="date" value=sortByDate [checked]="sortOption===0 ?true:false"  >
                 <label for="sortBy">{{sortValues[0]}} </label>
               </div>
               <div class="app_check_line" (click)="onClickSortPriceLow($event)" >
-                <input type="radio" name="sortBy" id="priceFromLow" value=sortByPriceLow  >
+                <input type="radio"  #sortByPriceFromLow name="sortBy" id="priceFromLow" [checked]="sortOption===1 ?true:false"
+                 value=sortByPriceLow  >
                 <label for="sortBy">{{sortValues[1]}}</label>
               </div>
               <div class="app_check_line" (click)="onClickSortPriceHigh($event)">
-                <input type="radio" name="sortBy" id="priceFromHigh" value=sortByPriceHigh >
+                <input type="radio"  #sortByPriceFromHigh name="sortBy" id="priceFromHigh" [checked]="sortOption===2 ?true:false"
+                 value=sortByPriceHigh >
                 <label for="sortBy">{{sortValues[2]}}</label>
               </div>
             </div>
@@ -33,13 +35,13 @@
       </div>
       <div *ngIf="secondarySortShow" class="secondary_filter" >
         <div class="appartements_filter_line" (click)="onClickFilterPrice()">
-          <input #checkboxes type="checkbox">עם מחיר
+          <input #checkboxes type="checkbox" [checked]="filterWithPriceOnly ?true:false">עם מחיר
         </div>
         <div class="appartements_filter_line" (click)="onClickFilterPicture()">
-          <input #checkboxes type="checkbox">עם תמונה
+          <input #checkboxes type="checkbox" [checked]="filterWithPicturesOnly ?true:false">עם תמונה
         </div>
         <div class="secondary_filter_last_line" (click)="onClearFilterChoice()">
-          <button [ngStyle]="{'disabled': (filterWithPriceOnly||filterWithPicturesOnly)? true:false}">ניקוי</button>
+          <button [disabled]="!filterWithPriceOnly && !filterWithPicturesOnly? true:false">ניקוי</button>
           <span class="orange_color" (click)="onClickFilter()">סינון </span>
     </div>
   </div>

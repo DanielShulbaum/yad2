@@ -1,7 +1,7 @@
 <header class="newpost_header">
   <div class="header_right">
-    <a href="/home">
-      <img src="../../../assets/imgs/yad2Logo.png" alt="logo" href="/home">
+    <a routerLinkActive="active" routerLink="/home">
+      <img src="../../../assets/imgs/yad2Logo.png" alt="logo" >
     </a>
     <div class="header_logo_text">פרסום מודעה חדשה</div>
   </div>
@@ -15,7 +15,7 @@
       <i class="fa-regular fa-circle-question"></i>
     </div>
     <div class="header_contact">צור קשר</div>
-    <div class="close_circle">
+    <div class="close_circle" (click)="onClickQuit()">
       <span class="close_text">יציאה</span>
       <i class="fa-solid fa-x"></i>
     </div>
@@ -75,7 +75,7 @@
             <i class="fa-solid fa-v "></i>
           </div>
           <span>כתובת הנכס</span>
-          <span *ngIf="completedSecondStage" class="edit_icon" >
+          <span *ngIf="completedSecondStage" class="edit_icon" (click)="onEditSecond()" >
             <i class="fa-regular fa-pen-to-square"></i>
           </span>
         </div>
@@ -95,7 +95,7 @@
           <div class="post_stage_sec_title">סוג הנכס* </div >
           <select class="form_input" formControlName="assetType"
           [style.border]="!assetAdressForm.get('assetType')!.valid && formAssetAdress.submitted ? '1px solid #ff0000':''">
-            <option  value="" disabled selected >דירה או אולי פנטהאוז?</option>
+            <option  value="" disabled hidden selected >דירה או אולי פנטהאוז?</option>
             <option  ngValue="{{ type }}"  *ngFor="let type of assetTypes; let i = index">{{ type }}</option>
           </select>
           <span *ngIf="!assetAdressForm.get('assetType')!.valid && formAssetAdress.submitted" class="error_message">שדה חובה</span>
@@ -120,10 +120,10 @@
         </div>
 
         <div class="post_input_section">
-          <div class="post_stage_sec_title">רחוב</div >
+          <div class="post_stage_sec_title">רחוב*</div >
             <input class="form_input" placeholder="הכנסת שם הרחוב" type="text"  id="assetStreet" formControlName="assetStreet"
             [style.border]="!assetAdressForm.get('assetStreet')!.valid && formAssetAdress.submitted ? '1px solid #ff0000':''">
-            <div class="post_stage_sec_title font_size07">המידע הזה מגיע מגוף ממשלתי. אם הרחוב שלך לא מופיע, ממולץ לבחור רחוב קרוב אליך</div>
+            <div class="post_stage_sec_title font_size07">המידע הזה מגיע מגוף ממשלתי. אם הרחוב שלך לא מופיע, מומלץ לבחור רחוב קרוב אליך</div>
             <div class="post_stage_sec_title font_size07">לא מצאת את הרחוב?</div>
             <span *ngIf="!assetAdressForm.get('assetStreet')!.valid && formAssetAdress.submitted" class="error_message">יש לרשום שם הרחוב</span>
         </div>
@@ -199,7 +199,7 @@
           <i class="fa-solid fa-v "></i>
         </div>
         <span>על הנכס</span>
-        <span *ngIf="completedThirdStage" class="edit_icon" >
+        <span *ngIf="completedThirdStage" class="edit_icon" (click)="onEditThird()"  >
           <i class="fa-regular fa-pen-to-square"></i>
         </span>
       </div>
@@ -207,6 +207,7 @@
 
     <app-asset-details (transferClose3Stage)="passShowThirdStage($event)"
       (transferComplete3Stage)=" passCompleteThirdStage($event)" *ngIf="showThirdStage"></app-asset-details>
+
 <!-- part4 -->
     <div *ngIf="!showFourthStage" class="post_stage lightgray">
       <div class="post_stage_title">
@@ -214,7 +215,7 @@
           <i class="fa-solid fa-4"></i>
         </div>
         <span>תשלומים, תאריכים ועוד</span>
-        <span *ngIf="completedFourthStage" class="edit_icon" >
+        <span *ngIf="completedFourthStage" class="edit_icon" (click)="onEditFourth()" >
           <i class="fa-regular fa-pen-to-square"></i>
         </span>
       </div>
@@ -229,7 +230,7 @@
           <i class="fa-solid fa-5"></i>
         </div>
         <span>תמונות וסרטונים</span>
-        <span *ngIf="completedFifthStage" class="edit_icon" >
+        <span *ngIf="completedFifthStage" class="edit_icon" (click)="onEditFifth()" >
           <i class="fa-regular fa-pen-to-square"></i>
         </span>
       </div>
@@ -244,13 +245,13 @@
           <i class="fa-solid fa-6"></i>
         </div>
         <span>פרטים ליצירת קשר</span>
-        <span *ngIf="completedSixthStage" class="edit_icon" >
+        <span *ngIf="completedSixthStage" class="edit_icon" (click)="onEditSixth()" >
           <i class="fa-regular fa-pen-to-square"></i>
         </span>
       </div>
     </div>
 
-    <app-form-contact-details
+    <app-form-contact-details [userName]="currentUser!.name" [phoneNumber]="currentUser!.phone"
     (transferComplete6Stage)=" passCompleteSixthStage($event)" *ngIf="showSixthStage"></app-form-contact-details>
 <!-- part7 -->
     <div *ngIf="!showSevenStage" class="post_stage lightgray">

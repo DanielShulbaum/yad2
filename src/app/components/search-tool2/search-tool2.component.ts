@@ -1,4 +1,4 @@
-import {  Component,  OnInit } from '@angular/core';
+import {   Component,  OnInit } from '@angular/core';
 import { UntypedFormBuilder, FormControlName, UntypedFormGroup } from '@angular/forms';
 import { AppartementsService } from 'src/app/services/appartements.service';
 import { SearchService } from 'src/app/services/search.service';
@@ -8,20 +8,18 @@ import { SearchService } from 'src/app/services/search.service';
   templateUrl: './search-tool2.component.html',
   styleUrls: ['./search-tool2.component.scss']
 })
-export class SearchTool2Component implements OnInit {
-
+export class SearchTool2Component implements OnInit
+ {
   basicSearch!:UntypedFormGroup ;
   advancedSearch!:UntypedFormGroup;
-
   numberOfAssetsChecked:number=0;
-  chosenAppTypes:boolean[]=[];
-  chosenHousesTypes:boolean[]=[];
-  chosenOtherTypes:boolean[]=[];
+  chosenAppTypes:boolean[]=[false,false,false,false,false,false,false,false,false];
+  chosenHousesTypes:boolean[]=[false,false,false,false];
+  chosenOtherTypes:boolean[]=[false,false,false,false,false,false,false];
   chosenMinRooms:number=0;
-  chosenMaxRooms:number=12;
-  chosenMinFloor:number=0;
+  chosenMaxRooms:number=13;
+  chosenMinFloor:number|string="הכל";
   chosenMaxFloor:number=17;
-
    //variables of showing menus
    propertiesShow:boolean = false;
    roomsFilterShow:boolean = false;
@@ -30,7 +28,7 @@ export class SearchTool2Component implements OnInit {
    finalFloorListShow = false;
 
    //icons of checkboxs
-
+   preferences:boolean[] = [false,false,false,false,false,false,false,false,false];
    parking:boolean=false;
    lift:boolean=false;
    airCondition:boolean=false;
@@ -45,20 +43,12 @@ export class SearchTool2Component implements OnInit {
 
    //to get a date that was chosen
    appartementEntrance:Date | undefined;
+   numberPreferencesChosen:number = 0;
   constructor(private fb:UntypedFormBuilder, private searchService:SearchService, private appartementsService:AppartementsService ) { }
 
   ngOnInit(): void {
 
-    // this.basicSearch=this.fb.group({
-    //   baseSearch:this.fb.group({
-    //     location:this.fb.control(''),
-    //     min_price:this.fb.control(''),
-    //     max_price:this.fb.control(''),
-    //     }),
-    //   advancedSearch:this.fb.group({
-    //     loca:this.fb.control(''),
-    //   })
-    //   })
+
     this.basicSearch=this.fb.group({
         location:this.fb.control(''),
         min_price:this.fb.control(''),
@@ -115,13 +105,10 @@ export class SearchTool2Component implements OnInit {
   passMinFloor(event:any){
     this.chosenMinFloor = event;
     this.startingFloorListShow=false;
-    console.log('minfloor' + this.chosenMinFloor);
-
   }
   passMaxFloor(event:any){
     this.chosenMaxFloor = event;
     this.finalFloorListShow=false;
-    console.log('maxfloor' + this.chosenMaxFloor);
   }
   onClickProperties(){
     this.propertiesShow = !this.propertiesShow;
@@ -132,39 +119,63 @@ export class SearchTool2Component implements OnInit {
   onClickAdvancedSearch(){
     this.advancedSearchShow = !this.advancedSearchShow;
   }
-  onClickParking(){
-    this.parking = !this.parking;
+
+  //consider remove separate boolean indications after validation those were corrected in search service
+  onClickPref(num:number){
+    this.preferences[num]=!this.preferences[num];
+    this.numberPreferencesChosen=0;
+
+    this.preferences.forEach(el=>{
+      if(el){
+        this.numberPreferencesChosen++;
+      }
+    })
+
   }
-  onClickLift(){
-    this.lift = !this.lift
-  }
-  onClickAirCondition(){
-    this.airCondition = !this.airCondition;
-  }
-  onClickBalcony(){
-    this.balcony = !this.balcony;
-  }
-  onClickShelter(){
-    this.shelter = !this.shelter;
-  }
-  onClickGrating(){
-    this.grating = !this.grating
-  }
-  onClickStorage(){
-    this.storage = !this.storage
-  }
-  onClickHandicapped(){
-    this.handicapped = !this.handicapped
-  }
-  onClickRenovated(){
-    this.renovated = !this.renovated
-  }
-  onClickFurnitured(){
-    this.furnitured = !this.furnitured
-  }
-  onClickExclusive(){
-    this.exclusive = !this.exclusive
-  }
+  // onClickParking(){
+  //   this.parking = !this.parking;
+  //   this.preferences[0] = true;
+  // }
+  // onClickLift(){
+  //   this.lift = !this.lift
+  //   this.preferences[1] = true;
+  // }
+  // onClickAirCondition(){
+  //   this.airCondition = !this.airCondition;
+  //   this.preferences[2] = true;
+  // }
+  // onClickBalcony(){
+  //   this.balcony = !this.balcony;
+  //   this.preferences[3] = true;
+  // }
+  // onClickShelter(){
+  //   this.shelter = !this.shelter;
+  //   this.preferences[4] = true;
+  // }
+  // onClickGrating(){
+  //   this.grating = !this.grating
+  //   this.preferences[5] = true;
+  // }
+  // onClickStorage(){
+  //   this.storage = !this.storage
+  //   this.preferences[6] = true;
+  // }
+  // onClickHandicapped(){
+  //   this.handicapped = !this.handicapped
+  //   this.preferences[7] = true;
+  // }
+  // onClickRenovated(){
+  //   this.renovated = !this.renovated
+  //   this.preferences[8] = true;
+  // }
+  // onClickFurnitured(){
+  //   this.furnitured = !this.furnitured
+  //   this.preferences[9] = true;
+  // }
+  // onClickExclusive(){
+  //   this.exclusive = !this.exclusive
+  //   this.preferences[10] = true;
+  // }
 
   onClickStartFloor(){
     this.startingFloorListShow = !this.startingFloorListShow;
@@ -183,8 +194,6 @@ export class SearchTool2Component implements OnInit {
   // this.appartementsService.getAppartementsByFilter(this.chosenAppTypes,this.chosenHousesTypes,this.chosenOtherTypes,
   //       this.basicSearch.value.location, this.chosenMinRooms, this.chosenMaxRooms,
   //         this.basicSearch.value.minPrice,this.basicSearch.value.maxPrice)
-
-
   }
 
   submitAdvancedSearch(){
@@ -193,13 +202,29 @@ export class SearchTool2Component implements OnInit {
         this.basicSearch.value.min_price,this.basicSearch.value.max_price);
 
 
-  this.searchService.getAdvancedSearch(this.advancedSearch.value.parking,this.advancedSearch.value.elevator,this.advancedSearch.value.airConditioner,
-    this.advancedSearch.value.shelter,this.advancedSearch.value.grating,this.advancedSearch.value.storage,this.advancedSearch.value.handicapped,
-    this.advancedSearch.value.renovated,this.advancedSearch.value.furnitured,this.advancedSearch.value.minFloor,
-    this.advancedSearch.value.maxFloor,this.advancedSearch.value.minArea,this.advancedSearch.value.maxArea)
+    this.searchService.getAdvancedSearch(this.preferences[0],this.preferences[1],this.preferences[2],
+      this.preferences[3],this.preferences[4],this.preferences[5],this.preferences[6],
+      this.preferences[7],this.preferences[8],this.advancedSearch.value.minFloor,
+      this.advancedSearch.value.maxFloor,this.advancedSearch.value.minArea,this.advancedSearch.value.maxArea)
+
+  // this.searchService.getAdvancedSearch(this.advancedSearch.value.parking,this.advancedSearch.value.elevator,this.advancedSearch.value.airConditioner,
+  //   this.advancedSearch.value.shelter,this.advancedSearch.value.grating,this.advancedSearch.value.storage,this.advancedSearch.value.handicapped,
+  //   this.advancedSearch.value.renovated,this.advancedSearch.value.furnitured,this.advancedSearch.value.minFloor,
+  //   this.advancedSearch.value.maxFloor,this.advancedSearch.value.minArea,this.advancedSearch.value.maxArea)
 
       }
   onClickClear(){
     this.advancedSearch.reset()
+  }
+  onDateClick(){
+    if(this.advancedSearch.get('flexEntr') !==null ){
+      this.advancedSearch.get('flexEntr')!.reset();
+    }
+    // && this.advancedSearch.get('entrDate') !==null
+  }
+  onFlexEntrClick(){
+    if(this.advancedSearch.get('entrDate') !==null ){
+      this.advancedSearch.get('entrDate')!.reset();
+    }
   }
 }

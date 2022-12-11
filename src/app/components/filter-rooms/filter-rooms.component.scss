@@ -18,6 +18,9 @@
   position: relative;
   padding: 15px;
 }
+.bold_text{
+  font-weight: 600;
+}
 .rooms_line{
   display: flex;
   border: 1px solid lightgray;
@@ -65,6 +68,7 @@
 }
 .list_item{
   padding: 8px;
+  cursor: pointer;
 }
 .list_item:hover{
   background: lightgray;

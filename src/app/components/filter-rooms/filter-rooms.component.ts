@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter-rooms',
@@ -12,16 +12,22 @@ export class FilterRoomsComponent implements OnInit {
 
   startingRoomListShow:boolean = false;
   finalRoomListShow:boolean = false;
-  startingText:string|number = 'מ-';
-  finalText:string|number = 'עד-'
-  startingRoom:number=0;
-  finalRoom:number=12;
+  @Input()startingText:string|number = 'מ-';
+  @Input()finalText:string|number = 'עד-'
+  @Input() startingRoom!:number ;
+  @Input() finalRoom!:number ;
   rooms:number[] = [
     1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12
   ]
   constructor() { }
 
   ngOnInit(): void {
+    if(this.startingText===0){
+      this.startingText='מ-'
+    }
+    if(this.finalText===13){
+      this.finalText='עד-'
+    }
   }
   onClickStartRoomChoice(){
     this.startingRoomListShow = !this.startingRoomListShow;
@@ -40,7 +46,7 @@ export class FilterRoomsComponent implements OnInit {
     }
     else{
       this.finalText = 'הכל';
-      this.finalRoom = 12;
+      this.finalRoom = 13;
       this.finalRoomListShow = !this.finalRoomListShow;
       this.transferMaxRooms.emit(this.finalRoom);
     }

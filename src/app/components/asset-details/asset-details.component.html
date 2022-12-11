@@ -19,7 +19,8 @@
     <div class="input_radio_line">
       <label for="parking"> </label>
       <div>
-        <input id="0" type="radio" value="0" name="assetParkingLots" formControlName="assetParkingLots" checked>
+        <input
+        id="0" type="radio" value="0" name="assetParkingLots" formControlName="assetParkingLots" >
         <label for="0"></label>
         <span class="first_num">ללא</span>
       </div>
@@ -140,9 +141,27 @@
     <div class="post_input_section">
       <div class="text_title">
         <div class="input_container_color">
-          <div class="color_bar" [ngStyle]="{'width:':assetDescriptionLetters.length/400+'%'}"
-          ></div>
-          <input class="lightgray" disabled type="text" placeholder="ממליצים לך בחום להוסיף תיאור">
+          <div class="color_bar"></div>
+          <div class="text_bar">{{textBar}}</div>
+          <!-- [barColor]='[color,"#f8fcfb"]' -->
+          <progress-bar-angular *ngIf="assetDescriptionLetters.length>0 && assetDescriptionLetters.length<=31"  width={{barWidth}} height="30px" borderRadius="full"
+          [barColor]='colors' backgroundColor='rgba(226, 183, 152, 0.2)' animated='true' mode='buffer'></progress-bar-angular>
+
+          <progress-bar-angular *ngIf="assetDescriptionLetters.length>31 && assetDescriptionLetters.length<=61"  width={{barWidth}} height="30px" borderRadius="full"
+          [barColor]='["#f8f398","#f8fcfb"]' backgroundColor='rgba(226, 183, 152, 0.2)' animated='true' mode='buffer'></progress-bar-angular>
+
+          <progress-bar-angular  *ngIf="assetDescriptionLetters.length>61 && assetDescriptionLetters.length<=100" width={{barWidth}} height="30px" borderRadius="full"
+            [barColor]='["#ff894c","#f8fcfb"]' backgroundColor='rgba(226, 183, 152, 0.2)' animated='true' mode='buffer'></progress-bar-angular>
+
+          <progress-bar-angular  *ngIf="assetDescriptionLetters.length>101 && assetDescriptionLetters.length<=130" width={{barWidth}} height="30px" borderRadius="full"
+          [barColor]='["#c9fdd7","#f8fcfb"]' backgroundColor='rgba(226, 183, 152, 0.2)' animated='true' mode='buffer'></progress-bar-angular>
+
+          <progress-bar-angular *ngIf="assetDescriptionLetters.length>131"  width={{barWidth}} height="30px" borderRadius="full"
+          [barColor]='["#79d1c3","#f8fcfb"]' backgroundColor='rgba(226, 183, 152, 0.2)' animated='true' mode='buffer'></progress-bar-angular>
+
+
+
+
         </div>
         <div id="wordCount">
           <span>{{assetDescriptionLetters.length}}</span>
@@ -153,8 +172,9 @@
     <br>
     <div class="post_input_section">
 
-      <textarea   [ngModelOptions]="{standalone: true}" [(ngModel)]="assetDescriptionLetters" #text name="assetDescription" id="assetDescription" cols="5" maxlength="400" rows="8"
-        placeholder="זה המקום לתאר את הפרטים הבולטים, למשל, האם נערך שיפוץ במבנה, מה שופץ, כיווני אוויר, האווירה ברחוב וכו'"></textarea>
+      <textarea   [ngModelOptions]="{standalone: true}" [(ngModel)]="assetDescriptionLetters" #text name="assetDescription"  id="assetDescription" cols="5" maxlength="400" rows="8"
+      (input)="updateBar()"
+      placeholder="זה המקום לתאר את הפרטים הבולטים, למשל, האם נערך שיפוץ במבנה, מה שופץ, כיווני אוויר, האווירה ברחוב וכו'"></textarea>
       </div>
     <div class="textline">אין צורך להוסיף מספר טלפון כחלק מהתיאור, בהמשך התהליך יש אזור מסודר לזה</div>
 

@@ -5,8 +5,6 @@ import { AppartementsService } from 'src/app/services/appartements.service';
 import { SearchService } from 'src/app/services/search.service';
 
 
-
-
 @Component({
   selector: 'app-main-content',
   templateUrl: './main-content.component.html',
@@ -29,50 +27,33 @@ export class MainContentComponent implements OnInit, OnDestroy {
   constructor(private appartementsService:AppartementsService, private searchService:SearchService ) { }
 
   ngOnInit(): void {
-
-
-    // this.subscriptionAppartementsList = this.appartementsService.getAppartements()
-    // .subscribe({next:(appartements) => {
-    //   this.appartementListToShow = appartements;
-    // }})
-
     this.subscriptionAppartementsList = this.appartementsService.getAppartements(this.page)
-    .subscribe({next:(appartements) => {
+    .subscribe({next:(appartements:Appartement[]) => {
       this.appartementListToShow = appartements;
     }})
-
-    // this.subscriptionToFilter=this.searchService.searchFilter$.
-    //   subscribe({next:(search)=>{
-    //     this.searchFilter = search;
-    //                 this.subscriptionAppartementsList = this.appartementsService.getAppartements(this.searchFilter)
-    //                   .subscribe({next:(appartements) => {
-    //               this.appartementListToShow = appartements;
-    //             }})
-    //   }})
-
-
+    // to show infinity scroll work
+    console.log(this.appartementListToShow);
       this.subscriptionToFilter=this.searchService.searchFilter$.
       subscribe({next:(search)=>{
         this.searchFilter = search;
                     this.subscriptionAppartementsList = this.appartementsService.getAppartements(this.page,this.searchFilter)
-                      .subscribe({next:(appartements) => {
+                      .subscribe({next:(appartements:Appartement[]) => {
                   this.appartementListToShow = appartements;
                 }})
       }})
-
   }
-//
+
   onScroll():void{
-    this.appartementsService.getAppartements(++this.page,this.searchFilter).
-    subscribe({next:(appartements)=>{
+    this.appartementsService.getAppartements(this.page++,this.searchFilter).
+    subscribe({next:(appartements:Appartement[])=>{
       this.appartementListToShow.push(...appartements);
+      // to show infinity scroll work
+      console.log(this.appartementListToShow);
     }})
   }
 
-//
   passSortChoice(event:number){
     this.sortBy=event;
-
   }
 
   passFilterPrice(event:boolean){
@@ -88,20 +69,20 @@ export class MainContentComponent implements OnInit, OnDestroy {
     })
   }
 
-  showRoomsandID(){
+  // showRoomsandID(){
 
-    const filter = "roomsNumber=5&id=1"
-    this.subscriptionAppList = this.appartementsService.getAppartements(this.page, filter).
-      subscribe({next:(appartements) =>{
-        this.appartementListToShow = appartements;
-    }});
+  //   const filter = "roomsNumber=5&id=1"
+  //   this.subscriptionAppList = this.appartementsService.getAppartements(this.page, filter).
+  //     subscribe({next:(appartements) =>{
+  //       this.appartementListToShow = appartements;
+  //   }});
 
-    // const filter = "roomsNumber=5&id=1"
-    // this.subscriptionAppList = this.appartementsService.getAppartements( filter).
-    //   subscribe({next:(appartements) =>{
-    //     this.appartementListToShow = appartements;
-    // }});
-  }
+  //   // const filter = "roomsNumber=5&id=1"
+  //   // this.subscriptionAppList = this.appartementsService.getAppartements( filter).
+  //   //   subscribe({next:(appartements) =>{
+  //   //     this.appartementListToShow = appartements;
+  //   // }});
+  // }
 
 
   ngOnDestroy(){

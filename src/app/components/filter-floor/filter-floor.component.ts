@@ -7,23 +7,25 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class FilterFloorComponent implements OnInit {
   floors:number[] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
-  chosenStartFloor:number=0;
+  @Input() chosenStartFloor!:number|string|undefined;
 
 
-  @Output() transferMinFloor = new EventEmitter<number>()
-  @Input() chosenMaxFloorC:number=17;
+  @Output() transferMinFloor = new EventEmitter<number|string>()
+  @Input() chosenMaxFloorC:number|string=17;
   constructor() { }
 
   ngOnInit(): void {
   }
   onClickAll(){
-    this.chosenStartFloor = 0;
+    this.chosenStartFloor = "הכל";
+    this.transferMinFloor.emit(this.chosenStartFloor);
   }
   onClickFloor(floor:number){
     this.chosenStartFloor = floor;
     this.transferMinFloor.emit(this.chosenStartFloor);
   }
   onClickBasement(){
-    this.chosenStartFloor = -1;
+    this.chosenStartFloor = "מרתף/פרטר";
+    this.transferMinFloor.emit(this.chosenStartFloor);
   }
 }

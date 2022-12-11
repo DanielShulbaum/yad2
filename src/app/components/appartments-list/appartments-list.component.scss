@@ -4,6 +4,7 @@
   margin: 10px 0 5px;
   max-width: 970px;
   width: 100%;
+  padding-bottom: 20px;
 }
 .container{
   width: 100%;
@@ -15,6 +16,8 @@
 .appartements_filter{
   display: flex;
   justify-content: space-between;
+  margin-left: -3px;
+  margin-right: 3px;
 }
 .appartements_filter_right{
 
@@ -29,8 +32,9 @@
   width: 170px;
   height: 2rem;
   background: white;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
   justify-content: space-around;
+  cursor: pointer;
 }
 .app_main_filter_check{
   width: 190px;
@@ -71,7 +75,8 @@
  align-items: center;
  justify-content: center;
  gap: 8px;
- border: 1px solid gray;
+ border: 1px solid lightgray;
+ cursor: pointer;
 }
 .secondary_filter{
   position: absolute;

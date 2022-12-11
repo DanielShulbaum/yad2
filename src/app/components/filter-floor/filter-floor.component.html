@@ -1,7 +1,10 @@
 <div class="right_list" >
   <div (click)="onClickAll()" class="list_item">הכל</div>
-  <div (click)="onClickBasement()" class="list_item">מרתף/פרטר</div>
+  <div  (click)="onClickBasement()" class="list_item">מרתף/פרטר</div>
   <div  *ngFor="let floor of floors" (click)="onClickFloor(floor)">
-    <div class="list_item" *ngIf="floor<=chosenMaxFloorC">{{floor}}</div>
+    <div class="list_item" [ngClass]="floor ===chosenStartFloor ? 'bold_text': ''"
+      *ngIf="floor<=chosenMaxFloorC || chosenMaxFloorC==='הכל'||chosenMaxFloorC===undefined">{{floor}}</div>
   </div>
 </div>
+
+

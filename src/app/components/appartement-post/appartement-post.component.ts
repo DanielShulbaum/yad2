@@ -11,9 +11,11 @@ export class AppartementPostComponent implements OnInit {
 
   detailsShow:boolean = false;
   expandedPost:boolean = false;
+  phoneNum!:string
   constructor() { }
 
   ngOnInit(): void {
+    this.phoneNum ='0' +  this.appartement.belongsToUser.phone.toString().slice(0,2)+'-'+this.appartement.belongsToUser.phone.toString().slice(2);
   }
   onClickOwnerDetails(event:any){
     event.stopPropagation();

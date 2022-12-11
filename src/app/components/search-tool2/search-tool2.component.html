@@ -26,22 +26,24 @@
         </div>
 
         <app-filter-appartment-kind *ngIf="propertiesShow"
+          [appartments]="chosenAppTypes" [houses]="chosenHousesTypes" [other]="chosenOtherTypes"
           (transferNumberChecked)="passNum($event)" (transferAppartTypes)="passAppType($event)"
           (transferHouseTypes)="passHouseType($event)" (transferOtherTypes)="passOtherType($event)"></app-filter-appartment-kind>
 
         <div class="filter-box width-small" (click)="onClickRooms()">
           <label for="">חדרים</label>
           <div class="dropdown-filter">
-            <span *ngIf="chosenMinRooms===0 && chosenMaxRooms===12">חדרים</span>
-            <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms!==12" >{{chosenMaxRooms}}-{{chosenMinRooms}}</span>
-            <span *ngIf="chosenMinRooms===0 && chosenMaxRooms!==12">עד- {{chosenMaxRooms}}</span>
-            <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms===12">מ- {{chosenMinRooms}}</span>
+            <span *ngIf="chosenMinRooms===0 && chosenMaxRooms===13">חדרים</span>
+            <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms!==13" >{{chosenMaxRooms}}-{{chosenMinRooms}}</span>
+            <span *ngIf="chosenMinRooms===0 && chosenMaxRooms!==13">עד- {{chosenMaxRooms}}</span>
+            <span *ngIf="chosenMinRooms!==0 && chosenMaxRooms===13">מ- {{chosenMinRooms}}</span>
             <i class="fa-solid black_color margin_right_auto"
               [ngClass]="!roomsFilterShow ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
           </div>
         </div>
 
         <app-filter-rooms *ngIf="roomsFilterShow"
+        [startingRoom]="chosenMinRooms" [finalRoom]="chosenMaxRooms" [startingText]="chosenMinRooms" [finalText]="chosenMaxRooms"
           (transferMinRooms)="passMinRoom($event)" (transferMaxRooms)="passMaxRoom($event)"></app-filter-rooms>
 
           <input formControlName="chosenMinRooms" style="display:none ;" type="text" value={{chosenMinRooms}} >
@@ -49,20 +51,24 @@
 
         <div class="filter-box">
           <label for="">מחיר</label>
-          <input class="width-small" type="number" name="from" id="min-price" placeholder="מ-"
-              formControlName="min_price"/>
-          <input class="width-small" type="number" name="to" id="max-price" placeholder="עד-"
-              formControlName="max_price"/>
+          <input class="width-small" type="text" name="from" id="min-price" placeholder="מ-"
+              formControlName="min_price" separator />
+          <input class="width-small" type="text" name="to" id="max-price" placeholder="עד-"
+              formControlName="max_price" separator />
         </div>
 
 
         <div class="buttons">
           <button class="adviced_search_btn width-middle" (click)="onClickAdvancedSearch()"  type="button">
+            <span *ngIf="numberPreferencesChosen!==0"  class="orange_circle"></span>
             <i class="fa-solid fa-circle-plus"></i>
             <span>חיפוש מתקדם</span>
+            <span *ngIf="numberPreferencesChosen!==0">({{numberPreferencesChosen}})</span>
           </button>
 
-          <button class="search_btn width-small" type="submit" (click)="submitBasicSearch()">חיפוש
+          <button class="search_btn width-small" type="submit" (click)="submitBasicSearch()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+             <span> חיפוש </span>
           </button>
         </div>
       </div>
@@ -79,48 +85,48 @@
 
           <div class="advanced_search_line">
 
-            <span class="check_item" (click)="onClickParking()">
+            <span class="check_item" (click)="onClickPref(0)">
               <input formControlName="parking"  type="checkbox"/>חניה
 
             </span>
 
-            <span class="check_item" (click)="onClickLift()">
+            <span class="check_item" (click)="onClickPref(1)">
               <input  formControlName="elevator" type="checkbox"/>מעלית
 
             </span>
-            <span class="check_item" (click)="onClickAirCondition()">
+            <span class="check_item" (click)="onClickPref(2)">
               <input  formControlName="airConditioner" type="checkbox"/>מיזוג
 
             </span>
-            <span class="check_item" (click)="onClickBalcony()">
+            <span class="check_item" (click)="onClickPref(3)">
               <input  formControlName="balcony" type="checkbox"/>מרפסת
 
             </span>
-            <span class="check_item" (click)="onClickShelter()">
+            <span class="check_item" (click)="onClickPref(4)">
               <input  formControlName="shelter" type="checkbox"/>ממ"ד
 
             </span>
-            <span class="check_item" (click)="onClickGrating()">
+            <span class="check_item" (click)="onClickPref(5)">
               <input  formControlName="grating" type="checkbox"/>סורגים
 
             </span>
-            <span class="check_item" (click)="onClickStorage()">
+            <span class="check_item" (click)="onClickPref(6)">
               <input  formControlName="storage" type="checkbox"/>מחסן
 
             </span>
-            <span class="check_item" (click)="onClickHandicapped()">
+            <span class="check_item" (click)="onClickPref(7)">
               <input  formControlName="handicapped" type="checkbox"/>גישה לנכים
 
             </span>
-            <span class="check_item" (click)="onClickRenovated()">
+            <span class="check_item" (click)="onClickPref(8)">
               <input  formControlName="renovated" type="checkbox"/>משופצת
 
             </span>
-            <span class="check_item" (click)="onClickFurnitured()">
+            <span class="check_item" (click)="onClickPref(9)">
               <input  formControlName="furnitured" type="checkbox"/>מרוהטת
 
             </span>
-            <span class="check_item" (click)="onClickExclusive()">
+            <span class="check_item" (click)="onClickPref(10)">
               <input  formControlName="exclusive" type="checkbox"/>בבלעדיות
 
             </span>
@@ -142,19 +148,22 @@
             </div>
           </div>
 
-          <app-filter-floor [chosenMaxFloorC]="chosenMaxFloor" (transferMinFloor)="passMinFloor($event)" *ngIf="startingFloorListShow"></app-filter-floor>
-          <app-filter-floor2 [chosenMinFloorC]="chosenMinFloor" (transferMaxFloor)="passMaxFloor($event)" *ngIf="finalFloorListShow"></app-filter-floor2>
+          <app-filter-floor [chosenMaxFloorC]="chosenMaxFloor" [chosenStartFloor]="chosenMinFloor"
+           (transferMinFloor)="passMinFloor($event)"
+          *ngIf="startingFloorListShow"></app-filter-floor>
+          <app-filter-floor2 [chosenMinFloorC]="chosenMinFloor" [chosenFinishFloor]="chosenMaxFloor"
+          (transferMaxFloor)="passMaxFloor($event)" *ngIf="finalFloorListShow"></app-filter-floor2>
 
           <div class="adv_search_middle_item">
             <span>גודל הדירה (במ"ר)</span>
             <div>
               <div class="adv_search_input_container">
                 <div class="adv_search_input dropdown-filter">
-                  <input formControlName="minArea" class="width-small" type="text" placeholder="מ-" />
+                  <input formControlName="minArea" class="width-small" type="text" placeholder="מ-" separator />
                 </div>
 
                 <div class="adv_search_input dropdown-filter">
-                  <input formControlName="maxArea" class="width-small" type="text" placeholder="עד-" />
+                  <input formControlName="maxArea" class="width-small" type="text" placeholder="עד-" separator/>
                 </div>
               </div>
             </div>
@@ -165,11 +174,13 @@
               <div class="adv_search_container long">
                 <div class="adv_search_input">
 
-                  <input formControlName="entrDate" type="date" name="appartmentEntrance" placeholder="החל מ- הזינו תאריך"/>
+                  <input formControlName="entrDate" #date type="date" (change)="onDateClick()"
+                  name="appartmentEntrance" placeholder="החל מ- הזינו תאריך"/>
                   <!-- [(ngModel)]="appartementEntrance" -->
                 </div>
                 <div class="adv_search_input">
-                  <input formControlName="flexEntr" type="checkbox" placeholder="כניסה מיידית" />
+                  <input formControlName="flexEntr" #flexEntr type="checkbox" (change)="onFlexEntrClick()"
+                  placeholder="כניסה מיידית" />
                   <span>כניסה מיידית</span>
                 </div>
               </div>

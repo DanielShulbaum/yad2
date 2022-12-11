@@ -237,6 +237,9 @@
   width: 190px;
   height: 50px;
   margin:1px;
+  @media(max-width:580px){
+    display: none;
+  }
 }
 .post_main_description_container{
   width: calc(100% - 192px);
